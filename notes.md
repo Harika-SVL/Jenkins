@@ -1,5 +1,5 @@
 ## Normal workflow for application deployments in Organisations
------------------------------------------------------------------
+
 * There are 3 major workflow's in which projects fit n :
 
    1. Virtual/Physical machine Deployment
