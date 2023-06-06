@@ -1,6 +1,6 @@
 ## Normal workflow for application deployments in Organisations
 
-* There are 3 major workflow's in which projects fit n :
+* There are 3 major workflow's in which projects fit-in :
 
    1. Virtual/Physical machine Deployment
    2. Infra Provisioning and Deployment
@@ -22,7 +22,8 @@
 
 ![Alt text](shots/1.PNG)
 
-=> Steps we follow for any type(.net,java,sap) of application :
+=> Step's we follow for any type(.net,java,sap) of application :
+
 * Build the code
 * Getting the package
 * Creating an environment or deploying application into a existing service
@@ -46,9 +47,11 @@
 * Sonar Qube ( Static code analysis ) - check for code written as per standards or not
 * Jfrog/Artifactory ( Artifat Repository) - supports all the languages like storing java packages,linux packages,.net packages,Docker packages,etc - they also have artifactory scan features too
 * MAven,MsBuild ( build java,.net applications) - to understand certain terms,dependencies,packaging phase,compiling phase
+
 * Pipelines ( creating pipelines for applications) - two types
   1. UI oriented - Free style
   2. Pipeline as code - Declarative pipelines
+
 * Administrative features :
   1. Backup
   2. Plugins
@@ -59,16 +62,19 @@
 
   * For java projects to work we need maven and java jdk to be present.
   Maven requires Java to be installed.
+
 => Distributions:
     * OpenJDK
     * Oracle JDK
     * IBM JDK
     * Amazon Corretto JDK
+
 => Versions:
     * 8
     * 11
     * 17
     * 19
+
 => Environmental Variables:
    * PATH : defines the which folder to be referred when a command is given (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin)
    * JAVA_HOME : Directory where java gets installed (/usr/lib/jvm/java-8-openjdk-amd64)
@@ -86,6 +92,7 @@
 ![Alt text](shots/5.PNG)
 
 => To add our own Environmental variables :
+
   1. For all the environments : vi /etc/environment
 
 ![Alt text](shots/6.PNG)
@@ -166,9 +173,11 @@ Commands to proceed through the workflow :
 ![Alt text](shots/28.PNG)
 
 =>  Maven will download all the necessary dependencies to compile/package/test from a maven central repository ( https://mvnrepository.com/repos/central ) 
+
 => It downloads to M2_HOME which is by default '< HOME-DIR >/.m2' which is referred as local repository
 
 ## Maven Lifecycle Phases
+
     * Compile : Creates .class files
     * Test: Runs unit tests
     * Package: Create packages (jar/war)
