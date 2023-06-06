@@ -150,7 +150,7 @@
 ![Alt text](shots/25.PNG)
 ![Alt text](shots/26.PNG)
 
-* Here if we want to permanently change the variables and path we go into bashrc and set the values.
+* Here if we want to permanently change the variables and path we go into bashrc and set the values
 * Instead we can set temporarily using export command and setting variables and path for java-17 (as required)
 
 ![Alt text](shots/27.PNG)
@@ -165,18 +165,19 @@ Commands to proceed through the workflow :
 
 ![Alt text](shots/28.PNG)
 
-=>  Maven will download all the necessary dependencies to compile/package/test from a maven central repository (https://mvnrepository.com/repos/central) 
-=> It downloads to M2_HOME which is by default '< HOME-DIR >/.m2' which is referred as local repository.
+=>  Maven will download all the necessary dependencies to compile/package/test from a maven central repository ( https://mvnrepository.com/repos/central ) 
+=> It downloads to M2_HOME which is by default '< HOME-DIR >/.m2' which is referred as local repository
 
 ## Maven Lifecycle Phases
-    * Compile: Will create .class files
-    * Test: will run unit tests
-    * Package: will create package (jar/war)
-    * Install: will copy the project which you have build to the local repository.
+    * Compile : Creates .class files
+    * Test: Runs unit tests
+    * Package: Create packages (jar/war)
+    * Install: Copies the project which you have build to the local repository
  => Along with jar/war files as pom also gets copied
 
 
  # Jenkins
 
- 
+
+
 
