@@ -35,18 +35,18 @@
 
 * In real every CI/CD tool is a CRON Job ( Scheduler ) on steroids ( can work over the failed cases also )
 
-=> PaaS - Platform as a Service
-=> IaaS - Infrastructure as a Service
-=> SaaS - Software as a Service
+    * PaaS - Platform as a Service
+    * IaaS - Infrastructure as a Service
+    * SaaS - Software as a Service
 
 ## Proceeding with Jenkins
 
 ![Alt text](shots/3.PNG)
 
-* Learning GIT ( version control system ) - Taking latest version of the code
-* Sonar Qube ( Static code analysis ) - check for code written as per standards or not
-* Jfrog/Artifactory ( Artifat Repository) - supports all the languages like storing java packages,linux packages,.net packages,Docker packages,etc - they also have artifactory scan features too
-* MAven,MsBuild ( build java,.net applications) - to understand certain terms,dependencies,packaging phase,compiling phase
+* Learning GIT ( Version Control System ) - Taking latest version of the code
+* Sonar Qube ( Static Code Analysis ) - check for code written as per standards or not
+* Jfrog/Artifactory ( Artifact Repository) - supports all the languages like storing java packages,linux packages,.net packages,Docker packages,etc - they also have artifactory scan features too
+* Maven, MsBuild ( build java,.net applications) - to understand certain terms,dependencies,packaging phase,compiling phase
 
 * Pipelines ( creating pipelines for applications) - two types
   1. UI oriented - Free style
@@ -113,7 +113,7 @@
 
 ![Alt text](shots/11.PNG)
 
-## Building Game of life using maven
+## Sample : Building Game of life using maven
            ( This requires jdk-8 )
 
 * Game of life repo : https://github.com/wakaleo/game-of-life
@@ -146,7 +146,7 @@
 
 ![Alt text](shots/22.PNG)
 
-## Building Spring-pet clinic using maven
+## Sample : Building Spring-pet clinic using maven
        ( This requires jdk-17 )
 
 ![Alt text](shots/23.PNG)
