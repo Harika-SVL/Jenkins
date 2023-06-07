@@ -187,6 +187,57 @@ Commands to proceed through the workflow :
 
  # Jenkins
 
+* Jenkins is an open source CI/CD Engine.
+* Jenkins can be installed in following ways:
+  * Using Package managers on Linux
+  * Docker
+  * Windows
+  * WAR
+* Official website for jenkins installation (here we can choose the method for installation) : https://www.jenkins.io/doc/book/installing/
+* we would rather install LTS (Long Term Support Version) 
+* For now we let's do it on ubuntu amchine : 
 
+Installing Steps for Jenkins :
 
+=> For installing Jenkins we need to have java first ( openjdk-11-jdk)
+* sudo apt update
+* sudo apt install openjdk-11-jdk -y
 
+![Alt text](shots/29.PNG)
+
+[ From jenkins website installing steps ]
+* curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+* echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+* sudo apt-get update
+* sudo apt-get install jenkins -y
+
+![Alt text](shots/29.PNG)
+
+* Also check if the user jenkins is created or not using ' cat /etc/passwd '
+
+![Alt text](shots/30.PNG)
+
+* Check for status of Jenkins :
+
+![Alt text](shots/31.PNG)
+![Alt text](shots/32.PNG)
+
+* Now exposing it over browser using < Public_IP:8080 > :
+
+![Alt text](shots/33.PNG)
+![Alt text](shots/34.PNG)
+
+* After installing the suggested pluggins, create a admin user :
+
+![Alt text](shots/35.PNG)
+![Alt text](shots/36.PNG)
+
+user : jenkinsuser
+pass : jenkinsuser
+
+* Jenkins homepage :
+
+![Alt text](shots/37.PNG)
