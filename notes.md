@@ -216,6 +216,12 @@ Installing Steps for Jenkins :
 
 ![Alt text](shots/29.PNG)
 
+* After installing jenkins a user jenkins got created with
+
+=> '/var/lib/jenkins' as Home directory
+
+=> /bin/bash as default shell
+
 * Also check if the user jenkins is created or not using ' cat /etc/passwd '
 
 ![Alt text](shots/30.PNG)
@@ -225,7 +231,7 @@ Installing Steps for Jenkins :
 ![Alt text](shots/31.PNG)
 ![Alt text](shots/32.PNG)
 
-* Now exposing it over browser using < Public_IP:8080 > :
+* Now exposing it externally using < http://< Public_IP >:8080 > :
 
 ![Alt text](shots/33.PNG)
 ![Alt text](shots/34.PNG)
@@ -241,3 +247,38 @@ pass : jenkinsuser
 * Jenkins homepage :
 
 ![Alt text](shots/37.PNG)
+
+## Jenkins Projects
+
+* They are of 3 types (majorly) : 
+     1. Free Style: These projects are UI Based.
+     2. Scripted Pipeline
+     3. Declarative Pipeline
+
+## Sample : Setting up a project (Job) to display system information )
+
+* Lets create a Jenkins project which displays
+  1. username
+  2. current working directory
+  3. all the environmental variables
+
+* Lets start by create a Jenkins project (Freestyle)
+
+* Now navigate to build steps
+
+* Now change the invoke shell steps to something as shown below
+
+* Build the jenkins job
+
+## Sample : Creating a project to run spring-pet clinic
+
+* Manual steps : 
+    * git clone https://github.com/spring-projects/spring-petclinic.git
+    * cd spring-petclinic
+    * mvn package
+
+* Create a Jenkins job with name spc and in build steps invoke shell and execute
+
+* Install maven and rerun the same job
+
+## Multi node configuration
