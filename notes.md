@@ -2,9 +2,9 @@
 
 * There are 3 major workflow's in which projects fit-in :
 
-   1. Virtual/Physical machine Deployment
-   2. Infra Provisioning and Deployment
-   3. Containerized Deployment
+    1. Virtual/Physical machine Deployment
+    2. Infra Provisioning and Deployment
+    3. Containerized Deployment
 
 =>  Aplications are deployed on :
 
@@ -18,11 +18,11 @@
         * PaaS (Azure-App Service/AWS-Elastic BeanStalk)
         * FaaS (Azure-Functions/AWS-Lamda)      
 
-## Our Performing in the pipelines
+## Our working with the pipelines
 
 ![Alt text](shots/1.PNG)
 
-=> Step's we follow for any type(.net,java,sap) of application :
+=> Step's we follow for any type (.net, java, sap) of application :
 
 * Build the code
 * Getting the package
@@ -58,29 +58,29 @@
   3. User Management
   4. Multi nodes
 
-  ## Maven installation 
+## Maven installation 
 
-  * For java projects to work we need maven and java jdk to be present.
-  Maven requires Java to be installed.
+* For java projects to work we need maven and java jdk to be present.
+* Maven requires Java to be installed.
 
 => Distributions:
-    * OpenJDK
-    * Oracle JDK
-    * IBM JDK
-    * Amazon Corretto JDK
+     * OpenJDK
+     * Oracle JDK
+     * IBM JDK
+     * Amazon Corretto JDK
 
 => Versions:
-    * 8
-    * 11
-    * 17
-    * 19
+     * 8
+     * 11
+     * 17
+     * 19
 
 => Environmental Variables:
    * PATH : defines the which folder to be referred when a command is given (/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin)
    * JAVA_HOME : Directory where java gets installed (/usr/lib/jvm/java-8-openjdk-amd64)
    * M2_HOME : Directory where maven gets installed
 
-* We do these installations over Linux machine
+[ We do these installations over Linux machine ]
 
 ## Java Installation
    ( openjdk-8 version)
@@ -164,7 +164,7 @@
 
 * Spring-pet clinic repo : https://github.com/spring-projects/spring-petclinic
 
-Commands to proceed through the workflow : 
+=> Commands to proceed through the workflow : 
 
 * Compile the code: 'mvn compile'
 * Run the automated tests: 'mvn test'
