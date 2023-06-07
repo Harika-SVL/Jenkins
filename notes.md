@@ -197,7 +197,7 @@ Commands to proceed through the workflow :
 * we would rather install LTS (Long Term Support Version) 
 * For now we let's do it on ubuntu amchine : 
 
-Installing Steps for Jenkins :
+## Installing Steps for Jenkins :
 
 => For installing Jenkins we need to have java first ( openjdk-11-jdk)
 * sudo apt update
