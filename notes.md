@@ -391,16 +391,60 @@ Manage Jenkins => Global Tool Configuration => JDK => Add JDK
 => Sending email
 => Setting GitHub status
 
- * Save and build the job and run the project
+ * Save and build the job and run the project (GOL with t3.micro)
 
  * To preserve the work done (or) backup to the project
  => we take the backup of '/var/lib/jenkins' folder frequently
+
+* After running the project we also get unit test results
+
+=> In post build Actoins select 'Publish Junit test result report' option
+
+=> For test report xml '**/surefire-reports/TEST-*.xml' 
+
+=> To show the results and artifact made on the dashboard - Configure -> Post-build Actions -> Archive the artifacts -> Files to archive - '**/target/< project-name >.war'
+
+[After every change you make inorder to get the results, we need ti build again and again]
 
 [ If the working is delayed, we can resize the machine only after stopping the machine and restarting it again ]
 
  ## Plug-In in Jenkins
 
-* It is an additional functionality provided , which will add functionality to Jenkins
-(not an installation on the 'Jenkins master node')
+* It is an additional functionality provided , which will add functionality to Jenkins not to the machine(Virtual Machines) which we run 
+( not an installation on the 'Jenkins master node' )
 
-## Multi node configuration
+=> Dashboard
+=> Manage Jenkins
+=> Plugin Manager
+=> Installed plugins
+=> Available plugins => search for the required plugins
+
+## Build Excecutors (Build Executor Status)
+
+* on Jenkins node determines how many projects can be built parallely
+* An individual project by default gets only one executor, if you want to change this, we can give the no.of builds we want into
+'General -> Throttle builds' and also to limit the no.of builds
+
+=> Every node in Jenkins can be configured with no.of executors
+'Manage Jenkins -> Manage Nodes and Clouds -> Built-in Node -> Configure -> Put no.of executors you require
+
+## Distributed Builds
+
+* Jenkins has 2 types of nodes :
+     1. Master node : On which we install jenkins
+     2. Node : On which we run the job which matches the label definition
+
+![Alt text](shots/62.PNG)
+
+* Adding more nodes(of different servers) increases no.of executors which means we can build more projects
+* And to make Jenkins highly vailable also we increase the no.of master nodes those share a same folder 'var/lib/jenkins' we store the behaviour of that node
+* So if even one server goes down the other is stayed as backup with doing the same work 
+
+## Let's add a node(linux-ubuntu) to the master node
+
+* Create two vm's with same configurations
+* Install Java and Jenkins on the master node
+
+##  Multi node configuration
+
+![Alt text](shots/62.PNG)
