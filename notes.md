@@ -358,4 +358,49 @@ pass : jenkinsuser
 ![Alt text](shots/60.PNG)
 ![Alt text](shots/61.PNG)
 
+* Setting different java or other tools
+
+Manage Jenkins => Global Tool Configuration => JDK => Add JDK
+
+* add no.of versions that we need
+, give the name and home directory for java-17 and java-8 and also maven
+
+## Create a new project for Game-of-life (over the UI selection options instead of the manual steps)
+
+* General : -> description-general information about build project
+* Source code management : This section is about the version control information of the project
+* Git : as the project is of opensource we provide the url,branch name
+
+=> Save the project
+=> Home directory of jenkins 'JENKINS_HOME'
+=> Become a root user
+=> Switch as a jenkins user
+=> ls...ls jobs/.....ls -al jobs/.....ls -al jobs/< project-name >/
+
+* To view the contents of config.xml file
+=> 'cat jobs/< project-name >/config.xml'
+
+=> Every detail we provide in the UI of jenkins is converted into the xml file in the home directory internally
+
+=> After building the project go to the workspace directory in the folder with < project-name >
+
+* Build Triggers : when to trigger the build
+* Build Environment : what to be built in the project
+* Build steps : what to be done before building the project (there are many options)
+* Post Build Actions : what to be done after build in the project 
+=> Sending email
+=> Setting GitHub status
+
+ * Save and build the job and run the project
+
+ * To preserve the work done (or) backup to the project
+ => we take the backup of '/var/lib/jenkins' folder frequently
+
+[ If the working is delayed, we can resize the machine only after stopping the machine and restarting it again ]
+
+ ## Plug-In in Jenkins
+
+* It is an additional functionality provided , which will add functionality to Jenkins
+(not an installation on the 'Jenkins master node')
+
 ## Multi node configuration
