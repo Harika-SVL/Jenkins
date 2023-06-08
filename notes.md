@@ -336,13 +336,13 @@ pass : jenkinsuser
 * we install both java-8 (Game-of-life)and java-17 (java to be present)
 
 ![Alt text](shots/56.PNG)
-![Alt text](shots/57.PNG)
 
 * Complete installing jenkins
 
-
+![Alt text](shots/57.PNG)
 
 * Start working creating project and the Shell Scriptto be given is :
+
   *  export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH"
   * java -version
   * mvn --version
@@ -350,10 +350,12 @@ pass : jenkinsuser
   * cd game-of-life
   * mvn package
 
-
+![Alt text](shots/58.PNG)
 
 * Proceed and check  for the output :
 
-  ![Alt text](shots/60.PNG)
+![Alt text](shots/59.PNG)
+![Alt text](shots/60.PNG)
+![Alt text](shots/61.PNG)
 
 ## Multi node configuration
