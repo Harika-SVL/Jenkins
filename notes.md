@@ -307,9 +307,53 @@ pass : jenkinsuser
     * git clone https://github.com/spring-projects/spring-petclinic.git
     * cd spring-petclinic
     * mvn package
+=> Doesn't get exposed over the browser
 
 * Create a Jenkins job with name spc and in build steps invoke shell and execute
+    * Complete installation of java-11 and jenkins on an ubuntu machine
 
-* Install maven and rerun the same job
+![Alt text](shots/49.PNG)
+![Alt text](shots/50.PNG)
+
+
+![Alt text](shots/51.PNG)
+
+* Install maven 
+
+
+![Alt text](shots/52.PNG)
+![Alt text](shots/53.PNG)
+![Alt text](shots/54.PNG)
+
+* Now rerun the same job
+
+![Alt text](shots/55.PNG)
+
+[spring-pet clinic doesn't work manually nor over jenkins job]
+
+## Sample : Creating a project to run Game-of-life
+
+* we install both java-8 (Game-of-life)and java-17 (java to be present)
+
+![Alt text](shots/56.PNG)
+![Alt text](shots/57.PNG)
+
+* Complete installing jenkins
+
+
+
+* Start working creating project and the Shell Scriptto be given is :
+  *  export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH"
+  * java -version
+  * mvn --version
+  * git clone https://github.com/wakaleo/game-of-life
+  * cd game-of-life
+  * mvn package
+
+
+
+* Proceed and check  for the output :
+
+  ![Alt text](shots/60.PNG)
 
 ## Multi node configuration
