@@ -227,6 +227,8 @@
 ![Alt text](shots/30.PNG)
 
 * Check for status of Jenkins :
+  sudo systemctl start jenkins
+  sudo systemctl status jenkins
 
 ![Alt text](shots/31.PNG)
 ![Alt text](shots/32.PNG)
@@ -262,13 +264,42 @@ pass : jenkinsuser
   2. current working directory
   3. all the environmental variables
 
-* Lets start by create a Jenkins project (Freestyle)
+* Lets start by create a Jenkins project (Freestyle), by clicking on 'New item'
 
-* Now navigate to build steps
+![Alt text](shots/38.PNG)
+
+* Now navigate to 'Build Steps' and select 'Execute shell'
+
+![Alt text](shots/39.PNG)
 
 * Now change the invoke shell steps to something as shown below
 
+![Alt text](shots/40.PNG)
+
 * Build the jenkins job
+
+![Alt text](shots/41.PNG)
+
+* Click on 'Build Now'
+
+![Alt text](shots/42.PNG)
+![Alt text](shots/43.PNG)
+
+* Now select the console output
+
+![Alt text](shots/44.PNG)
+
+## Let also see a failure scenerio
+
+* Edit the commands in the 'Build Steps' - shell prompt
+
+![Alt text](shots/45.PNG)
+![Alt text](shots/46.PNG)
+
+* After changing and building again we get 
+
+![Alt text](shots/47.PNG)
+![Alt text](shots/48.PNG)
 
 ## Sample : Creating a project to run spring-pet clinic
 
