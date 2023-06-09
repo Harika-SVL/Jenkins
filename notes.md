@@ -536,11 +536,18 @@ New item => gol => freestyle project => ok
 ## Build Excecutors (Build Executor Status)
 
 * on Jenkins node determines how many projects can be built parallely
-* An individual project by default gets only one executor, if you want to change this, we can give the no.of builds we want into
-'General -> Throttle builds' and also to limit the no.of builds
+
+![Alt text](shots/105.PNG)
+
+* An individual project by default gets only one executor, if you want to change this (not a good idea), we can give the no.of builds we want 
 
 => Every node in Jenkins can be configured with no.of executors
-'Manage Jenkins -> Manage Nodes and Clouds -> Built-in Node -> Configure -> Put no.of executors you require
+=> Manage Jenkins => Nodes and Clouds => Built-in Node -> Configure -> Put no.of executors you require
+
+![Alt text](shots/106.PNG)
+![Alt text](shots/107.PNG)
+
+[Defulat case (may not be true for every job,some need two cpu's instead): generally for every virtual CPU a job is assigned and run]
 
 ## Distributed Builds
 
