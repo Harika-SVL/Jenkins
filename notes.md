@@ -333,7 +333,7 @@ pass : jenkinsuser
 
 ## Sample : Creating a project to run Game-of-life
 
-* we install both java-8 (Game-of-life)and java-17 (java to be present)
+* we install jenkins along with both java-8 (for Game-of-life)and java-17 (for java to be present)
 
 ![Alt text](shots/56.PNG)
 
@@ -358,66 +358,180 @@ pass : jenkinsuser
 ![Alt text](shots/60.PNG)
 ![Alt text](shots/61.PNG)
 
-* Setting different java or other tools
-
-Manage Jenkins => Global Tool Configuration => JDK => Add JDK
-
-* add no.of versions that we need
-, give the name and home directory for java-17 and java-8 and also maven
-
 ## Create a new project for Game-of-life (over the UI selection options instead of the manual steps)
 
-* General : -> description-general information about build project
-* Source code management : This section is about the version control information of the project
-* Git : as the project is of opensource we provide the url,branch name
+* Install jenkins on an ubuntu machine along with java-8 and java-17
 
-=> Save the project
-=> Home directory of jenkins 'JENKINS_HOME'
-=> Become a root user
-=> Switch as a jenkins user
-=> ls...ls jobs/.....ls -al jobs/.....ls -al jobs/< project-name >/
+![Alt text](shots/66.PNG)
+![Alt text](shots/67.PNG)
 
-* To view the contents of config.xml file
-=> 'cat jobs/< project-name >/config.xml'
+* Setting different java or other tools
 
-=> Every detail we provide in the UI of jenkins is converted into the xml file in the home directory internally
+=> On the jenkins dashboard
 
-=> After building the project go to the workspace directory in the folder with < project-name >
+Manage Jenkins => Tools => JDK => Add JDK
 
-* Build Triggers : when to trigger the build
+![Alt text](shots/63.PNG)
+
+* Add any no.of versions that we need
+
+=> give the name and home directory for java-17 and java-8 (using the export command on UI)
+
+![Alt text](shots/64.PNG)
+![Alt text](shots/65.PNG)
+
+* Install maven 'sudo apt install maven -y' and check with the version
+
+![Alt text](shots/68.PNG)
+![Alt text](shots/69.PNG)
+
+=> On the jenkins dashboard
+
+Manage Jenkins => Tools => Maven => Add Maven
+
+![Alt text](shots/70.PNG)
+![Alt text](shots/71.PNG)
+
+* Create a freestyle project to build game-of-life
+
+=> On the jenkins dashboard
+
+New item => gol => freestyle project => ok
+
+![Alt text](shots/72.PNG)
+
+## Exploring the options on dashboard
+
+* General :-> general information about build project
+
+![Alt text](shots/73.PNG)
+
+* Source code management :-> about the version control information of the project
+
+=> Add the REPO-URL and BRANCH-NAME and save
+
+![Alt text](shots/74.PNG)
+
+[only when Git is the public repo for opensource project,credentials are given for any other private repo for any project]
+
+* As a root user ,Swith to jenkins user,go to home directory of jenkins 'JENKINS_HOME : var/lib/jenkins'
+
+![Alt text](shots/75.PNG)
+![Alt text](shots/76.PNG)
+
+=> Every detail we mention in UI gets stored into config.xml file 'cat jobs/< project-name >/config.xml'
+
+![Alt text](shots/77.PNG)
+
+[No two projects can have same name]
+
+=> Now build the project and let's explore workspace
+
+![Alt text](shots/78.PNG)
+![Alt text](shots/79.PNG)
+![Alt text](shots/80.PNG)
+
+=> Go back to gol => configure => Build steps => shell ( pwd ) => save
+
+![Alt text](shots/81.PNG)
+![Alt text](shots/82.PNG)
+
+* Build Triggers : when to build - job to be called
+
+![Alt text](shots/83.PNG)
+
 * Build Environment : what to be built in the project
+
+![Alt text](shots/84.PNG)
+
 * Build steps : what to be done before building the project (there are many options)
-* Post Build Actions : what to be done after build in the project 
-=> Sending email
-=> Setting GitHub status
 
- * Save and build the job and run the project (GOL with t3.micro)
+![Alt text](shots/85.PNG)
 
- * To preserve the work done (or) backup to the project
- => we take the backup of '/var/lib/jenkins' folder frequently
+* Post Build Actions : what to be done after build in the project
 
-* After running the project we also get unit test results
+=> Sending email,
+=> Setting GitHub status, etc
 
-=> In post build Actoins select 'Publish Junit test result report' option
+![Alt text](shots/86.PNG)
 
-=> For test report xml '**/surefire-reports/TEST-*.xml' 
+* Let's build game-of-life
 
-=> To show the results and artifact made on the dashboard - Configure -> Post-build Actions -> Archive the artifacts -> Files to archive - '**/target/< project-name >.war'
+=> General => JAVA_8_UBUNTU 
 
-[After every change you make inorder to get the results, we need ti build again and again]
+![Alt text](shots/87.PNG)
+
+=> Source code management => git-url of gol
+
+![Alt text](shots/88.PNG)
+
+=> Build Environment => Delete workspace
+
+![Alt text](shots/89.PNG)
+
+=> Build steps => invoke top-level maven => package => save
+
+![Alt text](shots/90.PNG)
+
+=> Build now
+
+![Alt text](shots/91.PNG)
 
 [ If the working is delayed, we can resize the machine only after stopping the machine and restarting it again ]
 
- ## Plug-In in Jenkins
+ * To backup or preserve data of the project
+ => we take the backup of '/var/lib/jenkins' folder frequently
+
+* When we run the project we also get unit test results
+
+=> Dashboard => click on the project
+
+![Alt text](shots/94.PNG)
+![Alt text](shots/95.PNG)
+
+* Let's further configure some sections
+
+=> Configue => Post build Actoins => Publish Junit test result report
+
+![Alt text](shots/96.PNG)
+
+=> For test report xml '**/surefire-reports/TEST-*.xml' 
+
+![Alt text](shots/97.PNG)
+
+=> Build now => console output
+
+![Alt text](shots/98.PNG)
+![Alt text](shots/99.PNG)
+![Alt text](shots/100.PNG)
+
+=> To show the results and artifact made directly
+
+=>Dashboard => gol => Configure => Post-build Actions -> Archive the artifacts 
+
+![Alt text](shots/101.PNG)
+
+-> Files to archive - '**/target/gameoflife.war'
+
+![Alt text](shots/102.PNG)
+
+=> Save => build now
+
+![Alt text](shots/103.PNG)
+![Alt text](shots/104.PNG)
+
+[After every change you make inorder to get the results, we need to build again and again]
+
+## Plug-In in Jenkins
 
 * It is an additional functionality provided , which will add functionality to Jenkins not to the machine(Virtual Machines) which we run 
 ( not an installation on the 'Jenkins master node' )
 
-=> Dashboard
-=> Manage Jenkins
-=> Plugin Manager
-=> Installed plugins
+=> Dashboard => Manage Jenkins => Plugins => Installed plugins
 => Available plugins => search for the required plugins
+
+![Alt text](shots/92.PNG)
+![Alt text](shots/93.PNG)
 
 ## Build Excecutors (Build Executor Status)
 
