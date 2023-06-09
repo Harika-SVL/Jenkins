@@ -341,7 +341,7 @@ pass : jenkinsuser
 
 ![Alt text](shots/57.PNG)
 
-* Start working creating project and the Shell Scriptto be given is :
+* Start working creating project and the Shell Script to be given is :
 
   *  export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH"
   * java -version
