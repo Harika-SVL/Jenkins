@@ -617,4 +617,98 @@ New item => gol => freestyle project => ok
 ![Alt text](shots/124.PNG)
 
 * Wait and check for node is launched by clicking on node and logs => Launch agent (keep node machine also connected)
+* Now configure Game of life
+* Add jdk-8 and jdk-17 and save 
+* Create a freestyle project gol and ok
+* Configure for project gol
+* JDk-8 , now restrict project to run with label as given with Node 'MAVEN_JDK-8' and give 'github url' with branch name as 'Master'
+* Give the build steps with goal-package and in post build actions- archive the artifacts '**/gameoflife.war'
+* Publish Junit result '**/target/surefire-reports/TEST-*.xml' an save
+=> dashboard => |> symbol to build
+* You get the archive built
+
+## Jenkins-2 ( Pipeline as Code )
+
+* Pipeline as a code refers to creating CI/CD Pipeline in some file format and version control (generally closer to code)
+
+* Jenkins 1 was predominantly UI oriented, where as in Jenkins 2 the concept of pipelines were introduced natively.
+
+* Now we write our build steps in these pipelines and then version control.
+
+* Jenkins has created 2 types of pipelines
+
+    1. Scripted Pipeline:
+        * This pipeline allows to use Groovy Language directly
+        * This is a different approach
+    2. Declarative Pipeline
+        * This pipeline internally uses Groovy but we use Jenkins DSL (Domain Specific Language)
+        * Similar for the benifit of classic jenkins users
+
+## Groovy
+
+* There are two popular Java Based Languages
+    1. Scala (Big Data Purposes)
+    2. Groovy (Scripting purposes)
+
+## Build Gameoflife on node1 using Scripted pipeline (sp)
+
+* Create a new project gol-sp of pipeline type
+
+=> Configure => pipeline => wirte the below pipeline => Save
+
+[ In order to get help with the pipeline to write , click on pipeline syntax below and generate the code required]
+
+-------
+node('MAVEN_JDK8')
+{
+    stage('vcs')
+    {
+        git 'https://github.com/wakaleo/game-of-life.git'
+    }
+    stage('build') 
+    {
+        sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
+
+    }
+    stage('postbuild')
+    {
+        archiveArtifacts artifacts: '**/target/gameoflife.war', followSymlinks: false
+        junit '**/surefire-reports/TEST-*.xml'
+    }
+}
+-------
+=> Dashboard => build symbol at  the project => Stage view / Console output
+=> Build now
+
+## Build Gameoflife on node1 using Declarative pipeline (dp)
+
+* Create a new project gol-dp of pipeline type
+
+=> Configure => pipeline => wirte the below pipeline => Save
+
+[ In order to get help with the pipeline to write , click on pipeline syntax below and generate the code required]
+
+-------
+pipeline {
+    agent { label 'MAVEN_JDK8' }
+    stages {
+        stage('VCS') {
+            steps {
+                git 'https://github.com/wakaleo/game-of-life.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
+            }
+        }
+    }
+
+}
+
+-------
+=> Dashboard => build symbol at  the project => Stage view / Console output
+=> Build now
+
+
 
