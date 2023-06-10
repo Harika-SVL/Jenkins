@@ -659,6 +659,7 @@ New item => gol => freestyle project => ok
 [ In order to get help with the pipeline to write , click on pipeline syntax below and generate the code required]
 
 ------- Jenkins file
+
 node('MAVEN_JDK8')
 {
     stage('vcs')
@@ -689,6 +690,7 @@ node('MAVEN_JDK8')
 [ In order to get help with the pipeline to write , click on pipeline syntax below and generate the code required]
 
 ------- Jenkins file
+
 pipeline {
     agent { label 'MAVEN_JDK8' }
     stages {
