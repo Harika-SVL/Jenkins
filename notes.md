@@ -554,10 +554,11 @@ New item => gol => freestyle project => ok
 * Jenkins has 2 types of nodes :
      1. Master node : On which we install jenkins
      2. Node : On which we run the job which matches the label definition
+* Here, Jenkins distributes the job based on the label or os used
 
 ![Alt text](shots/62.PNG)
 
-* Adding more nodes(of different servers) increases no.of executors which means we can build more projects
+* Adding more nodes increases no.of executors which means we can build more projects
 * And to make Jenkins highly vailable also we increase the no.of master nodes those share a same folder 'var/lib/jenkins' we store the behaviour of that node
 * So if even one server goes down the other is stayed as backup with doing the same work 
 
