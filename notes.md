@@ -570,3 +570,51 @@ New item => gol => freestyle project => ok
 ##  Multi node configuration
 
 ![Alt text](shots/62.PNG)
+
+* Create two vm's with basic configuration and name them as master and Node
+
+![Alt text](shots/108.PNG)
+
+* Install java-17 and jenkins on Master & Install java-8, java-17 and maven on the Node
+
+![Alt text](shots/109.PNG)
+![Alt text](shots/110.PNG)
+
+* login into Jekins and create credentials
+
+=> Manage Jenkins => Credentials
+
+![Alt text](shots/111.PNG)
+
+=> global => Add credentials
+
+![Alt text](shots/112.PNG)
+![Alt text](shots/113.PNG)
+
+=> Start adding credentials
+
+![Alt text](shots/114.PNG)
+![Alt text](shots/115.PNG)
+
+* Now to add the key, copy the key content from terminal and add into the section along with begin and end & create
+
+![Alt text](shots/117.PNG)
+![Alt text](shots/118.PNG)
+
+* It's created
+
+![Alt text](shots/119.PNG)
+
+=> Dashboard => Manage Jenkins => Nodes and clouds => New Node
+
+![Alt text](shots/120.PNG)
+![Alt text](shots/121.PNG)
+![Alt text](shots/122.PNG)
+
+* Copy the IP address of the node for host ( Private IP also works if both master and node in same network) and save
+
+![Alt text](shots/123.PNG)
+![Alt text](shots/124.PNG)
+
+* Wait and check for node is launched by clicking on node and logs => Launch agent (keep node machine also connected)
+
