@@ -712,5 +712,76 @@ pipeline {
 => Dashboard => build symbol at  the project => Stage view / Console output
 => Build now
 
+## Pipeline as Code (PAC)
 
+* Pipeline as a code allows us to define CI/CD in a text document in any version control system
 
+* CI/CD Pipeline when expressed as PAC will be present in git.
+
+* Jenkins has started supporting Pipelines with
+    1. Scripted Pipelines
+    2. Declartive Pipelines
+
+### Scripted Pipelines
+
+* A pipeline can be defined in any file but 'Jenkins file' is most widely used name.
+
+* The structure of Pipeline in scripted is as shown below
+
+![Alt text](shots/126.PNG)
+
+* Jenkins will have a set of steps which will be part of default jenkins installation and rest of steps can be added to jenkins by installing plugins
+
+* Jenkins Pipeline steps reference : https://www.jenkins.io/doc/pipeline/steps/
+
+## Sample : scripted pipeline for game of life
+
+* let's create a directory And clone the code from git into it 'git clone < project_url >'
+=> Clone the code using git pipeline : https://www.jenkins.io/doc/pipeline/steps/git/#git-git
+
+* Create a branch 'git checkout -b < branch-name >'
+=> Switched to the new branch
+
+* Open code ' code .' to write a pipeline
+=> Create a file 'Jenkins-file'
+
+* Jenkins-file
+----------------
+node('MAVEN_JDK8') {
+    stage('version control') {
+        git url: 'https://github.com/khajadevopsmarch23/game-of-life.git',
+            branch: 'scripted'
+    }
+}
+--------------------
+* Make your Jenkins node up and add 'git add .' , commit 'git commit -m "Added changes"' , push 'git push origin < Branch-name >' 
+
+* Create a New item/view 
+=> Name => List view => Create => Apply => ok
+
+* In new project
+=> New item => Name => pipeline => ok
+=> Pipeline => Select- script from SCM => git => repo url (git url) => branch (created branch name) => Save => Build now
+
+* Go to dashboard and check for working - stage view
+
+* Now to build the package
+* Jenkins-file
+-------------------------------
+        git url: 'https://github.com/khajadevopsmarch23/game-of-life.git',
+            branch: 'scripted'
+    }
+    stage('build the code') {
+        sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
+    }
+    stage('archive the artifacts') {
+        archiveArtifacts onlyIfSuccessful: true,
+            artifacts: '**/target/gameoflife.war',
+            allowEmptyArchive: false
+    }
+    stage('show the test results') {
+        junit testResults: '**/surefire-reports/TEST-*.xml',
+              allowEmptyResults: true
+    }
+}
+------------------------------------
