@@ -785,3 +785,14 @@ node('MAVEN_JDK8') {
     }
 }
 ------------------------------------
+(March 3 2023)
+
+## Declarative Pipelines
+
+* Jenkins has a DSL (Domain Specific Language) for creating Declarative Pipeines
+
+* Jenkins Pipeline Syntax : https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline
+
+![Alt text](shots/127.PNG)
+
+* 
