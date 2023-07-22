@@ -38,10 +38,36 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 * To perform frequent integrations and deployments we need a tool which can help us doing the same stuff and integrate with multiple tools. These tools are generally called as `CI/CD Engines`
 * Jenkins is popular Opensource CI/CD Engine
+* Any CI/CD tool at it's core is a `Cron` on steroids
+
+#### Cronjob in Linux - Crontab (periodic tasks on steroids)
+      [Refer Here : https://crontab.guru/]
+
+* “cron” is a Linux-based utility used to schedule scripts or programs
+* The `Crontab` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for “cron table, ” because it uses the job scheduler cron to execute tasks
+```
+Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week> <command>
+```
+![Alt text](shots/12.PNG)
+![Alt text](shots/13.PNG)
+
+* Minute – A minute value can be between 0-59
+* Hour – A hour value can be between 0-23
+* Day_of_the_month – This value can between 1-31. For the months having fewer days will ignore remaining part
+* Month_of_the_year – This can be between 1-12. You can also define this value with the first three alphabets of the month like jan, feb, mar, apr etc.
+* Day_of_the_Week – This can be the value between 0-7. Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
+
+#### Cronjob in Windows - Task Scheduler
+       [Refer Here : https://linuxhint.com/set-up-cron-job-windows/]
+
+* In Windows, it is mostly utilized to automate the update system and scheduled tasks that will run automatically without manual execution. 
+* If you want to create a new task or cron job on Windows, perform the required operation with the help of the “Task Scheduler”.
+
+#### What happens when we install jenkins..?
+
 * When we install jenkins we will have a default user created called as `jenkins`
     * From jenkins we can perform anything which jenkins user performs
-* What happens when we install jenkins
-
+    
 ![Alt text](shots/10.PNG)
 
 * How can we integrate jenkins with any other tools:
