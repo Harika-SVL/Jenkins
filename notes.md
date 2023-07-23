@@ -111,11 +111,16 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 * Whenever a software project is developed, they have lot of dependencies
 * Before building the code, dependencies have to be present locally
 * To manage these dependencies, every programming language has some kind of package manager
+
+[NOTE : Package Management is downloading the packages, building the packages and distributing the packages]
+
   * dotnet: `nuget` is the package manager
-     * packages.config/packages.json
+     * File to store the dependencies `packages.config/packages.json`
   * java: `maven` can handle package management
   * python: `pip` is the package manager
   * nodejs: `npm` can handle package management
+
+### Build (every build) Workflow Structure
 
 * Scope of Work :
 
@@ -148,6 +153,7 @@ mvn --version
 ```
 #### Maven goals :
     [Refer Here : https://www.baeldung.com/maven-goals-phases]
+
 * Validate: validates the pom and it's project
 * Compile: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
 * Test: it will run the unit tests written and generates test results in xml format in text format. folder will be `/target/surefire-reports/TEST-*.xml`
@@ -195,11 +201,41 @@ cd spring-petclinic && mvn package
 ```
 ### Terms
 
-* Artifact => For generating artifacts we use build tools like msbuild, maven/gradle
-* unit test => junit, mstest/nunit, pytest, jasmine, mocha, most CI/CD systems understand junit xml reports to generate test results
-* code coverage => we do this from sonar qube
-* Static Code Analysis => we do this from sonar qube
-* artifact repository => we would use jfrog (azure artifacts)
+* ARTIFACT 
+
+=> For generating artifacts we use build tools like msbuild, maven/gradle
+
+=> These are referenced in a pipeline stage for automated deployment to the target environment
+
+* UNIT TEST 
+
+=> java-junit, microsoft-mstest/nunit, python-pytest, nodejs-jasmine, nodejs-mocha, most CI/CD systems understand junit xml reports to generate test results
+            
+=> incorporating unit testing into the DevOps process, which involves automating the entire software development life cycle to enable faster delivery of software while maintaining its quality
+
+* CODE COVERAGE 
+
+=> we do this from sonar qube
+
+=> helps you determine the proportion of your project's code that is actually being tested by tests such as unit tests. To increase your confidence of the code changes, and guard effectively against bugs, your tests should exercise - or cover - a large proportion of your code
+
+[ Code Coverage = Branch Coverage (testing method, which aims to ensure that each one of the possible branch from each decision point is executed at least once and thereby ensuring that all reachable code is executed) + Line Coverage (how many of lines of source code have been tested) ]
+
+* STATIC CODE ANALYSIS 
+
+=> we do this from sonar qube, figuring best code analysis
+
+=> method of computer program debugging that is done by examining the code without executing the program. The process provides an understanding of the code structure and can help ensure that the code adheres to industry standards
+
+* ARTIFACT REPOSITORY 
+
+=> we would use jfrog (azure artifacts)
+
+=> Artifacts are large binary packages that are created throughout the development and release process. An artifact repository is a software application designed to manage these artifacts
+
+
+
+
 
 ### Using Jenkins to build Maven Projects
 
