@@ -112,27 +112,30 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 * Before building the code, dependencies have to be present locally
 * To manage these dependencies, every programming language has some kind of package manager
   * dotnet: `nuget` is the package manager
-    * packages.config/packages.json
+     * packages.config/packages.json
   * java: `maven` can handle package management
   * python: `pip` is the package manager
   * nodejs: `npm` can handle package management
-* Scope of Work
+
+* Scope of Work :
 
 ![Alt text](shots/11.PNG)
 
 ## Maven
 
-* Maven is a tool which can be use to build, package, distribute, test and generate documentation for java and java based languages
+* Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages
 * It follows convention over configuration
-* It uses a file called as pom.xml
-* pom (Project object model)
+* It uses a file called as 'pom.xml'
+* POM (Project Object Model)
+
 * Maven Installation:
 ```
-# Install java 17
+# Install java-17
+
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 ```
-* Lets try installing maven 3.9.3 
+* Let's try installing maven 3.9.3 
     [Refer Here: https://maven.apache.org/download.cgi]
 ```
 cd /tmp
@@ -143,9 +146,6 @@ sudo tar -xvzf apache-maven-3.9.3-bin.tar.gz -C /usr/share/maven
 # add to ~/.bashrc or /etc/environment
 mvn --version
 ```
-
-
-
 #### Maven goals :
     [Refer Here : https://www.baeldung.com/maven-goals-phases]
 * Validate: validates the pom and it's project
@@ -196,7 +196,72 @@ cd spring-petclinic && mvn package
 ### Terms
 
 * Artifact => For generating artifacts we use build tools like msbuild, maven/gradle
-* unit test => junit, mstest/nunit, pytest, jasmine, mocha, most ci cd systems understand junit xml reports to generate test results
+* unit test => junit, mstest/nunit, pytest, jasmine, mocha, most CI/CD systems understand junit xml reports to generate test results
 * code coverage => we do this from sonar qube
 * Static Code Analysis => we do this from sonar qube
 * artifact repository => we would use jfrog (azure artifacts)
+
+### Using Jenkins to build Maven Projects
+
+#### Jenkins configuration
+
+* Install jenkins
+    * jdk-17
+* Install and configure maven in Jenkins (Master Node)
+* Let's build spring petclinic [Refer Here : https://github.com/spring-projects/spring-petclinic]
+    * software requirements
+      * jdk-17
+      * maven
+* Create a free style project to build spring petclinic
+
+
+
+* Free style project sections
+
+* General: This represents the project information
+
+
+* Source Code Managent: This represent the code to be used for ci/cd pipelines
+
+
+* Build Triggers: This represent when to build
+    * Build Periodically: If the project has to be build based on schedule, write cron expression into this Refer Here
+    * Poll SCM: this represents jenkins polling scm (asking git) and the cron expression represents how frequently should it ask
+
+* Build Environment: This represents the environmental configuration
+
+
+* Build Steps: These are actual activities that are performed during execution
+
+
+
+* Post Build actions: Actions to be performed after completion of build
+
+
+
+* Now we can wait for the trigger to call the job or trigger build manually
+
+
+
+* In Jenkins we can have multiple versions of java, maven etc and we can handle these by configuring jenkins
+* To fix the maven 3.6.3 issue we had install 3.9 and used full path for package
+
+
+
+
+* Test results
+
+
+### Jenkins Terms
+
+* Jenkins Home: Jenkins home is a folder where jenkins stores all of is configuration. In the above case the workspace is /var/lib/jenkins. If you want to change the workspace deal with JENKINS_HOME
+* Backup of Jenkins is backup of Workspace
+* Project: This contains the actvity that needs to be performed on triggers.
+    * This project is stored as xml file in workspace
+    * Types:
+      * Freestyle project: This is UI based configuration
+      * Pipeline: This is instructions expressed in some code format
+
+* Build: This represents the execution of project. Every build for a project has a running number called as Build id
+* Node: This represents the machine on which build can be executed.
+* Each Node can be configured to handle multiple builds by executors.
