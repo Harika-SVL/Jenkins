@@ -67,17 +67,20 @@ Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 
 * When we install jenkins we will have a default user created called as `jenkins`
     * From jenkins we can perform anything which jenkins user performs
-    
+
 ![Alt text](shots/10.PNG)
 
 * How can we integrate jenkins with any other tools:
     * Command line: call the command line
-    * Plugin + installation/configuration:
+    * Plugin(Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration:
       * UI or Pipeline step
-* Refer in the classroom video for
-    * Compiler vs interpretor vs hybrid
-    * PATH variable
-    * Environment variable
+
+#### PATH variable 'echo $PATH'
+        * To find path in linux 'whereis <needed-name>'
+#### Environment variable
+        * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
+        * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
+        * User environmental variable (available oly to the spacific user) 'home/bashrc'
 
 #### Note:
   * Adding sudo permission to Linux user 
@@ -87,6 +90,22 @@ sudo visudo
 
 jenkins (ALL:ALL) NOPASSWD:ALL
 ```
+#### Compiler vs interpretor vs hybrid based applications
+
+* Compiler-based application
+
+![Alt text](shots/14.PNG)
+
+* Interpretor-based application
+
+![Alt text](shots/15.PNG)
+
+* Hybrid based (both compiler and interpretor) application
+
+![Alt text](shots/16.PNG)
+
+![Alt text](shots/17.PNG)
+
 ### Dependencies
 
 * Whenever a software project is developed, they have lot of dependencies
