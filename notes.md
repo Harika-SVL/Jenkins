@@ -131,16 +131,17 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 * Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages
 * It follows convention over configuration
 * It uses a file called as 'pom.xml'
-* POM (Project Object Model)
+* POM - Project Object Model
 
-* Maven Installation:
+### Maven Installation:
+
+#### Install java-17
 ```
-# Install java-17
-
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 ```
 * Let's try installing maven 3.9.3 
+
     [Refer Here: https://maven.apache.org/download.cgi]
 ```
 cd /tmp
