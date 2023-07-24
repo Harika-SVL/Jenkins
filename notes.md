@@ -140,6 +140,8 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 ```
+![Alt text](shots/18.PNG)
+
 * Let's try installing maven 3.9.3 
 
     [Refer Here: https://maven.apache.org/download.cgi]
@@ -148,11 +150,18 @@ cd /tmp
 wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
 sudo mkdir /usr/share/maven
 sudo tar -xvzf apache-maven-3.9.3-bin.tar.gz -C /usr/share/maven
-# add /usr/share/maven/apache-maven-3.9.3/bin to the PATH variable
-# add to ~/.bashrc or /etc/environment
+# add `/usr/share/maven/apache-maven-3.9.3/bin` to the PATH variable
+# add to `~/.bashrc` or `/etc/environment`
+sudo vi /etc/environment
 mvn --version
 ```
-#### Maven goals :
+![Alt text](shots/19.PNG)
+![Alt text](shots/20.PNG)
+![Alt text](shots/21.PNG)
+![Alt text](shots/22.PNG)
+![Alt text](shots/23.PNG)
+
+#### Maven goals and Lifecycle :
     [Refer Here : https://www.baeldung.com/maven-goals-phases]
 
 * Validate: validates the pom and it's project
