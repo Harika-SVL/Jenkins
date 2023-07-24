@@ -128,8 +128,8 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 ## Maven
 
-* Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages
-* It follows convention over configuration
+* Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages(groovy,scala)
+* It follows convention(SNAPSHOT & RELEASE) over configuration
 * It uses a file called as 'pom.xml'
 * POM - Project Object Model
 
