@@ -324,20 +324,20 @@ mvn package
 
 => Description : This is to build spring-petclinic project 
 
-  1. General: This represents the project information
+1. General: This represents the project information
       
-     ![Alt text](shots/31.PNG)
+    ![Alt text](shots/31.PNG)
 
-  2. Source Code Management: This represent the code to be used for CI/CD pipelines
+2. Source Code Management: This represent the code to be used for CI/CD pipelines
 
-     ![Alt text](shots/32.PNG)
+    ![Alt text](shots/32.PNG)
 
-  3. Build Triggers: This represent when to build
+3. Build Triggers: This represent when to build
 
-    * Build Periodically(cron): If the project has to be build based on schedule, write cron expression into this 
+  * Build Periodically(cron): If the project has to be build based on schedule, write cron expression into this 
                                 [Refer Here : https://crontab.guru/]
 
-    * Poll SCM: This represents jenkins polling scm (asking git) and the cron expression represents how frequently should it ask. It is triggered only when there are changes in the code.
+  * Poll SCM: This represents jenkins polling scm (asking git) and the cron expression represents how frequently should it ask. It is triggered only when there are changes in the code.
 
     ![Alt text](shots/33.PNG)
 
@@ -393,7 +393,7 @@ mvn package
 ```
 sudo -i
 su jenkins
-cd /usr/share/maven
+cd /usr/share/maven (maven 3.6.3)
 ls
 cd /usr/share/maven/apache
 ```
