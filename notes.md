@@ -380,3 +380,65 @@ mvn package
 
 * Build: This represents the execution of project. Every build for a project has a running number called as Build_id
 * Node: This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
+
+### Managing different versions of the tools using jenkins
+
+* Let's manage jenkins and navigate to tools => Maven installations
+
+* Now lets configure the spring petclinic to use top level maven targets
+
+* Now build the project manually
+
+### Distributed Builds
+
+* Setup:
+    * Fork Spring-petclinic   
+        [Refer Here : ]
+      * requirements to build
+        * java jdk 17
+        * maven 3.9
+    * Fork game of life Refer Here
+      * requirements to build
+        * java 8
+        * maven
+    * Fork nopcommerce Refer Here
+      * requirements to build
+        * dotnet 7
+* To handle different builds with different software needs, we tend to use different servers.
+* Jenkins has distributed builds where we can distribute the builds on differnt nodes by matching labels
+
+* While creating a project we can set labels and expect them to be executed on the node matching labels
+
+#### How to add multiple nodes to jenkins
+
+* Let's create 2 ubuntu vms and lets make one vm the jenkins master
+* one one machine install and configure jenkins
+* On the node (we will be using existing credentials)
+* install jdk 17
+* install maven 3.9
+* Now lets configure node to the jenkins master with label JDK-17
+* On Jenkins UI Navigate to Manage Jenkins => Nodes and Clouds
+
+#### Lets setup spring petclinic to execute node-1
+
+* Configure spc-day build same as last session with one restriction in General section
+
+* Now build and verify the console output
+
+#### Exercises
+
+* Create a jenkins master with t2.micro (ubuntu)
+* Create a node with any other os redhat/centos/amazon linux
+    * install jdk 17
+* Create a job which should run on the other node configure and display its ip address and environmental variables printenv
+
+##### Note
+
+    * To install jenkins we can use the following script
+```
+#!/bin/bash
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install openjdk-17-jdk jenkins -y
+```
