@@ -383,7 +383,20 @@ mvn package
 
 ### Managing different versions of the tools using jenkins
 
-* Let's manage jenkins and navigate to tools => Maven installations
+* Connect to the jenkins installed vm 
+
+=> Manage jenkins => Tools => Maven installations
+
+![Alt text](shots/41.PNG)
+
+* Connect to the machine through command line
+```
+sudo -i
+su jenkins
+cd /usr/share/maven
+ls
+cd /usr/share/maven/apache
+```
 
 * Now lets configure the spring petclinic to use top level maven targets
 
