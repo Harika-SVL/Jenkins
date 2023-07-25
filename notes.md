@@ -281,7 +281,7 @@ mvn package
 
 => Artifacts are large binary packages that are created throughout the development and release process. An artifact repository is a software application designed to manage these artifacts
 
-### Building Maven projects using Jenkins
+### Building Maven projects using Jenkins  
 
 #### Jenkins configuration
 
