@@ -285,63 +285,98 @@ mvn package
 
 #### Jenkins configuration
 
-* Install jenkins
-    * jdk-17
+* Install jenkins (jdk-17)
 * Install and configure maven in Jenkins (Master Node)
-* Let's build spring petclinic [Refer Here : https://github.com/spring-projects/spring-petclinic]
+    * Start a vm
+
+      ![Alt text](shots/24.PNG)
+
+    * Install java-17
+
+      ![Alt text](shots/25.PNG)
+
+    * Install jenkins and configure as jenkins user
+
+      ![Alt text](shots/26.PNG)
+
+    * Add jenkins to sudoers
+
+      ![Alt text](shots/27.PNG)
+
+    * Install maven as a root-jenkins user
+
+      ![Alt text](shots/29.PNG)
+    
+* Let's build spring petclinic 
+    [Refer Here : https://github.com/spring-projects/spring-petclinic]
+
     * software requirements
       * jdk-17
       * maven
+
 * Create a free style project to build spring petclinic
 
+=> New item => Freestyle project (name= spc-daybuild) => ok
 
+![Alt text](shots/30.PNG)
 
 * Free style project sections
 
-* General: This represents the project information
+=> Description : This is to build spring-petclinic project 
 
+  1. General: This represents the project information
+      
+     ![Alt text](shots/31.PNG)
 
-* Source Code Managent: This represent the code to be used for ci/cd pipelines
+  2. Source Code Management: This represent the code to be used for CI/CD pipelines
 
+     ![Alt text](shots/32.PNG)
 
-* Build Triggers: This represent when to build
-    * Build Periodically: If the project has to be build based on schedule, write cron expression into this Refer Here
-    * Poll SCM: this represents jenkins polling scm (asking git) and the cron expression represents how frequently should it ask
+  3. Build Triggers: This represent when to build
 
-* Build Environment: This represents the environmental configuration
+    * Build Periodically(cron): If the project has to be build based on schedule, write cron expression into this 
+                                [Refer Here : https://crontab.guru/]
 
+    * Poll SCM: This represents jenkins polling scm (asking git) and the cron expression represents how frequently should it ask. It is triggered only when there are changes in the code.
 
-* Build Steps: These are actual activities that are performed during execution
+    ![Alt text](shots/33.PNG)
 
+4. Build Environment: This represents the environmental configuration
 
+   ![Alt text](shots/34.PNG)
 
-* Post Build actions: Actions to be performed after completion of build
+5. Build Steps: These are actual activities that are performed during execution
 
+   ![Alt text](shots/35.PNG)
+   ![Alt text](shots/36.PNG)
 
+6. Post Build actions: Actions to be performed after completion of build
+
+   ![Alt text](shots/37.PNG)
+   ![Alt text](shots/38.PNG)
 
 * Now we can wait for the trigger to call the job or trigger build manually
 
-
+  ![Alt text](shots/39.PNG)
+  ![Alt text](shots/40.PNG)
 
 * In Jenkins we can have multiple versions of java, maven etc and we can handle these by configuring jenkins
 * To fix the maven 3.6.3 issue we had install 3.9 and used full path for package
-
-
-
-
 * Test results
 
-
-### Jenkins Terms
+  ### Jenkins Terms
 
 * Jenkins Home: Jenkins home is a folder where jenkins stores all of is configuration. In the above case the workspace is /var/lib/jenkins. If you want to change the workspace deal with JENKINS_HOME
-* Backup of Jenkins is backup of Workspace
-* Project: This contains the actvity that needs to be performed on triggers.
-    * This project is stored as xml file in workspace
-    * Types:
-      * Freestyle project: This is UI based configuration
-      * Pipeline: This is instructions expressed in some code format
 
-* Build: This represents the execution of project. Every build for a project has a running number called as Build id
-* Node: This represents the machine on which build can be executed.
-* Each Node can be configured to handle multiple builds by executors.
+![Alt text](shots/28.PNG)
+
+* Backup of Jenkins is backup of Workspace
+
+* Project: This contains the actvity that needs to be performed on triggers
+    * This project is stored as xml file in workspace
+    * Types of projects :
+      * Freestyle project: This is UI based configuration
+      * Pipeline: This is instructions expressed in some code format (pipeline as a code)
+
+* Build: This represents the execution of project. Every build for a project has a running number called as Build_id
+* Node: This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
