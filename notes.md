@@ -132,6 +132,13 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 * It follows convention(SNAPSHOT & RELEASE) over configuration
 * It uses a file called as 'pom.xml'
 * POM - Project Object Model
+* Apache Log4j Security Vulnerabilities
+
+* Artifacts(reasons) : 
+
+=> To avoid the errors occuring freshly
+
+=> To try to resolve the existing errors
 
 ### Maven Installation:
 
@@ -139,6 +146,7 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
+java -version
 ```
 ![Alt text](shots/18.PNG)
 
@@ -146,13 +154,15 @@ sudo apt install openjdk-17-jdk -y
 
     [Refer Here: https://maven.apache.org/download.cgi]
 ```
-cd /tmp
+cd /tmp/
 wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
 sudo mkdir /usr/share/maven
 sudo tar -xvzf apache-maven-3.9.3-bin.tar.gz -C /usr/share/maven
 # add `/usr/share/maven/apache-maven-3.9.3/bin` to the PATH variable
 # add to `~/.bashrc` or `/etc/environment`
+cd ~
 sudo vi /etc/environment
+# exit and relogin
 mvn --version
 ```
 ![Alt text](shots/19.PNG)
@@ -166,11 +176,14 @@ mvn --version
 
 * Validate: validates the pom and it's project
 * Compile: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
-* Test: it will run the unit tests written and generates test results in xml format in text format. folder will be `/target/surefire-reports/TEST-*.xml`
+* Test: will run the unit tests written and generates test results in xml format in text format. folder will be `/target/surefire-reports/TEST-*.xml`
 * Package: creates the packaging format (jar/war/ear)and will be `<artifact-id>-<version>.<packaging-format>`
-* Install: This copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
-* Deploy: copying package and it's definition to remote repository for other users in other systems to use what you have built
-* Clean: clean removes target folder
+* Install: copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
+* Deploy: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push)
+* Clean: removes target folder
+
+=> Here, when we execute a goal, all the pevious goals also get's executed
+
 * Lifecycle 
     [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
 * To execute any lifecycle goal `mvn <goal>`
