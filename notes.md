@@ -215,12 +215,37 @@ mvn --version
 
   ### Exercise
 
-* Try installing maven as mentioned above
-* Create a simple jenkins project
-* build steps:
+* Try installing maven and create a simple jenkins project with following build steps:
 ```
 git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic && mvn package
+```
+#### Manual steps :
+```
+## Installing java-17
+
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+java -version
+
+## Installing maven
+
+cd /tmp/
+wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
+sudo mkdir /usr/share/maven
+sudo tar -xvzf apache-maven-3.9.3-bin.tar.gz -C /usr/share/maven
+cd ~
+sudo vi /etc/environment
+# add '/usr/share/maven/apache-maven-3.9.3/bin'
+exit
+# relogin into the machine
+mvn --version
+
+## Building spring-petclinic
+
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic/
+mvn package 
 ```
 ### Terms
 
@@ -256,11 +281,7 @@ cd spring-petclinic && mvn package
 
 => Artifacts are large binary packages that are created throughout the development and release process. An artifact repository is a software application designed to manage these artifacts
 
-
-
-
-
-### Using Jenkins to build Maven Projects
+### Building Maven projects using Jenkins
 
 #### Jenkins configuration
 
