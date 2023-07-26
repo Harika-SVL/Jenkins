@@ -366,13 +366,13 @@ mvn package
 
   ### Jenkins Terms
 
-* Jenkins Home: Jenkins home is a folder where jenkins stores all of is configuration. In the above case the workspace is /var/lib/jenkins. If you want to change the workspace deal with JENKINS_HOME
+* Jenkins Home: Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is /var/lib/jenkins. If you want to change the workspace deal with JENKINS_HOME
 
 ![Alt text](shots/28.PNG)
 
 * Backup of Jenkins is backup of Workspace
 
-* Project: This contains the actvity that needs to be performed on triggers
+* Project: This contains the activity that needs to be performed on triggers
     * This project is stored as xml file in workspace
     * Types of projects :
       * Freestyle project: This is UI based configuration
