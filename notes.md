@@ -51,11 +51,11 @@ Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 ![Alt text](shots/12.PNG)
 ![Alt text](shots/13.PNG)
 
-* Minute – A minute value can be between 0-59
-* Hour – A hour value can be between 0-23
-* Day_of_the_month – This value can between 1-31. For the months having fewer days will ignore remaining part
-* Month_of_the_year – This can be between 1-12. You can also define this value with the first three alphabets of the month like jan, feb, mar, apr etc.
-* Day_of_the_Week – This can be the value between 0-7. Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
+* Minute – value can be between 0-59
+* Hour – value can be between 0-23
+* Day_of_the_month – value can be between 1-31. For the months having fewer days will ignore remaining part
+* Month_of_the_year – value can be between 1-12. You can also define this value with the first three alphabets of the month like jan, feb, mar, apr etc.
+* Day_of_the_Week – value can be between 0-7. Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
 
 #### Cronjob in Windows - Task Scheduler
        [Refer Here : https://linuxhint.com/set-up-cron-job-windows/]
@@ -72,7 +72,7 @@ Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 
 * How can we integrate jenkins with any other tools:
     * Command line: call the command line
-    * Plugin(Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration:
+    * Plugin(Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration
       * UI or Pipeline step
 
 #### PATH variable 'echo $PATH'
@@ -80,7 +80,7 @@ Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 #### Environment variable
         * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
         * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
-        * User environmental variable (available oly to the spacific user) 'home/bashrc'
+        * User environmental variable (available only to the specific user) 'home/bashrc'
 
 #### Note:
   * Adding sudo permission to Linux user 
