@@ -106,7 +106,7 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 * Hybrid based (both compiler and interpretor) application
 
-  [Before running the application the compilation is done to Intermediate Language  and then through the Interpretor coverts into server understandable]
+  [Before running the application the compilation is done to Intermediate Language and then through the Interpretor coverts into server understandable]
 
 ![Alt text](shots/16.PNG)
 
@@ -136,8 +136,7 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 * Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages(groovy,scala)
 * It follows convention(SNAPSHOT & RELEASE) over configuration
-* It uses a file called as 'pom.xml'
-* POM - Project Object Model
+* It uses a file called as 'pom.xml' ( POM - Project Object Model )
 * Apache Log4j Security Vulnerabilities
 
 * Artifacts(reasons) : 
@@ -182,8 +181,8 @@ mvn --version
 
 * Validate: validates the pom and it's project
 * Compile: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
-* Test: will run the unit tests written and generates test results in xml format in text format. folder will be `/target/surefire-reports/TEST-*.xml`
-* Package: creates the packaging format (jar/war/ear)and will be `<artifact-id>-<version>.<packaging-format>`
+* Test: will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
+* Package: creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
 * Install: copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
 * Deploy: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push)
 * Clean: removes target folder
@@ -227,15 +226,15 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic && mvn package
 ```
 #### Manual steps :
-```
-## Installing java-17
 
+##### Installing java-17
+```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
-
-## Installing maven
-
+```
+##### Installing maven
+```
 cd /tmp/
 wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
 sudo mkdir /usr/share/maven
@@ -246,9 +245,9 @@ sudo vi /etc/environment
 exit
 # relogin into the machine
 mvn --version
-
-## Building spring-petclinic
-
+```
+##### Building spring-petclinic
+```
 git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic/
 mvn package 
@@ -269,7 +268,7 @@ mvn package
 
 * CODE COVERAGE 
 
-=> we do this from sonar qube
+=> we do this from Sonar Qube
 
 => helps you determine the proportion of your project's code that is actually being tested by tests such as unit tests. To increase your confidence of the code changes, and guard effectively against bugs, your tests should exercise - or cover - a large proportion of your code
 
@@ -277,7 +276,7 @@ mvn package
 
 * STATIC CODE ANALYSIS 
 
-=> we do this from sonar qube, figuring best code analysis
+=> we do this from Sonar Qube, figuring best code analysis
 
 => method of computer program debugging that is done by examining the code without executing the program. The process provides an understanding of the code structure and can help ensure that the code adheres to industry standards
 
@@ -293,6 +292,7 @@ mvn package
 
 * Install jenkins (jdk-17)
 * Install and configure maven in Jenkins (Master Node)
+
     * Start a vm
 
       ![Alt text](shots/24.PNG)
@@ -305,7 +305,7 @@ mvn package
 
       ![Alt text](shots/26.PNG)
 
-    * Add jenkins to sudoers
+    * Add jenkins to sudoers   WORKSPACE: `/var/lib/jenkins`
 
       ![Alt text](shots/27.PNG)
 
@@ -330,33 +330,33 @@ mvn package
 
 => Description : This is to build spring-petclinic project 
 
-1. General: This represents the project information
+1. GENERAL: This represents the project information
       
     ![Alt text](shots/31.PNG)
 
-2. Source Code Management: This represent the code to be used for CI/CD pipelines
+2. SOURCE CODE MANAGEMENT: This represent the code to be used for CI/CD pipelines
 
     ![Alt text](shots/32.PNG)
 
-3. Build Triggers: This represent when to build
+3. BUILD TRIGGERS: This represent when to build
 
-  * Build Periodically(cron): If the project has to be build based on schedule, write cron expression into this 
+  * BUILD PERIODICALLY(cron): If the project has to be built based on schedule, write cron expression into this 
                                 [Refer Here : https://crontab.guru/]
 
-  * Poll SCM: This represents jenkins polling scm (asking git) and the cron expression represents how frequently should it ask. It is triggered only when there are changes in the code.
+  * POLL SCM: represents jenkins polling scm (asking git) and the cron expression represents how frequently it should ask. It is triggered only when there are changes in the code.
 
     ![Alt text](shots/33.PNG)
 
-4. Build Environment: This represents the environmental configuration
+4. BUILD ENVIRONMENT: This represents the environmental configuration
 
    ![Alt text](shots/34.PNG)
 
-5. Build Steps: These are actual activities that are performed during execution
+5. BUILD STEPS: These are actual activities that are performed during execution
 
    ![Alt text](shots/35.PNG)
    ![Alt text](shots/36.PNG)
 
-6. Post Build actions: Actions to be performed after completion of build
+6. POST BUILD ACTIONS: Actions to be performed after completion of build
 
    ![Alt text](shots/37.PNG)
    ![Alt text](shots/38.PNG)
@@ -367,25 +367,26 @@ mvn package
   ![Alt text](shots/40.PNG)
 
 * In Jenkins we can have multiple versions of java, maven etc and we can handle these by configuring jenkins
-* To fix the maven 3.6.3 issue we had install 3.9 and used full path for package
+* To fix the maven 3.6.3 issue we have to install 3.9 and use full path for package
 * Test results
 
   ### Jenkins Terms
 
-* Jenkins Home: Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is /var/lib/jenkins. If you want to change the workspace deal with JENKINS_HOME
+* JENKINS HOME: Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
 
 ![Alt text](shots/28.PNG)
 
 * Backup of Jenkins is backup of Workspace
 
-* Project: This contains the activity that needs to be performed on triggers
+* PROJECT: This contains the activity that needs to be performed on triggers
     * This project is stored as xml file in workspace
     * Types of projects :
       * Freestyle project: This is UI based configuration
       * Pipeline: This is instructions expressed in some code format (pipeline as a code)
 
-* Build: This represents the execution of project. Every build for a project has a running number called as Build_id
-* Node: This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
+* BUILD: This represents the execution of project. Every build for a project has a running number called as Build_id
+
+* NODE: This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
 
 ### Managing different versions of the tools using jenkins
 
