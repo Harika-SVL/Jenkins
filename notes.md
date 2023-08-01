@@ -94,13 +94,19 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 * Compiler-based application
 
+  [Dubbing before running the application] 
+
 ![Alt text](shots/14.PNG)
 
 * Interpretor-based application
 
+  [Translation during running of the application]
+
 ![Alt text](shots/15.PNG)
 
 * Hybrid based (both compiler and interpretor) application
+
+  [Before running the application the compilation is done to Intermediate Language  and then through the Interpretor coverts into server understandable]
 
 ![Alt text](shots/16.PNG)
 
