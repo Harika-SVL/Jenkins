@@ -1,4 +1,4 @@
-### Install – Jenkins
+### Install-JENKINS
 
 * [Refer Here : https://www.jenkins.io/doc/book/installing/linux/] for installing jenkins on linux
 * Installing on Ubuntu-steps: 
@@ -34,17 +34,17 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ![Alt text](shots/8.PNG)
 ![Alt text](shots/9.PNG)
 
-### Continuous Integration and Continuous Delivery/Deployment
+### CONTINUOUS INTEGRATION and CONTINUOUS DELIVERY/DEPLOYMENT
 
 * To perform frequent integrations and deployments we need a tool which can help us doing the same stuff and integrate with multiple tools. These tools are generally called as `CI/CD Engines`
 * Jenkins is popular Opensource CI/CD Engine
-* Any CI/CD tool at it's core is a `Cron` on steroids
+* Any CI/CD tool at it's core is a `CRON` on steroids
 
-#### Cronjob in Linux - Crontab (periodic tasks on steroids)
+#### CRONJOB In Linux - CRONTAB (periodic tasks on steroids)
       [Refer Here : https://crontab.guru/]
 
 * “cron” is a Linux-based utility used to schedule scripts or programs
-* The `Crontab` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for “cron table, ” because it uses the job scheduler cron to execute tasks
+* The `CRONTAB` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for “CRON TABLE”, because it uses the job scheduler cron to execute tasks
 ```
 Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week> <command>
 ```
@@ -57,54 +57,54 @@ Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 * Month_of_the_year – value can be between 1-12. You can also define this value with the first three alphabets of the month like jan, feb, mar, apr etc.
 * Day_of_the_Week – value can be between 0-7. Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
 
-#### Cronjob in Windows - Task Scheduler
+#### CRONJOB In Windows - TASK SCHEDULER
        [Refer Here : https://linuxhint.com/set-up-cron-job-windows/]
 
 * In Windows, it is mostly utilized to automate the update system and scheduled tasks that will run automatically without manual execution. 
-* If you want to create a new task or cron job on Windows, perform the required operation with the help of the “Task Scheduler”.
+* If you want to create a new task or cron job on Windows, perform the required operation with the help of the “TASK SCHEDULER”.
 
 #### What happens when we install jenkins..?
 
-* When we install jenkins we will have a default user created called as `jenkins`
+* When we install jenkins we will have a default user created called as `JENKINS`
     * From jenkins we can perform anything which jenkins user performs
 
 ![Alt text](shots/10.PNG)
 
 * How can we integrate jenkins with any other tools:
-    * Command line: call the command line
-    * Plugin(Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration
-      * UI or Pipeline step
+    * COMMAND LINE: call the command line
+    * PLUGIN(Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration
+      * UI or PIPELINE step
 
 #### PATH variable 'echo $PATH'
-        * To find path in linux 'whereis <needed-name>'
-#### Environment variable
-        * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
-        * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
-        * User environmental variable (available only to the specific user) 'home/bashrc'
+      * To find path in linux 'whereis <needed-name>'
+#### Environment Variable
+      * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
+      * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
+      * User environmental variable (available only to the specific user) 'home/bashrc'
 
-#### Note:
-  * Adding sudo permission to Linux user 
-      [Refer Here: https://www.baeldung.com/linux/sudo-privileges-user]
+#### NOTE:
+      * Adding sudo permission to Linux user 
+          [Refer Here: https://www.baeldung.com/linux/sudo-privileges-user]
 ```
 sudo visudo
 
 jenkins (ALL:ALL) NOPASSWD:ALL
 ```
-#### Compiler vs interpretor vs hybrid based applications
+#### COMPILER vs INTERPRITOR vs HYBRID based applications
 
-* Compiler-based application
+* COMPILER-based application
 
   [Dubbing before running the application] 
 
 ![Alt text](shots/14.PNG)
 
-* Interpretor-based application
+* INTERPRETOR-based application
 
   [Translation during running of the application]
 
 ![Alt text](shots/15.PNG)
 
-* Hybrid based (both compiler and interpretor) application
+* HYBRID-based (both compiler and interpretor) application
 
   [Before running the application the compilation is done to Intermediate Language and then through the Interpretor coverts into server understandable]
 
@@ -112,7 +112,7 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 ![Alt text](shots/17.PNG)
 
-### Dependencies
+### DEPENDENCIES
 
 * Whenever a software project is developed, they have lot of dependencies
 * Before building the code, dependencies have to be present locally
@@ -126,28 +126,28 @@ jenkins (ALL:ALL) NOPASSWD:ALL
   * python: `pip` is the package manager
   * nodejs: `npm` can handle package management
 
-### Build (every build) Workflow Structure
+### BUILD (every build) Workflow Structure
 
 * Scope of Work :
 
 ![Alt text](shots/11.PNG)
 
-## Maven
+## MAVEN
 
 * Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages(groovy,scala)
 * It follows convention(SNAPSHOT & RELEASE) over configuration
 * It uses a file called as 'pom.xml' ( POM - Project Object Model )
 * Apache Log4j Security Vulnerabilities
 
-* Artifacts(reasons) : 
+* ARTIFACTS (reasons) : 
 
 => To avoid the errors occuring freshly
 
 => To try to resolve the existing errors
 
-### Maven Installation:
+### MAVEN Installation:
 
-#### Install java-17
+#### Install JAVA-17
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
@@ -155,7 +155,7 @@ java -version
 ```
 ![Alt text](shots/18.PNG)
 
-* Let's try installing maven 3.9.3 
+* Let's try installing MAVEN 3.9.3 
 
     [Refer Here: https://maven.apache.org/download.cgi]
 ```
@@ -176,23 +176,23 @@ mvn --version
 ![Alt text](shots/22.PNG)
 ![Alt text](shots/23.PNG)
 
-#### Maven goals and Lifecycle :
+#### MAVEN GOALS and LIFECYCLE :
     [Refer Here : https://www.baeldung.com/maven-goals-phases]
 
-* Validate: validates the pom and it's project
-* Compile: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
-* Test: will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
-* Package: creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
-* Install: copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
-* Deploy: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push)
-* Clean: removes target folder
+* VALIDATE: validates the pom and it's project
+* COMPILE: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
+* TEST: will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
+* PACKAGE: creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
+* INSTALL: copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
+* DEPLOY: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push)
+* CLEAN: removes target folder
 
 => Here, when we execute a goal, all the pevious goals also get's executed
 
-* Lifecycle 
+* LIFECYCLE 
     [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
 * To execute any lifecycle goal `mvn <goal>`
-* Simple pom file
+* Simple POM file
 ```
 <project>
   <modelVersion>4.0.0</modelVersion>
@@ -213,7 +213,7 @@ mvn --version
   </dependencies>
 </project>
 ```
-* Maven packaging formats: 
+* Maven PACKAGING formats: 
     [Refer Here : https://www.baeldung.com maven-packaging-types#:~:text=Maven%20offers%20many%20default%20packaging%20types%20that%20include%20a%20jar,and%20performs%20a%20specific%20task.]
 * Maven goals downloads dependencies and stores in
   * `M2_HOME` where ever this environment variable points to and if not found does in `<home-dir>/.m2`
@@ -225,15 +225,15 @@ mvn --version
 git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic && mvn package
 ```
-#### Manual steps :
+#### MANUAL STEPS :
 
-##### Installing java-17
+##### Installing JAVA-17
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
 ```
-##### Installing maven
+##### Installing MAVEN
 ```
 cd /tmp/
 wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
@@ -246,13 +246,13 @@ exit
 # relogin into the machine
 mvn --version
 ```
-##### Building spring-petclinic
+##### Building SPRING-PETCLINIC
 ```
 git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic/
 mvn package 
 ```
-### Terms
+### TERMS
 
 * ARTIFACT 
 
@@ -288,7 +288,7 @@ mvn package
 
 ### Building Maven projects using Jenkins  
 
-#### Jenkins configuration
+#### JENKINS CONFIGURATION
 
 * Install jenkins (jdk-17)
 * Install and configure maven in Jenkins (Master Node)
@@ -313,20 +313,20 @@ mvn package
 
       ![Alt text](shots/29.PNG)
     
-* Let's build spring petclinic 
+* Let's build spring-petclinic 
     [Refer Here : https://github.com/spring-projects/spring-petclinic]
 
     * software requirements
       * jdk-17
       * maven
 
-* Create a free style project to build spring petclinic
+* Create a free style project to build spring-petclinic
 
 => New item => Freestyle project (name= spc-daybuild) => ok
 
 ![Alt text](shots/30.PNG)
 
-* Free style project sections
+* Free-style project sections
 
 => Description : This is to build spring-petclinic project 
 
@@ -338,25 +338,25 @@ mvn package
 
     ![Alt text](shots/32.PNG)
 
-3. BUILD TRIGGERS: This represent when to build
+3. BUILD TRIGGERS: represents when to build
 
-  * BUILD PERIODICALLY(cron): If the project has to be built based on schedule, write cron expression into this 
+  * BUILD PERIODICALLY(CRON): If the project has to be built based on schedule, write cron expression into this 
                                 [Refer Here : https://crontab.guru/]
 
   * POLL SCM: represents jenkins polling scm (asking git) and the cron expression represents how frequently it should ask. It is triggered only when there are changes in the code.
 
     ![Alt text](shots/33.PNG)
 
-4. BUILD ENVIRONMENT: This represents the environmental configuration
+4. BUILD ENVIRONMENT: represents the environmental configuration
 
    ![Alt text](shots/34.PNG)
 
-5. BUILD STEPS: These are actual activities that are performed during execution
+5. BUILD STEPS: actual activities that are performed during execution
 
    ![Alt text](shots/35.PNG)
    ![Alt text](shots/36.PNG)
 
-6. POST BUILD ACTIONS: Actions to be performed after completion of build
+6. POST BUILD ACTIONS: actions to be performed after completion of build
 
    ![Alt text](shots/37.PNG)
    ![Alt text](shots/38.PNG)
@@ -370,9 +370,9 @@ mvn package
 * To fix the maven 3.6.3 issue we have to install 3.9 and use full path for package
 * Test results
 
-  ### Jenkins Terms
+  ### Jenkins TERMS :
 
-* JENKINS HOME: Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
+* JENKINS_HOME: Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
 
 ![Alt text](shots/28.PNG)
 
@@ -388,7 +388,7 @@ mvn package
 
 * NODE: This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
 
-### Managing different versions of the tools using jenkins
+### Managing DIFFERENT VERSIONS of the tools using jenkins
 
 * Connect to the jenkins installed vm 
 
@@ -405,11 +405,11 @@ ls
 cd /usr/share/maven/apache
 ```
 
-* Now lets configure the spring petclinic to use top level maven targets
+* Now lets configure the spring-petclinic to use top level maven targets
 
 * Now build the project manually
 
-### Distributed Builds
+### DISTRIBUTED BUILDS
 
 * Setup:
     * Fork Spring-petclinic   
@@ -429,17 +429,17 @@ cd /usr/share/maven/apache
 
 * While creating a project we can set labels and expect them to be executed on the node matching labels
 
-#### How to add multiple nodes to jenkins
+#### How to add MULTIPLE NODES to jenkins
 
 * Let's create 2 ubuntu vms and lets make one vm the jenkins master
 * one one machine install and configure jenkins
 * On the node (we will be using existing credentials)
-* install jdk 17
+* install jdk-17
 * install maven 3.9
 * Now lets configure node to the jenkins master with label JDK-17
 * On Jenkins UI Navigate to Manage Jenkins => Nodes and Clouds
 
-#### Lets setup spring petclinic to execute node-1
+#### Lets setup spring-petclinic to execute node-1
 
 * Configure spc-day build same as last session with one restriction in General section
 
@@ -452,7 +452,7 @@ cd /usr/share/maven/apache
     * install jdk 17
 * Create a job which should run on the other node configure and display its ip address and environmental variables printenv
 
-##### Note
+##### NOTE
 
 * To install jenkins we can use the following script
 ```
