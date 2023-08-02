@@ -192,8 +192,9 @@ mvn --version
 
 => Here, when we execute a goal, all the pevious goals also get's executed
 
-* LIFECYCLE 
-    [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
+##### LIFECYCLE 
+ 
+       [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
 * To execute any lifecycle goal `mvn <goal>`
 * Simple POM file
 ```xml
@@ -370,8 +371,8 @@ mvn package
   ![Alt text](shots/39.PNG)
   ![Alt text](shots/40.PNG)
 
-* In Jenkins we can have multiple versions of java, maven etc and we can handle these by configuring jenkins
-* To fix the maven 3.6.3 issue we have to install 3.9 and use full path for package
+* In Jenkins we can have multiple versions of java, maven, etc and we can handle these by configuring jenkins
+* To fix the maven 3.6.3, issue we have to install 3.9.3 and use full path for package
 * Test results
 
   ### Jenkins TERMS :
@@ -380,7 +381,7 @@ mvn package
 
 ![Alt text](shots/28.PNG)
 
-* Backup of Jenkins is backup of Workspace
+* Backup for Jenkins is backup of Workspace (/var/lib/jenkins)
 
 * PROJECT: This contains the activity that needs to be performed on triggers
     * This project is stored as xml file in workspace
