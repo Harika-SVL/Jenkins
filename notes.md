@@ -182,9 +182,12 @@ mvn --version
 * VALIDATE: validates the pom and it's project
 * COMPILE: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
 * TEST: will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
+
+![Alt text](shots/42.PNG)
+
 * PACKAGE: creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
 * INSTALL: copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
-* DEPLOY: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push)
+* DEPLOY: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push command)
 * CLEAN: removes target folder
 
 => Here, when we execute a goal, all the pevious goals also get's executed
@@ -193,7 +196,7 @@ mvn --version
     [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
 * To execute any lifecycle goal `mvn <goal>`
 * Simple POM file
-```
+```xml
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>io.learningthoughts.samples</groupId>
@@ -223,7 +226,8 @@ mvn --version
 * Try installing maven and create a simple jenkins project with following build steps:
 ```
 git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic && mvn package
+cd spring-petclinic 
+mvn package
 ```
 #### MANUAL STEPS :
 
