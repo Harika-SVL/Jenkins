@@ -368,12 +368,30 @@ mvn package
 
 * Now we can wait for the trigger to call the job or trigger build manually
 
-  ![Alt text](shots/39.PNG)
-  ![Alt text](shots/40.PNG)
+ ![Alt text](shots/39.PNG)
+ ![Alt text](shots/40.PNG)
 
 * In Jenkins we can have multiple versions of java, maven, etc and we can handle these by configuring jenkins
-* To fix the maven 3.6.3, issue we have to install 3.9.3 and use full path for package
+* To fix the maven 3.6.3, issue we have to install 3.9.4 and use full path for package
+```
+cd /tmp
+wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
+sudo mkdir /usr/share/maven3.9
+sudo tar -xvzf apache-maven-3.9.4-bin.tar.gz -C /usr/share/maven3.9
+cd spring-petclinic/
+/usr/share/maven3.9/apache-maven-3.9.4/bin/mvn package
+```
+* Go back and re-configure the maven version
+
+![Alt text](shots/43.PNG)
+![Alt text](shots/44.PNG)
+![Alt text](shots/45.PNG)
+
 * Test results
+
+  ![Alt text](shots/46.PNG)
+  ![Alt text](shots/41.PNG)
+  ![Alt text](shots/42.PNG)
 
   ### Jenkins TERMS :
 
@@ -399,7 +417,7 @@ mvn package
 
 => Manage jenkins => Tools => Maven installations
 
-![Alt text](shots/41.PNG)
+
 
 * Connect to the machine through command line
 ```
