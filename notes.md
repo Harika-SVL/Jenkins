@@ -472,6 +472,8 @@ cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
 
 * While creating a project we can set labels and expect them to be executed on the node matching labels
 
+  ![Alt text](shots/53.PNG)
+
 #### How to add MULTIPLE NODES to jenkins
 
 * Let's create 2 ubuntu vms and lets make one vm the jenkins master
