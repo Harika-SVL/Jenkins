@@ -417,7 +417,8 @@ cd spring-petclinic/
 
 => Manage jenkins => Tools => Maven installations
 
-
+  ![Alt text](shots/47.PNG)
+  ![Alt text](shots/48.PNG)
 
 * Connect to the machine through command line
 ```
@@ -425,28 +426,47 @@ sudo -i
 su jenkins
 cd /usr/share/maven (maven 3.6.3)
 ls
-cd /usr/share/maven/apache
+cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
 ```
+  ![Alt text](shots/49.PNG)
 
 * Now lets configure the spring-petclinic to use top level maven targets
 
-* Now build the project manually
+  ![Alt text](shots/50.PNG)
+
+* Now build the project manually (Build Now)
+
+  ![Alt text](shots/51.PNG)
 
 ### DISTRIBUTED BUILDS
 
 * Setup:
-    * Fork Spring-petclinic   
-        [Refer Here : ]
-      * requirements to build
+  1. Fork Spring-petclinic   
+      => spring-petclinic github => fork => owner,repo name => copy main branch only => create fork
+      
+      [Refer Here : https://github.com/Harika-SVL/spring-petclinic]
+
+    * requirements to build
         * java jdk 17
         * maven 3.9
-    * Fork game of life Refer Here
-      * requirements to build
+
+  2. Fork game of life 
+      => game of life github => fork => owner,repo name => copy main branch only => create fork
+
+      [Refer Here : https://github.com/Harika-SVL/game-of-life]
+    
+    * requirements to build
         * java 8
         * maven
-    * Fork nopcommerce Refer Here
-      * requirements to build
+
+  3. Fork nopcommerce
+      => nopcommerce github => fork => owner,repo name => copy main branch only => create fork
+
+      [Refer Here : https://github.com/Harika-SVL/nopCommerce]
+     
+    * requirements to build
         * dotnet 7
+
 * To handle different builds with different software needs, we tend to use different servers.
 * Jenkins has distributed builds where we can distribute the builds on differnt nodes by matching labels
 
