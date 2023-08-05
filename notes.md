@@ -476,19 +476,112 @@ cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
 
 #### How to add MULTIPLE NODES to jenkins
 
-* Let's create 2 ubuntu vms and lets make one vm the jenkins master
-* one one machine install and configure jenkins
-* On the node (we will be using existing credentials)
-* install jdk-17
-* install maven 3.9
-* Now lets configure node to the jenkins master with label JDK-17
-* On Jenkins UI Navigate to Manage Jenkins => Nodes and Clouds
+* Let's create 2 ubuntu VM's and let's make one vm the jenkins-master
+* On it install java-17,jenkins and configure jenkins and add the user to sudoers
+```
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+```
+##### NOTE
+=> To install jenkins we can use the following script
+```bash
+#!/bin/bash
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install openjdk-17-jdk jenkins -y
+```
+  ![Alt text](shots/54.PNG)
 
-#### Lets setup spring-petclinic to execute node-1
+* To check the sudoers
+```
+sudo -i
+su jenkins
+cd ~
+sudo apt update
+```
+* let's make other vm the node-1
+* On this node (we will be using existing credentials) we will install java-17 and install maven 3.9.4
+```
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+```
+```
+cd /tmp
+wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
+sudo mkdir /usr/share/maven
+sudo tar -xvzf apache-maven-3.9.4-bin.tar.gz -C /usr/share/maven
+sudo vi /etc/environment
+# add ':/usr/share/maven/apache-maven-3.9.4/bin'
+exit
+# relogin
+mvn --version
+```
+
+  ![Alt text](shots/55.PNG)
+
+* Now let's configure the jenkins-master node with label `JDK-17`
+* On Jenkins UI Navigate to 
+
+=> Manage Jenkins => Nodes and Clouds
+
+  ![Alt text](shots/56.PNG)
+
+=> New node => name: node-1 , select permanent agent => create
+
+  ![Alt text](shots/57.PNG)
+
+* Configuring the node-1 information
+
+  ![Alt text](shots/58.PNG)
+  ![Alt text](shots/59.PNG)
+
+=> host : node private_ip (both in same network) => credentials : select jenkins => select kind and id
+
+  ![Alt text](shots/60.PNG)
+
+=> Add description, Username => select Enetr directly => add ssh-private key (cat id_rsa) => Add
+
+  ![Alt text](shots/61.PNG)
+
+=> Add Host, credentials, Host key => Save
+
+  ![Alt text](shots/62.PNG)
+
+* node-1 gets connected
+
+  ![Alt text](shots/63.PNG)
+
+
+#### Let's setup spring-petclinic to execute on node-1
 
 * Configure spc-day build same as last session with one restriction in General section
 
+* Start a new project
+
+  ![Alt text](shots/64.PNG)
+
+=> Select source code management => git : select new forked url, branch: main
+
+  ![Alt text](shots/65.PNG)
+
+=> Select Build Triggers => Poll SCM : * * * * *
+
+  ![Alt text](shots/66.PNG)
+
+=> selecct Build Steps => Invoke top-level maven targets => Goals : package => Save
+
+  ![Alt text](shots/67.PNG)
+
+=> go to configure again => select when to run => Add label => Save
+
+  ![Alt text](shots/68.PNG)
+
 * Now build and verify the console output
+
+  ![Alt text](shots/69.PNG)
+  ![Alt text](shots/70.PNG)
+  ![Alt text](shots/71.PNG)
 
 #### Exercises
 
@@ -497,13 +590,3 @@ cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
     * install jdk 17
 * Create a job which should run on the other node configure and display its ip address and environmental variables printenv
 
-##### NOTE
-
-* To install jenkins we can use the following script
-```
-#!/bin/bash
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update
-sudo apt-get install openjdk-17-jdk jenkins -y
-```
