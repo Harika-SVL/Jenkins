@@ -500,6 +500,8 @@ su jenkins
 cd ~
 sudo apt update
 ```
+### Node 1 => JDK-17 and maven 3.9.4
+
 * let's make other vm the node-1
 * On this node (we will be using existing credentials) we will install java-17 and install maven 3.9.4
 ```
@@ -590,3 +592,58 @@ mvn --version
     * install jdk 17
 * Create a job which should run on the other node configure and display its ip address and environmental variables printenv
 
+### Node 2 => JDK-8 and maven
+
+* On the jenkins agent we would require jdk 17 and for the project game of life we would require jdk8
+* On the node2 lets create a new user called as devops, give sudo no password access
+* enable password based authentication
+```
+sudo vi /etc/ssh/sshd_config
+# Change password Authentication to yes
+sudo systemctl restart sshd
+```
+* Install jdk 8 and jdk 17
+```
+sudo apt update
+sudo apt install openjdk-8-jdk openjdk-17-jdk -y
+sudo apt install maven -y
+```
+* Now execute java -version
+
+* Lets configure JDK 17 and JDK 8 paths in tools section of jenkins
+
+* Now add node2 to jenkins
+
+* Now lets try building game of life
+
+* Now lets add processing the test results **/surefire-reports/TEST-*.xml
+
+* As a result of this project build i get gameoflife.war which is called as artifact, lets configure jenkins to archive the artifacts
+
+* Note: We have implemented the same for spring petclinic
+
+* Note: The health of the builds is represented as weather in jenkins
+    * cloudy means builds are failing
+    * sunny means the builds are successful
+
+### Node 3: Executing dotnet project on jenkins
+
+* For agent we required jdk 17
+* Create an ec2 instance with size 20 GB
+* install dotnet 7 sdk for running nop comerce
+* Refer Here for installation instructions
+```
+sudo apt-get update && \
+  sudo apt-get install -y dotnet-sdk-7.0
+dotnet --help
+```
+* to build the dotnet project we need to restore nuget packages
+```
+# dotnet restore <path of project or sln>
+# For night builds
+# dotnet build  -c "Release" <path of project or sln> 
+# For day builds
+# dotnet build  -c "Debug" <path of project or sln> 
+dotnet restore src/NopCommerce.sln
+dotnet build -c Release src/NopCommerce.sln
+```
