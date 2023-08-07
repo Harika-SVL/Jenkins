@@ -722,11 +722,39 @@ dotnet build -c Release src/NopCommerce.sln
 ```
 ### Upstream and Downstream projects
 
-* If the project A triggers the Project B then
+* If the Project A triggers the Project B then
     * Project B is downstream of Project A
     * Project A is upstream of Project B
 
   ![Alt text](shots/95.PNG)
+
+* Create a new view Project A, Project B, Project C
+
+  ![Alt text](shots/96.PNG)
+
+=> New item => Project A => Freestyle project => ok
+
+=> Description : This is Project A => Buils steps : Execute shell : echo "Project A", sleep 10s => Save
+
+  ![Alt text](shots/97.PNG)
+
+* To connect the projects with each other
+
+=> Project C => configure => Build Triggers => Build after other projects are build => Project B => save
+
+  ![Alt text](shots/98.PNG)
+
+OR
+
+=> Project A => configure => Post-build Actions => Build other projects : Project B => Trigger only if build is stable => save
+
+  ![Alt text](shots/99.PNG)
+
+* Repeat above steps for project B and Project C also
+
+  ![Alt text](shots/100.PNG)
+  ![Alt text](shots/101.PNG)
+  ![Alt text](shots/102.PNG)
 
 ### Parametrized Builds
 
