@@ -585,6 +585,12 @@ mvn --version
   ![Alt text](shots/70.PNG)
   ![Alt text](shots/71.PNG)
 
+* Now let's add processing the test results `**/surefire-reports/TEST-*.xml`
+* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to archive the artifacts
+
+  ![Alt text](shots/87.PNG)
+  ![Alt text](shots/88.PNG)
+
 #### Exercises
 
 * Create a jenkins master with t2.micro (ubuntu)
@@ -594,15 +600,27 @@ mvn --version
 
 ### Node 2 => JDK-8 and maven
 
-* On the jenkins agent we would require jdk 17 and for the project game of life we would require jdk8
-* On the node2 lets create a new user called as devops, give sudo no password access
-* enable password based authentication
+* On the jenkins-master we would require jdk-17 and for the project game-of-life we would require jdk-8
+* On the node-2, let's create a new user called as devops and add to sudoers with `NOPASSWD`
+```
+sudo adduser devops
+# password : devops
+sudo visudo
+# devops  ALL=(ALL:ALL) NOPASSWD:ALL
+```
+* Now enable password based authentication
 ```
 sudo vi /etc/ssh/sshd_config
 # Change password Authentication to yes
 sudo systemctl restart sshd
 ```
-* Install jdk 8 and jdk 17
+* Restart as devops user
+```
+exit
+ssh devops@<public_ip>
+password : devops
+```
+* Install jdk-8, jdk-17 and maven
 ```
 sudo apt update
 sudo apt install openjdk-8-jdk openjdk-17-jdk -y
@@ -610,21 +628,59 @@ sudo apt install maven -y
 ```
 * Now execute java -version
 
-* Lets configure JDK 17 and JDK 8 paths in tools section of jenkins
+  ![Alt text](shots/72.PNG)
 
-* Now add node2 to jenkins
+* Lets configure JDK-17 and JDK-8 paths in tools section of jenkins (jenkins-master)
 
-* Now lets try building game of life
+  ![Alt text](shots/73.PNG)
 
-* Now lets add processing the test results **/surefire-reports/TEST-*.xml
+* Now add node-2 to jenkins
 
-* As a result of this project build i get gameoflife.war which is called as artifact, lets configure jenkins to archive the artifacts
+  ![Alt text](shots/74.PNG)
+
+=> Configuring credentials
+
+  ![Alt text](shots/75.PNG)
+  ![Alt text](shots/76.PNG)
+  ![Alt text](shots/77.PNG)
+
+* Now let's try building game of life
+
+  ![Alt text](shots/78.PNG)
+  ![Alt text](shots/79.PNG)
+  ![Alt text](shots/80.PNG)
+
+=> Build Now 
+
+  ![Alt text](shots/81.PNG)
+
+* Now let's add processing the test results `**/surefire-reports/TEST-*.xml`
+
+  ![Alt text](shots/82.PNG)
+  ![Alt text](shots/83.PNG)
+
+=> Build Now
+
+  ![Alt text](shots/84.PNG)
+
+* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to archive the artifacts
+
+  ![Alt text](shots/85.PNG)
+
+=> Build Now
+
+  ![Alt text](shots/86.PNG)
 
 * Note: We have implemented the same for spring petclinic
+
+  ![Alt text](shots/87.PNG)
+  ![Alt text](shots/88.PNG)
 
 * Note: The health of the builds is represented as weather in jenkins
     * cloudy means builds are failing
     * sunny means the builds are successful
+
+  ![Alt text](shots/89.PNG)
 
 ### Node 3: Executing dotnet project on jenkins
 
