@@ -750,7 +750,7 @@ OR
 
   ![Alt text](shots/99.PNG)
 
-* Repeat above steps for project B and Project C also
+* Repeat above steps for project B and Project C along with the execution of the projects
 
   ![Alt text](shots/100.PNG)
   ![Alt text](shots/101.PNG)
