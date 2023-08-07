@@ -720,3 +720,52 @@ dotnet build -c Release src/NopCommerce.sln
 # For day builds
 # dotnet build  -c "Debug" <path of project or sln> 
 ```
+### Upstream and Downstream projects
+
+* If the project A triggers the Project B then
+    * Project B is downstream of Project A
+    * Project A is upstream of Project B
+
+  ![Alt text](shots/95.PNG)
+
+### Parametrized Builds
+
+* While building the jobs, sometimes we would like users to pass some information.
+* This is called as parameters
+* Let's enable parameters for some jenkins project/job
+
+### Jenkins Environmental variables
+
+* Jenkins injects environmental variables into every job in addition to environmental variables present on node
+* To view environmental variables Naviage to build steps => execute shell
+* Refer Here for docs on environmental variables
+* Sample using environmetal variables
+* Result
+
+#### How to take backup of jenkins
+
+* One option for backup of configuration files
+
+#### Which plugin should be installed to monitor jenkins
+
+* Refer Here
+
+* Jenkins Plugins can be installed from
+    * Market place
+    * Uploading the plugin
+* Jenkins plugin has two extensions
+    * jpi (Jenkins plugin interface)
+    * hpi (hudson plugin interface)
+
+#### Exercise
+
+* Figure out a plugin to chnage Build id
+* Create a folder in /tmp of your node with project name
+```
+/tmp/gameoflife
+```
+* In this folder try to create one more folder with build id
+```
+/tmp/gameoflife/5
+```
+* to this folder copy the war/jar file
