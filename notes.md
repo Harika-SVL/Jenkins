@@ -684,22 +684,39 @@ sudo apt install maven -y
 
 ### Node 3: Executing dotnet project on jenkins
 
-* For agent we required jdk 17
-* Create an ec2 instance with size 20 GB
-* install dotnet 7 sdk for running nop comerce
-* Refer Here for installation instructions
+* For agent we required jdk-17
+* Create an ec2 instance (node-3)  with size 20 GB
+* install dotnet-7 sdk for running nop comerce
+* Installation instructions 
+  [Refer Here : https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204]
 ```
 sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-7.0
 dotnet --help
 ```
+  ![Alt text](shots/90.PNG)
+
+* Configuring node-3 on dashboard
+
+  ![Alt text](shots/91.PNG)
+  ![Alt text](shots/92.PNG)
+
+=> Install jdk-17 on the node
+
+  ![Alt text](shots/93.PNG)
+  ![Alt text](shots/94.PNG)
+
 * to build the dotnet project we need to restore nuget packages
 ```
+cd /tmp/
+git clone https://github.com/Harika-SVL/nopCommerce.git
+cd nopCommerce
+git branch
 # dotnet restore <path of project or sln>
+dotnet restore src/NopCommerce.sln
 # For night builds
 # dotnet build  -c "Release" <path of project or sln> 
+dotnet build -c Release src/NopCommerce.sln
 # For day builds
 # dotnet build  -c "Debug" <path of project or sln> 
-dotnet restore src/NopCommerce.sln
-dotnet build -c Release src/NopCommerce.sln
 ```
