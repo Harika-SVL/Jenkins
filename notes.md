@@ -799,28 +799,66 @@ OR
 * Doc's on environmental variables
     [Refer Here : https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables]
 
-* Sample using environmetal variables (game of life on node-2)
+* Sample using environmetal variables (game of life on node-2 to print environmental variables)
 
-=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => General : Jdk-JAVA_8, Restrict-JDK_8 => Buils steps : Execute shell-printenv => save => Build Now
+=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => General : Jdk-JAVA_8, Restrict-JDK_8 => Build steps : Execute shell-printenv => Save => Build Now
 
 * Result - Console Output
 
   ![Alt text](shots/117.PNG)
 
-#### How to take backup of jenkins
+* Sample using Environmetal variables (Environmentalvariablesdemo)
 
-* One option for backup of configuration files
+=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => Build steps : Execute shell- echo "Hello, this project-url is ${JOB_DISPLAY_URL} and the build-id is ${BUILD_ID}", echo "Hello, this project is running in folder ${WORKSPACE} on NODE ${NODE_NAME}" => Save => Build Now
 
-#### Which plugin should be installed to monitor jenkins
+  ![Alt text](shots/118.PNG)
 
-* Refer Here
+* Result - Console Output
+
+  ![Alt text](shots/119.PNG)
+  
+### How to take backup of jenkins (backup of /var/lib/jenkins folder)
+
+* One option for backup is configuration files
+
+=> Manage Jenkins => plugins => Available plugins => search-backup => periodic backup
+
+  ![Alt text](shots/120.PNG)
+  ![Alt text](shots/121.PNG)
+
+* To restart jenkins (only if you are admin)
+
+=> refresh the page => relogin => In the url : `http://18.60.61.74:8080/restart`
+
+* Configuring the frequency for backup
+
+=> Manage Jenkins => Periodic backup manager => Configure
+
+  ![Alt text](shots/122.PNG)
+  ![Alt text](shots/123.PNG)
+  ![Alt text](shots/124.PNG)
+  ![Alt text](shots/125.PNG)
+
+=> Save => Backup Now
+
+  ![Alt text](shots/126.PNG)
+
+  #### Which plugin should be installed to monitor jenkins ?
+
+  [Refer Here : https://plugins.jenkins.io/monitoring/]
+
+* Monitoring option
+
+=> Dashboard => Manage Jenkins => plugins => Available jenkins => search : monitoring => select Monitoring => Install without restart => Restart jenkins when no jobs running
+
+  ![Alt text](shots/128.PNG)
 
 * Jenkins Plugins can be installed from
     * Market place
     * Uploading the plugin
 * Jenkins plugin has two extensions
     * jpi (Jenkins plugin interface)
-    * hpi (hudson plugin interface)
+    * hpi (hudson plugin interface) (old)
 
 #### Exercise
 
@@ -829,7 +867,7 @@ OR
 ```
 /tmp/gameoflife
 ```
-* In this folder try to create one more folder with build id
+* In this folder try to create one more folder with build-id
 ```
 /tmp/gameoflife/5
 ```
