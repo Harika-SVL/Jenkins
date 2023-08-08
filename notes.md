@@ -1009,7 +1009,7 @@ pipeline {
 
 * For all the steps 
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
-* In scripted and declartive pipelines when we install plugins we get extra steps.
+* In scripted and declarative pipelines when we install plugins we get extra steps.
 
 ### Declarative Pipelines
 
@@ -1019,12 +1019,13 @@ pipeline {
 
   ![Alt text](shots/139.PNG)
 
-#### Lets create a declarative pipeline by exploring most options in Declarative pipeline
+#### Let' s create a declarative pipeline by exploring most options 
 
 * For the repository
-    [Refer Here : https://github.com/dummyrepos/spring-petclinic-1]
+    [Refer Here : https://github.com/Harika-SVL/spring-petclinic.git]
 * Let's create a develop branch
-* We have developed the basic skeleton
+
+* We have developed the basic skeleton for a pipeline
 ```
 pipeline {
     agent { label 'JDK-17' }
@@ -1061,7 +1062,7 @@ pipeline {
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
 * git 
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
-* and also other steps as done in the class
+* and also other steps 
 * For the changeset
     [Refer Here : https://github.com/dummyrepos/spring-petclinic-1/commit/303bcbbf79ca50d4e982dbf0fe017cef5af85101] 
 * Create a project and build now
