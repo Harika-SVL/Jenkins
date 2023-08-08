@@ -1001,23 +1001,29 @@ pipeline {
 ```
 ### Scripted Pipelines
 
-* Generally we create a file called as Jenkinsfile
-* Basic structure: Refer Here
+* Generally we create a file called as `Jenkinsfile`
+* Basic structure: 
+    [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#scripted-pipeline]
 
+  ![Alt text](shots/138.PNG)
 
-* For all the steps Refer Here
+* For all the steps 
+    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
 * In scripted and declartive pipelines when we install plugins we get extra steps.
 
 ### Declarative Pipelines
 
-* Here also we create a file called as Jenkinsfile
-* Basic structure: Refer Here for official docs of jenkins
+* Here we create a file called as `Jenkinsfile`
+* Basic structure: official docs 
+    [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline]
 
+  ![Alt text](shots/139.PNG)
 
 #### Lets create a declarative pipeline by exploring most options in Declarative pipeline
 
-* Refer Here for the repo
-* Lets create a develop branch
+* For the repository
+    [Refer Here : https://github.com/dummyrepos/spring-petclinic-1]
+* Let's create a develop branch
 * We have developed the basic skeleton
 ```
 pipeline {
@@ -1051,10 +1057,13 @@ pipeline {
 
 }
 ```
-* Now using pipeline steps reference Refer Here lets do the build
-* git Refer Here
+* Now using pipeline steps reference, let's do the build
+    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
+* git 
+    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
 * and also other steps as done in the class
-* Refer Here for the changeset
+* For the changeset
+    [Refer Here : https://github.com/dummyrepos/spring-petclinic-1/commit/303bcbbf79ca50d4e982dbf0fe017cef5af85101] 
 * Create a project and build now
 
 
@@ -1062,7 +1071,8 @@ pipeline {
 
 #### Note:
 
-* Create a free account in mailtrap Refer Here
+* Create a free account in mailtrap 
+    [Refer Here : https://mailtrap.io/]
 * Exercise: Create a declarative pipeline
     * for spring petclinic
     * for game of life
