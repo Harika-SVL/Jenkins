@@ -973,23 +973,30 @@ node('JDK_8') {
 
 * This has different structure in pipeline not for creating the project
 
+* Create a spring-petclinic project (Start node-1 as it has spring-petclinic)
+
+=> New view => Scripted => New item => spc-declarative-pipeline => pipeline => OK
+
+  ![Alt text](shots/136.PNG)
+  ![Alt text](shots/137.PNG)
+
 * We have written
 ```
 pipeline {
-    agent { label 'JDK-17' }
-    stages {
-        stage('git') {
-            steps {
-                git branch: 'main', url: 'https://github.com/dummyrepos/spring-petclinic-1.git'
-            }
-        }
-        stage('build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-    }
-
+    agent { label 'JDK-17' } 
+     stages() {
+         stage('git') {
+             steps {
+                 git branch: 'main', url: 'https://github.com/Harika-SVL/spring-petclinic.git'
+             }
+         }
+         stage('build') {
+             steps {
+                 sh 'mvn package'
+             }
+         }
+     }   
+    
 }
 ```
 ### Scripted Pipelines
