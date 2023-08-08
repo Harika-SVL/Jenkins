@@ -877,7 +877,8 @@ OR
 
 * This is expressing CI/CD pipleine in terms of some code/expressions/statements
 * This is part of version control i.e. each change done to the steps will have history
-* Refer Here for official docs
+* Official docs [Refer Here : https://www.jenkins.io/doc/book/pipeline/pipeline-as-code/]
+
 * Azure DevOps
 ```
 # Starter pipeline
@@ -911,7 +912,7 @@ node("JDK-11-MVN") {
   }
 }
 ```
-* The only manual work would be to go to jenkins and create a pipeline project and configure where your pipeline is
+* The only manual work would be done is to, go to jenkins, create a pipeline project and configure where your pipeline is
 
 ### Pipeline as Code in Jenkins
 
