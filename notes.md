@@ -732,9 +732,9 @@ dotnet build -c Release src/NopCommerce.sln
 
   ![Alt text](shots/96.PNG)
 
-=> New item => Project A => Freestyle project => ok
+=> New item => Project A => Freestyle Project => OK
 
-=> Description : This is Project A => Buils steps : Execute shell : echo "Project A", sleep 10s => Save
+=> Description : This is Project A => Buils steps : Execute shell - echo "Project A", sleep 10s => Save
 
   ![Alt text](shots/97.PNG)
 
@@ -750,25 +750,62 @@ OR
 
   ![Alt text](shots/99.PNG)
 
-* Repeat above steps for project B and Project C along with the execution of the projects
+* Repeat above steps for Project B and Project C 
 
   ![Alt text](shots/100.PNG)
   ![Alt text](shots/101.PNG)
   ![Alt text](shots/102.PNG)
 
-### Parametrized Builds
+* Now build Project A and all the three projects get executed as they are connected and with a gap of 10sec each
 
-* While building the jobs, sometimes we would like users to pass some information.
-* This is called as parameters
-* Let's enable parameters for some jenkins project/job
+  ![Alt text](shots/103.PNG)
+
+### Parameterized Builds
+
+* While building the jobs, sometimes we would like users to pass some information.This is called as parameters
+* Create a new view with `list view` option
+
+  ![Alt text](shots/104.PNG)
+
+* Select the jobs- gameoflife, nopCommerce, spc-Day-build
+
+  ![Alt text](shots/106.PNG)
+
+* Now let's enable parameters for some jenkins(gameoflife) project/job
+
+  ![Alt text](shots/107.PNG)
+  ![Alt text](shots/108.PNG)
+
+* Create some parameters and use it in the build steps
+
+  ![Alt text](shots/109.PNG)
+  ![Alt text](shots/110.PNG)
+
+* Save and build the goal
+
+  ![Alt text](shots/111.PNG)
+  ![Alt text](shots/112.PNG)
+  ![Alt text](shots/113.PNG)
+  ![Alt text](shots/114.PNG)
 
 ### Jenkins Environmental variables
 
 * Jenkins injects environmental variables into every job in addition to environmental variables present on node
-* To view environmental variables Naviage to build steps => execute shell
-* Refer Here for docs on environmental variables
-* Sample using environmetal variables
-* Result
+* To view environmental variables, select any project and navigate to build steps => execute shell
+
+  ![Alt text](shots/115.PNG)
+  ![Alt text](shots/116.PNG)
+
+* Doc's on environmental variables
+    [Refer Here : https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables]
+
+* Sample using environmetal variables (game of life on node-2)
+
+=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => General : Jdk-JAVA_8, Restrict-JDK_8 => Buils steps : Execute shell-printenv => save => Build Now
+
+* Result - Console Output
+
+  ![Alt text](shots/117.PNG)
 
 #### How to take backup of jenkins
 
@@ -787,8 +824,8 @@ OR
 
 #### Exercise
 
-* Figure out a plugin to chnage Build id
-* Create a folder in /tmp of your node with project name
+* Figure out a plugin to change Build_id
+* Create a folder in '/tmp' of your node with project name
 ```
 /tmp/gameoflife
 ```
