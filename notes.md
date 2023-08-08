@@ -918,27 +918,47 @@ node("JDK-11-MVN") {
 
 * Jenkins has two flavours
     * Scripted Pipeline
-        * This was developed where you can execute groovy language directly
+        * Developed where you can execute groovy language directly
     * Declartive Pipeline
         * Jenkins has created a DSL (Domain specific Language) which is mostly inspired from traditional jenkins
 
-### Create a Scripted Pipeline
+#### Creating a Scripted Pipeline
 
-* Create a game of life project
+* Create a game of life project (Start node-2 as it has game of life)
 
+=> New view => Scripted => New item => gol-scripted-pipeline => pipeline => OK
+
+  ![Alt text](shots/129.PNG)
 
 * Pipeline can be written directly or can be chosen from source code management
 
+=> Pipeline
+
+  ![Alt text](shots/130.PNG)
+  ![Alt text](shots/131.PNG)
 
 * Open pipeline syntax
-* Created the following structure
 
+=> Pipeline syntax
+
+  ![Alt text](shots/132.PNG)
+
+=> Generate the syntax selecting the node allocation and copy into the script
+
+  ![Alt text](shots/133.PNG)
+  ![Alt text](shots/134.PNG)
+
+* Creating the structure 
+
+=> Repeat the above step of pipeline syntax for every possible manual step and complete the pipeline(Script)
+
+  ![Alt text](shots/135.PNG)
 
 * Sample pipeline
 ```
 node('JDK_8') {
     stage('git') {
-        git branch: 'master', url: 'https://github.com/dummyrepos/game-of-life-july23.git'
+        git branch: 'master', url: 'https://github.com/Harika-SVL/game-of-life.git'
     }
     stage('build') {
         sh 'mvn package'
