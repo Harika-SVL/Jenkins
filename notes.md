@@ -872,3 +872,169 @@ OR
 /tmp/gameoflife/5
 ```
 * to this folder copy the war/jar file
+
+### Pipeline as Code
+
+* This is expressing CI/CD pipleine in terms of some code/expressions/statements
+* This is part of version control i.e. each change done to the steps will have history
+* Refer Here for official docs
+* Azure DevOps
+```
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: Default
+steps:
+  - task: Maven@3
+    inputs:
+      mavenPOMFile: 'pom.xml'
+      goals: 'package'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      testRunTitle: 'unittests'
+```
+* Jenkins
+```
+node("JDK-11-MVN") {
+  stage("get-code") {
+    sh " git clone https://github.com/spring-projects/spring-petclinic.git && cd spring-petclinic"
+  }
+  stage("build") {
+    sh "mvn package"
+    junit '**/surefire-reports/TEST-*.xml'
+  }
+}
+```
+* The only manual work would be to go to jenkins and create a pipeline project and configure where your pipeline is
+
+### Pipeline as Code in Jenkins
+
+* Jenkins has two flavours
+    * Scripted Pipeline
+        * This was developed where you can execute groovy language directly
+    * Declartive Pipeline
+        * Jenkins has created a DSL (Domain specific Language) which is mostly inspired from traditional jenkins
+
+### Create a Scripted Pipeline
+
+* Create a game of life project
+
+
+* Pipeline can be written directly or can be chosen from source code management
+
+
+* Open pipeline syntax
+* Created the following structure
+
+
+* Sample pipeline
+```
+node('JDK_8') {
+    stage('git') {
+        git branch: 'master', url: 'https://github.com/dummyrepos/game-of-life-july23.git'
+    }
+    stage('build') {
+        sh 'mvn package'
+    }
+    stage('reporting') {
+        archiveArtifacts artifacts: '**/gameoflife.war', followSymlinks: false
+        junit '**/surefire-reports/TEST-*.xml'
+    }
+}
+```
+### Create a Declartive Pipeline
+
+* This has different structure in pipeline not for creating the project
+
+* We have written
+```
+pipeline {
+    agent { label 'JDK-17' }
+    stages {
+        stage('git') {
+            steps {
+                git branch: 'main', url: 'https://github.com/dummyrepos/spring-petclinic-1.git'
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+
+}
+```
+### Scripted Pipelines
+
+* Generally we create a file called as Jenkinsfile
+* Basic structure: Refer Here
+
+
+* For all the steps Refer Here
+* In scripted and declartive pipelines when we install plugins we get extra steps.
+
+### Declarative Pipelines
+
+* Here also we create a file called as Jenkinsfile
+* Basic structure: Refer Here for official docs of jenkins
+
+
+#### Lets create a declarative pipeline by exploring most options in Declarative pipeline
+
+* Refer Here for the repo
+* Lets create a develop branch
+* We have developed the basic skeleton
+```
+pipeline {
+    agent { label 'JDK-17' }
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JDK_17'
+    }
+    stages {
+        stage('vcs') {
+            steps {
+
+            }
+        }
+        stage('build and package') {
+            steps {
+
+            }
+        }
+        stage('reporting') {
+            steps {
+
+            }
+        }
+    }
+
+}
+```
+* Now using pipeline steps reference Refer Here lets do the build
+* git Refer Here
+* and also other steps as done in the class
+* Refer Here for the changeset
+* Create a project and build now
+
+
+* Build result
+
+#### Note:
+
+* Create a free account in mailtrap Refer Here
+* Exercise: Create a declarative pipeline
+    * for spring petclinic
+    * for game of life
