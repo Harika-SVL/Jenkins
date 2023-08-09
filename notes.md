@@ -1019,11 +1019,16 @@ pipeline {
 
   ![Alt text](shots/139.PNG)
 
-#### Let' s create a declarative pipeline by exploring most options 
+#### Let's create a declarative pipeline by exploring most options 
 
 * For the repository
     [Refer Here : https://github.com/Harika-SVL/spring-petclinic.git]
+
+  ![Alt text](shots/140.PNG)
+
 * Let's create a develop branch
+
+  ![Alt text](shots/141.PNG)
 
 * We have developed the basic skeleton for a pipeline
 ```
@@ -1063,17 +1068,62 @@ pipeline {
 * git 
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
 * and also other steps 
-* For the changeset
+```
+pipeline{
+    agent{ label 'JDK-17'}
+    options{
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JDK_17'
+    }
+    stages {
+        stage('vcs') {
+            steps {
+                git url: 'https://github.com/Harika-SVL/spring-petclinic.git',
+                    branch: 'develop'
+            }
+        }
+        stage('build and package') {
+            steps {
+                sh script: 'mvn package'
+            }
+        }
+        stage('reporting') {
+            steps {
+                archiveArtifacts artifacts: '**/target/spring-petclinic-*.jar'
+                junit testResults: '**/target/surefire-reports/TEST-*.xml'
+            }
+        }
+    }
+}
+```
     [Refer Here : https://github.com/dummyrepos/spring-petclinic-1/commit/303bcbbf79ca50d4e982dbf0fe017cef5af85101] 
+  
+* Now let's push the code to repository
+
+  ![Alt text](shots/142.PNG)
+
 * Create a project and build now
 
+=> Declarative view => configure => pipeline 
+
+  ![Alt text](shots/143.PNG)
+  ![Alt text](shots/144.PNG)
 
 * Build result
+
+=> Save => Build Now
+
+ ![Alt text](shots/145.PNG) 
 
 #### Note:
 
 * Create a free account in mailtrap 
     [Refer Here : https://mailtrap.io/]
 * Exercise: Create a declarative pipeline
-    * for spring petclinic
-    * for game of life
+    * for spring-petclinic
+    * for game-of-life
