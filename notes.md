@@ -1127,3 +1127,63 @@ pipeline{
 * Exercise: Create a declarative pipeline
     * for spring-petclinic
     * for game-of-life
+
+#### Declarative Pipelines contd
+
+* Refer Here for the changeset which creates a declarative pipeline
+
+### Email Notifications
+
+* For configuration use classroom video
+
+#### Activity:
+
+* Lets send an email when the
+    * project failed : your project is defective
+    * project success : your project is effective
+* Refer Here for the changes
+* Refer Here for message with dynamic information
+* I want to send microsoft teams/slack notification how to configure
+
+### Parameters from Jenkinsfile
+
+* Refer Here for docs
+* Refer Here for the changeset
+
+### User Administration in Jenkins
+
+* Authentication
+    * Jenkins own user database
+    * LDAP
+    * Unix User/Group database
+    * Redirect to Servlet
+* Authorization:
+    * Matrix
+    * Role Based
+* For screenshots refer to class room video
+
+### Maven – Remote Repo
+
+* Maven has 3 repositories
+    * local repo (~/.m2)
+    * Central repo: This is public maven repository
+    * Remote Repo: This exists in organization controlled environment
+
+
+
+* Workflows:
+    * After every night build push the artifacts to remote repo
+    * when resolving dependencies use remote repository
+
+### Artifact Repository
+
+* There are two popular options for java
+    * jfrog/artifactory
+    * Nexus
+* Azure DevOps has Azure Artifacts
+* In this series we will be using jfrog/artifactory for its multi language repository support.
+* Refer Here for 14 day free trail
+
+
+
+* For configuring jenkins with artifactory Refer Here
