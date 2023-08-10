@@ -1233,7 +1233,10 @@ pipeline {
 
 ### Email Notifications
 
-* For configuration use classroom video
+* For configuration 
+
+  ![Alt text](shots/152.PNG)
+  
 
 #### Activity:
 
