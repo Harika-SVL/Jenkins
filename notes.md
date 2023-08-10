@@ -1135,10 +1135,6 @@ pipeline{
 
   ![Alt text](shots/146.PNG)
 
-* Let's create a `master` branch
-
-
-
 * Basic skeleton for a pipeline
 ```
 pipeline {
@@ -1213,22 +1209,27 @@ pipeline {
 ```
     [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/fb5bc9db8f2c376f2585703f84958e3363665537] 
   
+* Let's use `master` branch
 * Now let's push the code to repository
 
+  ![Alt text](shots/147.PNG)
 
+* Create a project 'gameoflife-declarative'and build now
 
-* Create a project and build now
+=> Declarative view => New Item => name : gameoflife-declarative => pipeline => OK
 
-=> Declarative view => configure => pipeline 
+  ![Alt text](shots/148.PNG)
 
+=> Pipeline => Pipeline script from SCM => Git => URL : `https://github.com/Harika-SVL/game-of-life.git` => branch : `master` => path : `Jenkinsfile` => save
 
-
+  ![Alt text](shots/149.PNG)
+  ![Alt text](shots/150.PNG)
 
 * Build result
 
-=> Save => Build Now
+=> Build Now
 
-
+  ![Alt text](shots/151.PNG)
 
 ### Email Notifications
 
