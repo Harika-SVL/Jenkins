@@ -1019,18 +1019,18 @@ pipeline {
 
   ![Alt text](shots/139.PNG)
 
-#### Let's create a declarative pipeline by exploring most options 
+### Let's create a declarative pipeline for Spring-Pet-Clinic by exploring most options 
 
 * For the repository
     [Refer Here : https://github.com/Harika-SVL/spring-petclinic.git]
 
   ![Alt text](shots/140.PNG)
 
-* Let's create a develop branch
+* Let's create a `develop` branch
 
   ![Alt text](shots/141.PNG)
 
-* We have developed the basic skeleton for a pipeline
+* Basic skeleton for a pipeline
 ```
 pipeline {
     agent { label 'JDK-17' }
@@ -1128,9 +1128,107 @@ pipeline{
     * for spring-petclinic
     * for game-of-life
 
-#### Declarative Pipelines contd
+### Let's create a declarative pipeline for Game-of-Life  
 
-* Refer Here for the changeset which creates a declarative pipeline
+* For the repository
+    [Refer Here : https://github.com/Harika-SVL/game-of-life.git]
+
+  ![Alt text](shots/146.PNG)
+
+* Let's create a `master` branch
+
+
+
+* Basic skeleton for a pipeline
+```
+pipeline {
+    agent { label 'JDK_8' }
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JAVA_8'
+    }
+    stages {
+        stage('code') {
+            steps {
+
+            }
+        }
+        stage('package') {
+            steps {
+
+            }
+        }
+        stage('report') {
+            steps {
+
+            }
+        }
+    }
+
+}
+```
+* Now using pipeline steps reference, let's do the build
+    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
+* git 
+    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
+* and also other steps 
+```
+pipeline {
+    agent { label 'JDK_8'}
+    options {
+        retry(3)
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JAVA_8'
+    }
+    stages {
+        stage('code') {
+            steps {
+                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                    branch: 'master'
+            }
+        }
+        stage('package') {
+            steps {
+                sh script: 'mvn clean package'
+            }
+        }
+        stage('report') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+                archiveArtifacts artifacts: '**/target/gameoflife-*.war'
+            }
+        }
+    }
+}
+```
+    [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/fb5bc9db8f2c376f2585703f84958e3363665537] 
+  
+* Now let's push the code to repository
+
+
+
+* Create a project and build now
+
+=> Declarative view => configure => pipeline 
+
+
+
+
+* Build result
+
+=> Save => Build Now
+
+
 
 ### Email Notifications
 
