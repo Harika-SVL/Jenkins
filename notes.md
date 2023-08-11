@@ -1241,16 +1241,20 @@ pipeline {
 #### Activity:
 
 * Lets send an email when the
-    * project failed : your project is defective
-    * project success : your project is effective
-* Refer Here for the changes
-* Refer Here for message with dynamic information
+    * project failed : `Your project is defective`
+    * project success : `Your project is effective`
+* For the changes
+    [Refer Here : ]https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185
+* For message with dynamic information
+    [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
 * I want to send microsoft teams/slack notification how to configure
 
 ### Parameters from Jenkinsfile
 
-* Refer Here for docs
-* Refer Here for the changeset
+* For docs
+    [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#parameters]
+* For the changeset
+    [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/c8c92f3826fa7a121835d89040a7a30f5aa503ef]
 
 ### User Administration in Jenkins
 
@@ -1284,8 +1288,10 @@ pipeline {
     * Nexus
 * Azure DevOps has Azure Artifacts
 * In this series we will be using jfrog/artifactory for its multi language repository support.
-* Refer Here for 14 day free trail
+* For 14 day free trail
+    [Refer Here : https://jfrog.com/start-free/]
 
 
 
-* For configuring jenkins with artifactory Refer Here
+* For configuring jenkins with artifactory 
+    [Refer Here : https://directdevops.blog/2019/10/17/artifactory-configuration/]
