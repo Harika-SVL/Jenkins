@@ -43,11 +43,11 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 #### CRONJOB In Linux - CRONTAB (periodic tasks on steroids)
       [Refer Here : https://crontab.guru/]
 
-* “cron” is a Linux-based utility used to schedule scripts or programs
-* The `CRONTAB` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for “CRON TABLE”, because it uses the job scheduler cron to execute tasks
-```
-Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week> <command>
-```
+* `CRON` is a Linux-based utility used to schedule scripts or programs
+* The `CRONTAB` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for `CRON TABLE`, because it uses the job scheduler cron to execute tasks
+
+SYNTAX : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week> <command>
+
 ![Alt text](shots/12.PNG)
 ![Alt text](shots/13.PNG)
 
@@ -58,43 +58,47 @@ Syntax : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 * Day_of_the_Week – value can be between 0-7. Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
 
 #### CRONJOB In Windows - TASK SCHEDULER
-       [Refer Here : https://linuxhint.com/set-up-cron-job-windows/]
+      
+  [Refer Here : https://linuxhint.com/set-up-cron-job-windows/]
 
 * In Windows, it is mostly utilized to automate the update system and scheduled tasks that will run automatically without manual execution. 
-* If you want to create a new task or cron job on Windows, perform the required operation with the help of the “TASK SCHEDULER”.
+* If you want to create a new task or cron job on Windows, perform the required operation with the help of the `TASK SCHEDULER`
 
 #### What happens when we install jenkins..?
 
 * When we install jenkins we will have a default user created called as `JENKINS`
-    * From jenkins we can perform anything which jenkins user performs
+* From jenkins we can perform anything which jenkins user performs
 
 ![Alt text](shots/10.PNG)
 
 * How can we integrate jenkins with any other tools:
-    * COMMAND LINE: call the command line
-    * PLUGIN(Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration
+    * COMMAND LINE : call the command line
+    * PLUGIN (Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration
       * UI or PIPELINE step
 
 #### PATH variable 'echo $PATH'
-      * To find path in linux 'whereis <needed-name>'
+
+  * To find path in linux 'whereis <needed-name>'
+
 #### Environment Variable
-      * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
-      * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
-      * User environmental variable (available only to the specific user) 'home/bashrc'
+
+  * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
+  * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
+  * User environmental variable (available only to the specific user) 'home/bashrc'
 
 #### NOTE:
-      * Adding sudo permission to Linux user 
+      
+  * Adding sudo permission to Linux user 
           [Refer Here: https://www.baeldung.com/linux/sudo-privileges-user]
 ```
 sudo visudo
-
 jenkins (ALL:ALL) NOPASSWD:ALL
 ```
 #### COMPILER vs INTERPRITOR vs HYBRID based applications
 
 * COMPILER-based application
 
-  [Dubbing before running the application] 
+   [Dubbing before running the application] 
 
 ![Alt text](shots/14.PNG)
 
@@ -132,18 +136,18 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 ![Alt text](shots/11.PNG)
 
-## MAVEN
+### MAVEN
 
-* Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages(groovy,scala)
-* It follows convention(SNAPSHOT & RELEASE) over configuration
+* Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages (groovy,scala)
+* It follows convention (SNAPSHOT & RELEASE) over configuration
 * It uses a file called as 'pom.xml' ( POM - Project Object Model )
 * Apache Log4j Security Vulnerabilities
 
 * ARTIFACTS (reasons) : 
 
-=> To avoid the errors occuring freshly
+  => To avoid the errors occuring freshly
 
-=> To try to resolve the existing errors
+  => To try to resolve the existing errors
 
 ### MAVEN Installation:
 
@@ -177,24 +181,25 @@ mvn --version
 ![Alt text](shots/23.PNG)
 
 #### MAVEN GOALS and LIFECYCLE :
-    [Refer Here : https://www.baeldung.com/maven-goals-phases]
 
-* VALIDATE: validates the pom and it's project
-* COMPILE: converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
-* TEST: will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
+  [Refer Here : https://www.baeldung.com/maven-goals-phases]
+
+* VALIDATE : validates the pom and it's project
+* COMPILE : converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
+* TEST : will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
 
 ![Alt text](shots/42.PNG)
 
-* PACKAGE: creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
-* INSTALL: copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
-* DEPLOY: copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push command)
-* CLEAN: removes target folder
+* PACKAGE : creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
+* INSTALL : copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
+* DEPLOY : copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push command)
+* CLEAN : removes target folder
 
 => Here, when we execute a goal, all the pevious goals also get's executed
 
 ##### LIFECYCLE 
  
-       [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
+  [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
 * To execute any lifecycle goal `mvn <goal>`
 * Simple POM file
 ```xml
@@ -217,7 +222,8 @@ mvn --version
   </dependencies>
 </project>
 ```
-* Maven PACKAGING formats: 
+* Maven PACKAGING formats : 
+
     [Refer Here : https://www.baeldung.com maven-packaging-types#:~:text=Maven%20offers%20many%20default%20packaging%20types%20that%20include%20a%20jar,and%20performs%20a%20specific%20task.]
 * Maven goals downloads dependencies and stores in
   * `M2_HOME` where ever this environment variable points to and if not found does in `<home-dir>/.m2`
@@ -230,15 +236,15 @@ git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic 
 mvn package
 ```
-#### MANUAL STEPS :
+### MANUAL STEPS :
 
-##### Installing JAVA-17
+#### Installing JAVA-17
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
 ```
-##### Installing MAVEN
+#### Installing MAVEN
 ```
 cd /tmp/
 wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
@@ -251,7 +257,7 @@ exit
 # relogin into the machine
 mvn --version
 ```
-##### Building SPRING-PETCLINIC
+#### Building SPRING-PETCLINIC
 ```
 git clone https://github.com/spring-projects/spring-petclinic.git
 cd spring-petclinic/
@@ -310,7 +316,7 @@ mvn package
 
       ![Alt text](shots/26.PNG)
 
-    * Add jenkins to sudoers   WORKSPACE: `/var/lib/jenkins`
+    * Add jenkins to sudoers   WORKSPACE : `/var/lib/jenkins`
 
       ![Alt text](shots/27.PNG)
 
@@ -319,6 +325,7 @@ mvn package
       ![Alt text](shots/29.PNG)
     
 * Let's build spring-petclinic 
+
     [Refer Here : https://github.com/spring-projects/spring-petclinic]
 
     * software requirements
@@ -335,33 +342,34 @@ mvn package
 
 => Description : This is to build spring-petclinic project 
 
-1. GENERAL: This represents the project information
+1. GENERAL : This represents the project information
       
     ![Alt text](shots/31.PNG)
 
-2. SOURCE CODE MANAGEMENT: This represent the code to be used for CI/CD pipelines
+2. SOURCE CODE MANAGEMENT : This represent the code to be used for CI/CD pipelines
 
     ![Alt text](shots/32.PNG)
 
 3. BUILD TRIGGERS: represents when to build
 
-  * BUILD PERIODICALLY(CRON): If the project has to be built based on schedule, write cron expression into this 
-                                [Refer Here : https://crontab.guru/]
+  * BUILD PERIODICALLY(CRON) : If the project has to be built based on schedule, write cron expression into this 
+  
+    [Refer Here : https://crontab.guru/]
 
-  * POLL SCM: represents jenkins polling scm (asking git) and the cron expression represents how frequently it should ask. It is triggered only when there are changes in the code.
+  * POLL SCM : represents jenkins polling scm (asking git) and the cron expression represents how frequently it should ask. It is triggered only when there are changes in the code.
 
     ![Alt text](shots/33.PNG)
 
-4. BUILD ENVIRONMENT: represents the environmental configuration
+4. BUILD ENVIRONMENT : represents the environmental configuration
 
    ![Alt text](shots/34.PNG)
 
-5. BUILD STEPS: actual activities that are performed during execution
+5. BUILD STEPS : actual activities that are performed during execution
 
    ![Alt text](shots/35.PNG)
    ![Alt text](shots/36.PNG)
 
-6. POST BUILD ACTIONS: actions to be performed after completion of build
+6. POST BUILD ACTIONS : actions to be performed after completion of build
 
    ![Alt text](shots/37.PNG)
    ![Alt text](shots/38.PNG)
@@ -395,21 +403,21 @@ cd spring-petclinic/
 
   ### Jenkins TERMS :
 
-* JENKINS_HOME: Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
+* JENKINS_HOME : Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
 
 ![Alt text](shots/28.PNG)
 
 * Backup for Jenkins is backup of Workspace (/var/lib/jenkins)
 
-* PROJECT: This contains the activity that needs to be performed on triggers
+* PROJECT : This contains the activity that needs to be performed on triggers
     * This project is stored as xml file in workspace
     * Types of projects :
       * Freestyle project: This is UI based configuration
       * Pipeline: This is instructions expressed in some code format (pipeline as a code)
 
-* BUILD: This represents the execution of project. Every build for a project has a running number called as Build_id
+* BUILD : This represents the execution of project. Every build for a project has a running number called as Build_id
 
-* NODE: This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
+* NODE : This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
 
 ### Managing DIFFERENT VERSIONS of the tools using jenkins
 
