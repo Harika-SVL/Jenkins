@@ -1237,14 +1237,85 @@ pipeline {
 
   ![Alt text](shots/152.PNG)
   
+* On Jenkins configuration
+
+  ![Alt text](shots/153.PNG)
+
+* Enter the credentials from mailtrap
+
+  ![Alt text](shots/154.PNG)
+
+* Set a random email and check for the email transfer
+
+  ![Alt text](shots/155.PNG)
+
+* Check on the mailtrap to confirm and save the changes into jenkins
+
+  ![Alt text](shots/156.PNG)
+  ![Alt text](shots/157.PNG)
 
 #### Activity:
+
+* Sending mail from pipeline
+    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
+* To check for the ``SUCCESS` or `FAILURE` of the project we see the post section
 
 * Lets send an email when the
     * project failed : `Your project is defective`
     * project success : `Your project is effective`
-* For the changes
+* Into the pipeline
+```
+pipeline {
+    agent { label 'JDK_8'}
+    options {
+        retry(3)
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JAVA_8'
+    }
+    stages {
+        stage('code') {
+            steps {
+                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                    branch: 'master'
+            }
+        }
+        stage('package') {
+            steps {
+                sh script: 'mvn clean package'
+            }
+        }
+        stage('report') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+                archiveArtifacts artifacts: '**/target/gameoflife.war'
+            }
+        }
+    }
+    post {
+        success {
+            mail subject: 'Your project is effective',
+                 body: 'Your project is effective',
+                 to: 'all@qt.com'
+        }
+        failure {
+            mail subject: 'Your project is defective',
+                 body: 'Your project is defective',
+                 to: 'all@qt.com'
+        }
+    }
+}
+```
     [Refer Here : ]https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185
+
+* Here we just add the pipeline to the script from replay option
+
+![Alt text](shots/158.PNG)
+
 * For message with dynamic information
     [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
 * I want to send microsoft teams/slack notification how to configure
