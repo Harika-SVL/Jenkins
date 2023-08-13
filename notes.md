@@ -1538,7 +1538,7 @@ pipeline {
     
   [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/c8c92f3826fa7a121835d89040a7a30f5aa503ef]
 
-### User Administration in Jenkins
+### User Administration in Jenkins (user specific permissions)
 
 * Authentication
     * Jenkins own user database
