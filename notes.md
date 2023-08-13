@@ -755,6 +755,23 @@ dotnet build -c Release src/NopCommerce.sln
 # For day builds
 # dotnet build  -c "Debug" <path of project or sln> 
 ```
+* Try to configure in jenkins
+* Create a new project
+
+=> New Item => Name : nopCommerce => Free Style Project => OK
+
+=> General => Restrict : Label : DOTNET_7
+
+=> Source code management => Git : URL 'https://github.com/Harika-SVL/nopCommerce.git', Branch : master
+
+=> Build Trrigers => Poll SCM : Schedule '* * * * * '
+
+=> Build Steps => Execute shell : dotnet restore src/NopCommerce.sln , dotnet build -c Release src/NopCommerce.sln
+
+=> Save
+
+  ![Alt text](shots/160.PNG)
+  
 ### Upstream and Downstream projects
 
 * If the Project A triggers the Project B then
