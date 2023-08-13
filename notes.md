@@ -771,7 +771,7 @@ dotnet build -c Release src/NopCommerce.sln
 => Save
 
   ![Alt text](shots/160.PNG)
-  
+
 ### Upstream and Downstream projects
 
 * If the Project A triggers the Project B then
@@ -861,7 +861,7 @@ OR
 
 * Sample using Environmetal variables (Environmentalvariablesdemo)
 
-=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => Build steps : Execute shell- echo "Hello, this project-url is ${JOB_DISPLAY_URL} and the build-id is ${BUILD_ID}", echo "Hello, this project is running in folder ${WORKSPACE} on NODE ${NODE_NAME}" => Save => Build Now
+=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => Build steps : Execute shell- echo "Hello, this project URL is ${JOB_DISPLAY_URL} and the BUILD-ID is ${BUILD_ID}", echo "Hello, this project is running in FOLDER ${WORKSPACE} on NODE ${NODE_NAME}" => Save => Build Now
 
   ![Alt text](shots/118.PNG)
 
@@ -901,7 +901,7 @@ OR
 
 * Monitoring option
 
-=> Dashboard => Manage Jenkins => plugins => Available jenkins => search : monitoring => select Monitoring => Install without restart => Restart jenkins when no jobs running
+=> Dashboard => Manage Jenkins => plugins => Available plugins => search : monitoring => select Monitoring => Install without restart => Restart jenkins when no jobs running
 
   ![Alt text](shots/128.PNG)
 
