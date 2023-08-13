@@ -1312,10 +1312,11 @@ pipeline {
 #### Activity:
 
 * Sending mail from pipeline
-    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
-* To check for the ``SUCCESS` or `FAILURE` of the project we see the post section
+  
+  [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
+* To check for the `SUCCESS` or `FAILURE` of the project we see the post section
 
-* Lets send an email when the
+* Let's send an email when the
     * project failed : `Your project is defective`
     * project success : `Your project is effective`
 * Into the pipeline
@@ -1365,25 +1366,177 @@ pipeline {
     }
 }
 ```
-  [Refer Here : ]https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185
+  [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185]
 
 * Here we just add the pipeline to the script from replay option
 
   ![Alt text](shots/158.PNG)
-  
+
   ![Alt text](shots/161.PNG)
 
 * For message with dynamic information
+```
+pipeline {
+    agent { label 'JDK_8'}
+    options {
+        retry(3)
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JAVA_8'
+    }
+    stages {
+        stage('code') {
+            steps {
+                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                    branch: 'master'
+            }
+        }
+        stage('package') {
+            steps {
+                sh script: 'mvn clean package'
+            }
+        }
+        stage('report') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+                archiveArtifacts artifacts: '**/target/gameoflife.war'
+            }
+        }
+    }
+    post {
+        success {
+            mail subject: '${JOB_NAME}: has completed with success',
+                 body: 'Your project is effective \n Build Url ${BUILD_URL}',
+                 to: 'all@qt.com'
+        }
+        failure {
+            mail subject: '${JOB_NAME}: has completed with failed',
+                 body: 'Your project is defective \n Build Url ${BUILD_URL}',
+                 to: 'all@qt.com'
+        }
+    }
+}
+```
+  ![Alt text](shots/162.PNG)
+  ![Alt text](shots/163.PNG)
+
+=> Use double quotes instead of single quotes (Let's replay to change)
+```
+pipeline {
+    agent { label 'JDK_8'}
+    options {
+        retry(3)
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JAVA_8'
+    }
+    stages {
+        stage('code') {
+            steps {
+                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                    branch: 'master'
+            }
+        }
+        stage('package') {
+            steps {
+                sh script: 'mvn clean package'
+            }
+        }
+        stage('report') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+                archiveArtifacts artifacts: '**/target/gameoflife.war'
+            }
+        }
+    }
+    post {
+        success {
+            mail subject: "${JOB_NAME}: has completed with success",
+                 body: "Your project is effective \n Build Url ${BUILD_URL}",
+                 to: 'all@qt.com'
+        }
+        failure {
+            mail subject: "${JOB_NAME}: has completed with failed",
+                 body: "Your project is defective \n Build Url ${BUILD_URL}",
+                 to: 'all@qt.com'
+        }
+    }
+}
+```
+  ![Alt text](shots/164.PNG)
+  ![Alt text](shots/165.PNG)
   
   [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
-* I want to send microsoft teams/slack notification how to configure
+
+* I want to send microsoft teams/slack notification how to configure [ Google ]
 
 ### Parameters from Jenkinsfile
 
 * For docs
+    
     [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#parameters]
-* For the changeset
-    [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/c8c92f3826fa7a121835d89040a7a30f5aa503ef]
+```
+pipeline {
+    agent { label 'JDK_8' }
+    options {
+        retry(3)
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JAVA_8'
+    }
+    parameters {
+        choice(name: 'GOAL', choices: ['package', 'clean package', 'install', 'clean install'], description: 'This is maven goal')
+    }
+    stages {
+        stage('code') {
+            steps {
+                git url: 'https://github.com/dummyrepos/game-of-life-july23.git',
+                    branch: 'master'
+            }
+        }
+        stage('package') {
+            steps {
+                sh script: 'mvn clean package'
+                sh script: "mvn ${params.GOAL}"
+            }
+
+        }
+        stage('report') {
+            steps {
+                junit testResults: '**/surefire-reports/TEST-*.xml'
+                archiveArtifacts artifacts: '**/target/gameoflife.war'
+            }
+        }
+    }
+    post {
+        success {
+            mail subject: "${JOB_NAME}: has completed with success",
+                 body: "your project is effective \n Build Url ${BUILD_URL}",
+                 to: 'all@qt.com'
+        }
+        failure {
+            mail subject: "${JOB_NAME}:: has completed with failed",
+                 body: "your project is defective \n Build Url ${BUILD_URL}",
+                 to: 'all@qt.com'
+        }
+    }
+}
+```
+  ![Alt text](shots/166.PNG)
+    
+  [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/c8c92f3826fa7a121835d89040a7a30f5aa503ef]
 
 ### User Administration in Jenkins
 
