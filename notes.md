@@ -1027,7 +1027,7 @@ node('JDK_8') {
 
 * Create a spring-petclinic project (Start node-1 as it has spring-petclinic)
 
-=> New view => Scripted => New item => spc-declarative-pipeline => pipeline => OK
+=> New view => Declarative => New item => spc-declarative-pipeline => pipeline => OK
 
   ![Alt text](shots/136.PNG)
   ![Alt text](shots/137.PNG)
@@ -1362,14 +1362,16 @@ pipeline {
     }
 }
 ```
-    [Refer Here : ]https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185
+  [Refer Here : ]https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185
 
 * Here we just add the pipeline to the script from replay option
 
-![Alt text](shots/158.PNG)
+  ![Alt text](shots/158.PNG)
+  ![Alt text](shots/161.PNG)
 
 * For message with dynamic information
-    [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
+  
+  [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
 * I want to send microsoft teams/slack notification how to configure
 
 ### Parameters from Jenkinsfile
