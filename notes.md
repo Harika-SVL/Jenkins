@@ -41,7 +41,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 * Any CI/CD tool at it's core is a `CRON` on steroids
 
 #### CRONJOB In Linux - CRONTAB (periodic tasks on steroids)
-      [Refer Here : https://crontab.guru/]
+  [Refer Here : https://crontab.guru/]
 
 * `CRON` is a Linux-based utility used to schedule scripts or programs
 * The `CRONTAB` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for `CRON TABLE`, because it uses the job scheduler cron to execute tasks
@@ -224,7 +224,7 @@ mvn --version
 ```
 * Maven PACKAGING formats : 
 
-    [Refer Here : https://www.baeldung.com maven-packaging-types#:~:text=Maven%20offers%20many%20default%20packaging%20types%20that%20include%20a%20jar,and%20performs%20a%20specific%20task.]
+    [Refer Here : https://www.baeldung.com ]
 * Maven goals downloads dependencies and stores in
   * `M2_HOME` where ever this environment variable points to and if not found does in `<home-dir>/.m2`
 
@@ -482,9 +482,9 @@ cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
 
   ![Alt text](shots/53.PNG)
 
-#### How to add MULTIPLE NODES to jenkins
+### How to add MULTIPLE NODES to jenkins
 
-* Let's create 2 ubuntu VM's and let's make one vm the jenkins-master
+* Let's create 2 ubuntu VM's and let's make one vm the `jenkins-master`
 * On it install java-17,jenkins and configure jenkins and add the user to sudoers
 ```
 sudo apt update
