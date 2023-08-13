@@ -653,18 +653,23 @@ password : devops
 sudo apt update
 sudo apt install openjdk-8-jdk openjdk-17-jdk -y
 java -version
-sudo apt install maven -y
+cd /usr/lib/jvm
+ls
+sudo apt install maven -y  
 mvn -version
 ```
 * Now execute java -version
 
   ![Alt text](shots/72.PNG)
 
-* Lets configure JDK-17 and JDK-8 paths in tools section of jenkins (jenkins-master)
+* Lets configure JDK-17,JDK-8,Maven paths in tools section of jenkins (jenkins-master) 
 
   ![Alt text](shots/73.PNG)
+  ![Alt text](shots/159.PNG)
 
-* Now add node-2 to jenkins
+=> Also add maven version(3.9) in the existing 'spc-Day-build' project
+
+* Now add Git - repository 'https://github.com/Harika-SVL/game-of-life.git' and node-2 to jenkins
 
   ![Alt text](shots/74.PNG)
 
@@ -674,7 +679,7 @@ mvn -version
   ![Alt text](shots/76.PNG)
   ![Alt text](shots/77.PNG)
 
-* Now let's try building game of life
+* Now let's try building game of life - Add JDK, MAVEN, Git and save
 
   ![Alt text](shots/78.PNG)
   ![Alt text](shots/79.PNG)
