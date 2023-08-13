@@ -516,11 +516,14 @@ sudo apt update
 ### Node 1 => JDK-17 and maven 3.9.4
 
 * let's make other vm the node-1
-* On this node (we will be using existing credentials) we will install java-17 and install maven 3.9.4
+* On this node (we will be using existing credentials) we will 
+* Install java-17 
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
+java -version
 ```
+* Install maven 3.9.4
 ```
 cd /tmp
 wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
@@ -534,6 +537,16 @@ mvn --version
 ```
 
   ![Alt text](shots/55.PNG)
+
+[ Note => Jenkins credentials
+
+  Username : Jenkins-user
+
+  Password : Jenkins-user
+
+  Name : Jenkins-user
+
+  Mail : jenkins-user@gmail.com ]
 
 * Now let's configure the jenkins-master node with label `JDK-17`
 * On Jenkins UI Navigate to 
@@ -598,10 +611,12 @@ mvn --version
   ![Alt text](shots/70.PNG)
   ![Alt text](shots/71.PNG)
 
-* Now let's add processing the test results `**/surefire-reports/TEST-*.xml`
-* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to archive the artifacts
+* Now let's archive the artifacts `**/target/spring-petclinic-*.jar` add processing the test results `**/surefire-reports/TEST-*.xml`
 
   ![Alt text](shots/87.PNG)
+
+* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to archive the artifacts
+
   ![Alt text](shots/88.PNG)
 
 #### Exercises
@@ -637,7 +652,9 @@ password : devops
 ```
 sudo apt update
 sudo apt install openjdk-8-jdk openjdk-17-jdk -y
+java -version
 sudo apt install maven -y
+mvn -version
 ```
 * Now execute java -version
 
