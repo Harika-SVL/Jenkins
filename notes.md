@@ -887,8 +887,11 @@ OR
 => Manage Jenkins => Periodic backup manager => Configure
 
   ![Alt text](shots/122.PNG)
+
   ![Alt text](shots/123.PNG)
+
   ![Alt text](shots/124.PNG)
+
   ![Alt text](shots/125.PNG)
 
 => Save => Backup Now
@@ -1253,7 +1256,7 @@ pipeline {
         stage('report') {
             steps {
                 junit testResults: '**/surefire-reports/TEST-*.xml'
-                archiveArtifacts artifacts: '**/target/gameoflife-*.war'
+                archiveArtifacts artifacts: '**/target/gameoflife.war'
             }
         }
     }
@@ -1367,6 +1370,7 @@ pipeline {
 * Here we just add the pipeline to the script from replay option
 
   ![Alt text](shots/158.PNG)
+  
   ![Alt text](shots/161.PNG)
 
 * For message with dynamic information
