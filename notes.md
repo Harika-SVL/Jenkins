@@ -489,6 +489,7 @@ cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
+java -version
 ```
 ##### NOTE
 => To install jenkins we can use the following script
@@ -500,7 +501,11 @@ sudo apt-get update
 sudo apt-get install openjdk-17-jdk jenkins -y
 ```
   ![Alt text](shots/54.PNG)
-
+* Adding jenkins user to sudoers
+```
+sudo visudo
+jenkins ALL=(ALL:ALL) NOPASSWD:ALL
+```
 * To check the sudoers
 ```
 sudo -i
