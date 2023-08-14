@@ -1668,29 +1668,174 @@ pipeline {
   ![Alt text](shots/186.PNG)
 
 => Leave
-
+=====================================================================================================================
 * To integrate jenkins with JFrog
-
 => Dashboard => Manage Jenkins => Credentials => system => Global credentials => Add credentials
-
   ![Alt text](shots/187.PNG)
   ![Alt text](shots/188.PNG)
-
 [ NOTE : To generate new token if required
        => Generate an Identity Token]
-
 => Dashboard => Manage Jenkins => System 
-
   ![Alt text](shots/189.PNG)
-
 * For setting Artifactory
 * Create a new user
-
   ![Alt text](shots/190.PNG)
   ![Alt text](shots/191.PNG)
   ![Alt text](shots/192.PNG)
-
-=> Dashboard => Manage Jenkins => System => JFrog => Use the Credentials Plugin => Add JFrog Platform Instances
-
+=> Dashboard => Manage Jenkins => System => JFrog => Use the Credentials Plugin => Add JFrog Platform Instances   
   ![Alt text](shots/193.PNG)
   ![Alt text](shots/194.PNG)
+* DELETING THE PLUGINS INSTALLED TILL NOW
+======================================================================================================================
+
+### Artifactory Jenkins Integration 
+
+* Create an access token after frog account creation
+* Install artifactory plugin in jenkins
+
+
+
+=> Manage Jenkins => Credentials => create a credential with secret text
+
+
+
+
+
+=> Manage Jenkins => System => Jfrog
+
+
+
+
+
+
+
+
+
+
+* For official doc's of jfrog artifactory pipeline
+
+  [ Refer here : https://jfrog.com/help/r/jfrog-integrations-documentation/jenkins-artifactory-plug-in]
+* For samples of jfrog jenkins pipelines
+
+  [ Refer Here : https://github.com/jfrog/project-examples/tree/master/jenkins-examples/pipeline-examples/declarative-examples]
+* For specific jenkinsfile
+
+  [ Refer Here : https://github.com/jfrog/project-examples/blob/master/jenkins-examples/pipeline-examples/declarative-examples/maven-example/Jenkinsfile]
+* The pipeline example
+```
+pipeline {
+    agent { label 'JDK-17' }
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JDK_17'
+    }
+    stages {
+        stage('vcs') {
+            steps {
+                git url: 'https://github.com/dummyrepos/spring-petclinic-1.git',
+                    branch: 'develop'
+            }
+        }
+        stage('build and package') {
+            steps {
+                 rtMavenDeployer (
+                    id: "SPC_DEPLOYER",
+                    serverId: "JFROG_CLOUD",
+                    releaseRepo: 'qt-app-libs-snapshot-local',
+                    snapshotRepo: 'qt-app-libs-snapshot-local'
+                )
+                rtMavenRun (
+                    tool: 'MAVEN_3.9', // Tool name from Jenkins configuration
+                    pom: 'pom.xml',
+                    goals: 'clean install',
+                    deployerId: "SPC_DEPLOYER"
+                    //,
+                    //buildName: "${JOB_NAME}",
+                    //buildNumber: "${BUILD_ID}"
+                )
+                rtPublishBuildInfo (
+                    serverId: "JFROG_CLOUD"
+                )
+            }
+        }
+        stage('reporting') {
+            steps {
+                junit testResults: '**/target/surefire-reports/TEST-*.xml'
+            }
+        }
+    }
+
+}
+```
+
+
+
+### Static Code Analysis
+
+* For static code analysis, let's use Sonar Cloud
+* For Configuration doc's
+
+  [ refer Here : https://docs.sonarcloud.io/advanced-setup/ci-based-analysis/jenkins-extension-for-sonarcloud/#:~:text=Configure%20SonarCloud%3A,created%20as%20a%20]
+* To create SonarQube Cloud account
+
+  [ Refer Here : https://www.sonarsource.com/products/sonarcloud/signup/]
+* Now let's create a SonarQube Static Code Analysis
+* For configuring and installing SonarQube
+
+  [ Refer Here : https://directdevops.blog/2019/01/05/sonarqube/]
+* The pipeline
+```
+pipeline {
+    agent any
+    options {
+        timeout(time: 30, unit: 'MINUTES')
+    }
+    triggers {
+        pollSCM('* * * * *')
+    }
+    tools {
+        jdk 'JDK_17_UBUNTU'
+        maven 'MAVEN_3.9'
+    }
+    stages {
+        stage('vcs') {
+            steps {
+                git url: 'https://github.com/dummyrepos/spring-petclinic-1.git',
+                    branch: 'develop'
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+
+                // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
+                withSonarQubeEnv('SONAR_CLOUD') {
+                // requires SonarQube Scanner for Maven 3.2+
+                    sh 'mvn clean package sonar:sonar -Dsonar.organization=khajaprojectsjuly23 -Dsonar.token=67d5cbb26a76f3a1c2c669a0d7be62e66722c488 -Dsonar.projectKey=springpetclinic'
+                }
+            }
+        }
+
+
+        stage('reporting') {
+            steps {
+                junit testResults: '**/target/surefire-reports/TEST-*.xml'
+            }
+        }
+    }
+
+}
+```
+
+
+
+
+
+
+[ NOTE: For different ecosystem 
+
+  [ Refer Here : https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/ecosystems?view=azure-devops] ]
