@@ -484,7 +484,10 @@ cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
 
 ### How to add MULTIPLE NODES to jenkins
 
-* Let's create 2 ubuntu VM's and let's make one vm the `jenkins-master`
+* Let's create 2 ubuntu VM's and let's make one VM as `jenkins-master`
+
+### Jenkins-master => Java-17 and Jenkins
+
 * On it install java-17,jenkins and configure jenkins and add the user to sudoers
 ```
 sudo apt update
@@ -492,7 +495,7 @@ sudo apt install openjdk-17-jdk -y
 java -version
 ```
 ##### NOTE
-=> To install jenkins we can use the following script
+=> To install jenkins we can use the following script also
 ```bash
 #!/bin/bash
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
@@ -513,17 +516,17 @@ su jenkins
 cd ~
 sudo apt update
 ```
-### Node 1 => JDK-17 and maven 3.9.4
+### Node-1 => JDK-17 and MAVEN-3.9.4
 
-* let's make other vm the node-1
-* On this node (we will be using existing credentials) we will 
+* Let's make other vm as node-1
+* On this node (we use existing credentials) we will 
 * Install java-17 
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
 ```
-* Install maven 3.9.4
+* Install MAVEN-3.9.4
 ```
 cd /tmp
 wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
@@ -535,7 +538,6 @@ exit
 # relogin
 mvn --version
 ```
-
   ![Alt text](shots/55.PNG)
 
 [ Note => Jenkins credentials
@@ -549,13 +551,13 @@ mvn --version
   Mail : jenkins-user@gmail.com ]
 
 * Now let's configure the jenkins-master node with label `JDK-17`
-* On Jenkins UI Navigate to 
+* On Jenkins UI, navigate to 
 
 => Manage Jenkins => Nodes and Clouds
 
   ![Alt text](shots/56.PNG)
 
-=> New node => name: node-1 , select permanent agent => create
+=> New node => name: node-1 , select Permanent agent => create
 
   ![Alt text](shots/57.PNG)
 
@@ -564,15 +566,15 @@ mvn --version
   ![Alt text](shots/58.PNG)
   ![Alt text](shots/59.PNG)
 
-=> host : node private_ip (both in same network) => credentials : select jenkins => select kind and id
+=> Host : private_ip (as both nodes in same network) => Credentials : select Jenkins => select Kind and ID
 
   ![Alt text](shots/60.PNG)
 
-=> Add description, Username => select Enetr directly => add ssh-private key (cat id_rsa) => Add
+=> add Description, Username => select Enter directly => add ssh-private key (cat id_rsa) => Add
 
   ![Alt text](shots/61.PNG)
 
-=> Add Host, credentials, Host key => Save
+=> Add Host, Credentials, Host key => Save
 
   ![Alt text](shots/62.PNG)
 
@@ -580,8 +582,7 @@ mvn --version
 
   ![Alt text](shots/63.PNG)
 
-
-#### Let's setup spring-petclinic to execute on node-1
+#### Let's setup Spring-PetClinic to execute on node-1
 
 * Configure spc-day build same as last session with one restriction in General section
 
@@ -589,7 +590,7 @@ mvn --version
 
   ![Alt text](shots/64.PNG)
 
-=> Select source code management => git : select new forked url, branch: main
+=> Select Source Code Management => Git : select new forked URL, BRANCH: main
 
   ![Alt text](shots/65.PNG)
 
@@ -597,11 +598,11 @@ mvn --version
 
   ![Alt text](shots/66.PNG)
 
-=> selecct Build Steps => Invoke top-level maven targets => Goals : package => Save
+=> select Build Steps => Invoke top-level maven targets => Goals : package => Save
 
   ![Alt text](shots/67.PNG)
 
-=> go to configure again => select when to run => Add label => Save
+=> go to Configure again => select When to run => add Label => Save
 
   ![Alt text](shots/68.PNG)
 
@@ -615,20 +616,21 @@ mvn --version
 
   ![Alt text](shots/87.PNG)
 
-* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to archive the artifacts
+* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to Archive the Artifacts
 
   ![Alt text](shots/88.PNG)
 
 #### Exercises
 
-* Create a jenkins master with t2.micro (ubuntu)
-* Create a node with any other os redhat/centos/amazon linux
-    * install jdk 17
-* Create a job which should run on the other node configure and display its ip address and environmental variables printenv
+* Create a jenkins-master with t2.micro (ubuntu)
+* Create a node with any other os redhat/centos/amazon-linux
+    * install jdk-17
+* Create a job which should run on the other node 
+* Configure and display it's ip_address and environmental variables `printenv`
 
-### Node 2 => JDK-8 and maven
+### Node-2 => JDK-8 and MAVEN
 
-* On the jenkins-master we would require jdk-17 and for the project game-of-life we would require jdk-8
+* On the jenkins-master, we would require jdk-17 and for the project, game-of-life, we would require jdk-8
 * On the node-2, let's create a new user called as devops and add to sudoers with `NOPASSWD`
 ```
 sudo adduser devops
@@ -679,7 +681,7 @@ mvn -version
   ![Alt text](shots/76.PNG)
   ![Alt text](shots/77.PNG)
 
-* Now let's try building game of life - Add JDK, MAVEN, Git and save
+* Now let's try building game of life - Add JDK, MAVEN, Git and Save
 
   ![Alt text](shots/78.PNG)
   ![Alt text](shots/79.PNG)
@@ -698,7 +700,7 @@ mvn -version
 
   ![Alt text](shots/84.PNG)
 
-* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to archive the artifacts
+* As a result of this project's build, we get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to Archive the Artifacts
 
   ![Alt text](shots/85.PNG)
 
@@ -706,22 +708,22 @@ mvn -version
 
   ![Alt text](shots/86.PNG)
 
-* Note: We have implemented the same for spring petclinic
+* Note: We have implemented the same for spring-petclinic
 
   ![Alt text](shots/87.PNG)
   ![Alt text](shots/88.PNG)
 
-* Note: The health of the builds is represented as weather in jenkins
-    * cloudy means builds are failing
-    * sunny means the builds are successful
+* Note: The health of the builds is represented as 'Weather' in jenkins
+    * Cloudy - builds are failing
+    * Sunny - the builds are successful
 
   ![Alt text](shots/89.PNG)
 
-### Node 3: Executing dotnet project on jenkins
+### Node-3: Executing dotnet project on jenkins
 
-* For agent we required jdk-17
+* For agent we require jdk-17
 * Create an ec2 instance (node-3)  with size 20 GB
-* install dotnet-7 sdk for running nop comerce
+* install dotnet-7 sdk for running nopcommerce
 * Installation instructions 
   [Refer Here : https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204]
 ```
@@ -731,7 +733,7 @@ dotnet --help
 ```
   ![Alt text](shots/90.PNG)
 
-* Configuring node-3 on dashboard
+* Configuring node-3 on Dashboard
 
   ![Alt text](shots/91.PNG)
   ![Alt text](shots/92.PNG)
@@ -741,28 +743,27 @@ dotnet --help
   ![Alt text](shots/93.PNG)
   ![Alt text](shots/94.PNG)
 
-* to build the dotnet project we need to restore nuget packages
+* To build the dotnet project we need to restore nuget packages
 ```
 cd /tmp/
 git clone https://github.com/Harika-SVL/nopCommerce.git
 cd nopCommerce
 git branch
-# dotnet restore <path of project or sln>
+## dotnet restore <path of project or sln>
 dotnet restore src/NopCommerce.sln
-# For night builds
-# dotnet build  -c "Release" <path of project or sln> 
+## dotnet build  -c "Release" <path of project or sln> 
 dotnet build -c Release src/NopCommerce.sln
-# For day builds
-# dotnet build  -c "Debug" <path of project or sln> 
+## For day builds
+## dotnet build  -c "Debug" <path of project or sln> 
 ```
-* Try to configure in jenkins
+* Try to Configure in jenkins
 * Create a new project
 
-=> New Item => Name : nopCommerce => Free Style Project => OK
+=> New Item => name : nopCommerce => Free-Style Project => OK
 
-=> General => Restrict : Label : DOTNET_7
+=> General => Restrict , Label : DOTNET_7
 
-=> Source code management => Git : URL 'https://github.com/Harika-SVL/nopCommerce.git', Branch : master
+=> Source Code Management => Git : URL 'https://github.com/Harika-SVL/nopCommerce.git', Branch : master
 
 => Build Trrigers => Poll SCM : Schedule '* * * * * '
 
@@ -784,21 +785,21 @@ dotnet build -c Release src/NopCommerce.sln
 
   ![Alt text](shots/96.PNG)
 
-=> New item => Project A => Freestyle Project => OK
+=> New item => Project A => Free-style Project => OK
 
-=> Description : This is Project A => Buils steps : Execute shell - echo "Project A", sleep 10s => Save
+=> Description : This is Project A => Buils steps : Execute shell : echo "Project A", sleep 10s => Save
 
   ![Alt text](shots/97.PNG)
 
 * To connect the projects with each other
 
-=> Project C => configure => Build Triggers => Build after other projects are build => Project B => save
+=> Project C => Configure => Build Triggers : Build after other projects are build : Project B => Save
 
   ![Alt text](shots/98.PNG)
 
-OR
+[ OR ]
 
-=> Project A => configure => Post-build Actions => Build other projects : Project B => Trigger only if build is stable => save
+=> Project A => Configure => Post-build Actions : Build other projects : Project B => Trigger only if build is stable => Save
 
   ![Alt text](shots/99.PNG)
 
@@ -814,8 +815,8 @@ OR
 
 ### Parameterized Builds
 
-* While building the jobs, sometimes we would like users to pass some information.This is called as parameters
-* Create a new view with `list view` option
+* While building the jobs, sometimes we would like users to pass some information.This is called as Parameters
+* Create a New view with `list view` option
 
   ![Alt text](shots/104.PNG)
 
@@ -823,17 +824,17 @@ OR
 
   ![Alt text](shots/106.PNG)
 
-* Now let's enable parameters for some jenkins(gameoflife) project/job
+* Now let's enable Parameters for some jenkins(gameoflife) project/job
 
   ![Alt text](shots/107.PNG)
   ![Alt text](shots/108.PNG)
 
-* Create some parameters and use it in the build steps
+* Create some Parameters and use it in the Build steps
 
   ![Alt text](shots/109.PNG)
   ![Alt text](shots/110.PNG)
 
-* Save and build the goal
+* Save and build the Goal
 
   ![Alt text](shots/111.PNG)
   ![Alt text](shots/112.PNG)
@@ -842,18 +843,19 @@ OR
 
 ### Jenkins Environmental variables
 
-* Jenkins injects environmental variables into every job in addition to environmental variables present on node
-* To view environmental variables, select any project and navigate to build steps => execute shell
+* Jenkins injects environmental variables into every job, in addition to environmental variables present on the node
+* To view environmental variables, select any project and navigate to Build steps => Execute shell
 
   ![Alt text](shots/115.PNG)
   ![Alt text](shots/116.PNG)
 
 * Doc's on environmental variables
-    [Refer Here : https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables]
+  
+  [Refer Here : https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables]
 
-* Sample using environmetal variables (game of life on node-2 to print environmental variables)
+* Sample using environmental variables (game of life on node-2 to print environmental variables)
 
-=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => General : Jdk-JAVA_8, Restrict-JDK_8 => Build steps : Execute shell-printenv => Save => Build Now
+=> Create New Project 'Environmentalvariablesdemo' in 'Experimental' view => General : JDK : JAVA_8, Restrict : JDK_8 => Build steps : Execute shell : printenv => Save => Build Now
 
 * Result - Console Output
 
@@ -861,7 +863,7 @@ OR
 
 * Sample using Environmetal variables (Environmentalvariablesdemo)
 
-=> Create new project 'Environmentalvariablesdemo' in 'Experimental' view => Build steps : Execute shell- echo "Hello, this project URL is ${JOB_DISPLAY_URL} and the BUILD-ID is ${BUILD_ID}", echo "Hello, this project is running in FOLDER ${WORKSPACE} on NODE ${NODE_NAME}" => Save => Build Now
+=> Create New Project 'Environmentalvariablesdemo' in 'Experimental' view => Build steps : Execute shell :  echo "Hello, this project URL is ${JOB_DISPLAY_URL} and the BUILD-ID is ${BUILD_ID}", echo "Hello, this project is running in FOLDER ${WORKSPACE} on NODE ${NODE_NAME}" => Save => Build Now
 
   ![Alt text](shots/118.PNG)
 
@@ -869,22 +871,26 @@ OR
 
   ![Alt text](shots/119.PNG)
   
-### How to take backup of jenkins (backup of /var/lib/jenkins folder)
+### How to take backup of jenkins...? (backup of /var/lib/jenkins folder)
 
-* One option for backup is configuration files
+* One option for backup is 'Configuration Files'
 
-=> Manage Jenkins => plugins => Available plugins => search-backup => periodic backup
+=> Manage Jenkins => Plugins => Available plugins => search : backup => Periodic Backup Manager
 
   ![Alt text](shots/120.PNG)
   ![Alt text](shots/121.PNG)
 
 * To restart jenkins (only if you are admin)
 
-=> refresh the page => relogin => In the url : `http://18.60.61.74:8080/restart`
+=> refresh the page => relogin 
+
+[ OR ]
+
+=> In the Url : `http://18.60.61.74:8080/restart`
 
 * Configuring the frequency for backup
 
-=> Manage Jenkins => Periodic backup manager => Configure
+=> Manage Jenkins => Periodic Backup Manager => Configure
 
   ![Alt text](shots/122.PNG)
 
@@ -898,20 +904,20 @@ OR
 
   ![Alt text](shots/126.PNG)
 
-  #### Which plugin should be installed to monitor jenkins ?
+  #### Which plugin should be installed to monitor jenkins...?
 
   [Refer Here : https://plugins.jenkins.io/monitoring/]
 
 * Monitoring option
 
-=> Dashboard => Manage Jenkins => plugins => Available plugins => search : monitoring => select Monitoring => Install without restart => Restart jenkins when no jobs running
+=> Dashboard => Manage Jenkins => Plugins => Available plugins => search : monitoring => select :  Monitoring => select : Install without restart => select : Restart jenkins when no jobs running
 
   ![Alt text](shots/128.PNG)
 
-* Jenkins Plugins can be installed from
+* Jenkins Plugins can be installed from :
     * Market place
     * Uploading the plugin
-* Jenkins plugin has two extensions
+* Jenkins plugin has two extensions :
     * jpi (Jenkins plugin interface)
     * hpi (hudson plugin interface) (old)
 
@@ -932,7 +938,9 @@ OR
 
 * This is expressing CI/CD pipleine in terms of some code/expressions/statements
 * This is part of version control i.e. each change done to the steps will have history
-* Official docs [Refer Here : https://www.jenkins.io/doc/book/pipeline/pipeline-as-code/]
+* Official docs 
+  
+  [Refer Here : https://www.jenkins.io/doc/book/pipeline/pipeline-as-code/]
 
 * Azure DevOps
 ```
@@ -971,41 +979,41 @@ node("JDK-11-MVN") {
 
 ### Pipeline as Code in Jenkins
 
-* Jenkins has two flavours
-    * Scripted Pipeline
+* Jenkins has two flavours : 
+    1. Scripted Pipeline
         * Developed where you can execute groovy language directly
-    * Declartive Pipeline
-        * Jenkins has created a DSL (Domain specific Language) which is mostly inspired from traditional jenkins
+    2. Declartive Pipeline
+        * Jenkins has created a DSL (Domain Specific Language) which is mostly inspired from traditional jenkins
 
 #### Creating a Scripted Pipeline
 
-* Create a game of life project (Start node-2 as it has game of life)
+* Create a game-of-life project (Start node-2 as it has game-of-life)
 
-=> New view => Scripted => New item => gol-scripted-pipeline => pipeline => OK
+=> New view => name : Scripted => New item => name : gol-scripted-pipeline => Pipeline => OK
 
   ![Alt text](shots/129.PNG)
 
-* Pipeline can be written directly or can be chosen from source code management
+* Pipeline can be written directly or can be chosen from Source Code Management
 
 => Pipeline
 
   ![Alt text](shots/130.PNG)
   ![Alt text](shots/131.PNG)
 
-* Open pipeline syntax
+* Open Pipeline Syntax
 
-=> Pipeline syntax
+=> Pipeline Syntax
 
   ![Alt text](shots/132.PNG)
 
-=> Generate the syntax selecting the node allocation and copy into the script
+=> Generate the syntax selecting the `Node:allocation` and copy into the script
 
   ![Alt text](shots/133.PNG)
   ![Alt text](shots/134.PNG)
 
 * Creating the structure 
 
-=> Repeat the above step of pipeline syntax for every possible manual step and complete the pipeline(Script)
+=> Repeat the above steps of pipeline syntax for every possible manual step and complete the pipeline(Script)
 
   ![Alt text](shots/135.PNG)
 
@@ -1030,7 +1038,7 @@ node('JDK_8') {
 
 * Create a spring-petclinic project (Start node-1 as it has spring-petclinic)
 
-=> New view => Declarative => New item => spc-declarative-pipeline => pipeline => OK
+=> New view => name : Declarative => New item => spc-declarative-pipeline => Pipeline => OK
 
   ![Alt text](shots/136.PNG)
   ![Alt text](shots/137.PNG)
@@ -1058,18 +1066,21 @@ pipeline {
 
 * Generally we create a file called as `Jenkinsfile`
 * Basic structure: 
+    
     [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#scripted-pipeline]
 
   ![Alt text](shots/138.PNG)
 
 * For all the steps 
+    
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
-* In scripted and declarative pipelines when we install plugins we get extra steps.
+* In Scripted and Declarative pipelines when we install plugins we get extra steps.
 
 ### Declarative Pipelines
 
 * Here we create a file called as `Jenkinsfile`
-* Basic structure: official docs 
+* Basic structure: official doc's 
+    
     [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline]
 
   ![Alt text](shots/139.PNG)
@@ -1077,6 +1088,7 @@ pipeline {
 ### Let's create a declarative pipeline for Spring-Pet-Clinic by exploring most options 
 
 * For the repository
+    
     [Refer Here : https://github.com/Harika-SVL/spring-petclinic.git]
 
   ![Alt text](shots/140.PNG)
@@ -1119,9 +1131,11 @@ pipeline {
 }
 ```
 * Now using pipeline steps reference, let's do the build
-    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
+    
+  [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
 * git 
-    [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
+    
+  [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
 * and also other steps 
 ```
 pipeline{
@@ -1156,7 +1170,7 @@ pipeline{
     }
 }
 ```
-    [Refer Here : https://github.com/dummyrepos/spring-petclinic-1/commit/303bcbbf79ca50d4e982dbf0fe017cef5af85101] 
+  [Refer Here : https://github.com/dummyrepos/spring-petclinic-1/commit/303bcbbf79ca50d4e982dbf0fe017cef5af85101] 
   
 * Now let's push the code to repository
 
@@ -1164,7 +1178,7 @@ pipeline{
 
 * Create a project and build now
 
-=> Declarative view => configure => pipeline 
+=> Declarative view => configure => Pipeline 
 
   ![Alt text](shots/143.PNG)
   ![Alt text](shots/144.PNG)
@@ -1178,6 +1192,7 @@ pipeline{
 #### Note:
 
 * Create a free account in mailtrap 
+
     [Refer Here : https://mailtrap.io/]
 * Exercise: Create a declarative pipeline
     * for spring-petclinic
@@ -1186,7 +1201,8 @@ pipeline{
 ### Let's create a declarative pipeline for Game-of-Life  
 
 * For the repository
-    [Refer Here : https://github.com/Harika-SVL/game-of-life.git]
+  
+  [Refer Here : https://github.com/Harika-SVL/game-of-life.git]
 
   ![Alt text](shots/146.PNG)
 
@@ -1224,8 +1240,10 @@ pipeline {
 }
 ```
 * Now using pipeline steps reference, let's do the build
+    
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
 * git 
+    
     [Refer Here : https://www.jenkins.io/doc/pipeline/steps/git/#git-git]
 * and also other steps 
 ```
@@ -1262,25 +1280,25 @@ pipeline {
     }
 }
 ```
-    [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/fb5bc9db8f2c376f2585703f84958e3363665537] 
+  [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/fb5bc9db8f2c376f2585703f84958e3363665537] 
   
 * Let's use `master` branch
 * Now let's push the code to repository
 
   ![Alt text](shots/147.PNG)
 
-* Create a project 'gameoflife-declarative'and build now
+* Create a project 'gameoflife-declarative' and Build Now
 
-=> Declarative view => New Item => name : gameoflife-declarative => pipeline => OK
+=> Declarative view => New Item => name : gameoflife-declarative => Pipeline => OK
 
   ![Alt text](shots/148.PNG)
 
-=> Pipeline => Pipeline script from SCM => Git => URL : `https://github.com/Harika-SVL/game-of-life.git` => branch : `master` => path : `Jenkinsfile` => save
+=> Pipeline => Pipeline script from SCM => Git => URL : https://github.com/Harika-SVL/game-of-life.git => Branch : master => Path : Jenkinsfile => Save
 
   ![Alt text](shots/149.PNG)
   ![Alt text](shots/150.PNG)
 
-* Build result
+* Build and Result
 
 => Build Now
 
@@ -1316,9 +1334,9 @@ pipeline {
   [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
 * To check for the `SUCCESS` or `FAILURE` of the project we see the post section
 
-* Let's send an email when the
-    * project failed : `Your project is defective`
-    * project success : `Your project is effective`
+* Let's send an email, when the project,
+    * Fail : `Your project is defective`
+    * Success : `Your project is effective`
 * Into the pipeline
 ```
 pipeline {
@@ -1368,13 +1386,13 @@ pipeline {
 ```
   [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/e6b7d116df7f1dec1a5b6335a563e74def983185]
 
-* Here we just add the pipeline to the script from replay option
+* Here we just add the pipeline to the script from `Replay` option
 
   ![Alt text](shots/158.PNG)
 
   ![Alt text](shots/161.PNG)
 
-* For message with dynamic information
+* For message with `Dynamic information`
 ```
 pipeline {
     agent { label 'JDK_8'}
@@ -1424,7 +1442,7 @@ pipeline {
   ![Alt text](shots/162.PNG)
   ![Alt text](shots/163.PNG)
 
-=> Use double quotes instead of single quotes (Let's replay to change)
+=> Use double quotes("") instead of single quotes('') (Let's `Replay to change`)
 ```
 pipeline {
     agent { label 'JDK_8'}
@@ -1476,11 +1494,11 @@ pipeline {
   
   [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
 
-* I want to send microsoft teams/slack notification how to configure [ Google ]
+* I want to send message on `Microsoft Teams/Slack` notification how to configure [ Google search ]
 
 ### Parameters from Jenkinsfile
 
-* For docs
+* For doc's
     
     [Refer Here : https://www.jenkins.io/doc/book/pipeline/syntax/#parameters]
 ```
@@ -1559,16 +1577,17 @@ pipeline {
 
   * Add `Role-based Strategy` plugin 
 
-=> Dashboard => Manage jenkins => Plugins => search : Role => Install with restart => Restart when no jobs running
+=> Dashboard => Manage jenkins => Plugins => search : Role-Based Strategy => Install with restart => Restart when no jobs running
 
   ![Alt text](shots/172.PNG)
 
 * Add Role-based strategy
 
-=> Dashboard => Manage jenkins => Security => select Role-based strategy => Save
+=> Dashboard => Manage jenkins => Security => select : Role-based strategy => Save
+
 * Add a user to give permissions
 
-=> Manage Jenkins => Manage and assign roles => manage roles => add developer user, qa user => Add
+=> Manage Jenkins => Manage and Assign Roles => Manage Roles => add `developer` user, `qa` user => Add
 
   ![Alt text](shots/173.PNG)
   ![Alt text](shots/174.PNG)
@@ -1577,34 +1596,36 @@ pipeline {
 
   ![Alt text](shots/175.PNG)
 
-* Restart the jenkins page `http://18.61.90.194:8080/restart` and Login as dummy user
+* Restart the jenkins page `http://18.61.90.194:8080/restart` and Login as `dummy` user
 
   ![Alt text](shots/176.PNG)
 
 ### Maven – Remote Repo
 
-* Maven has 3 repositories
-    * local repo (~/.m2)
-    * Central repo: This is public maven repository
-    * Remote Repo: This exists in organization controlled environment
+* Maven has 3 repositories : 
+    * Local Repo : (~/.m2)
+    * Central Repo : This is public maven repository
+    * Remote Repo : This exists in organization controlled environment
 
-
+  ![Alt text](shots/177.PNG)
 
 * Workflows:
-    * After every night build push the artifacts to remote repo
-    * when resolving dependencies use remote repository
+    * After every night build, push the artifacts to remote repo
+    * When resolving dependencies, use remote repository
 
 ### Artifact Repository
 
-* There are two popular options for java
+* There are two popular options for java : 
     * jfrog/artifactory
     * Nexus
 * Azure DevOps has Azure Artifacts
-* In this series we will be using jfrog/artifactory for its multi language repository support.
-* For 14 day free trail
-    [Refer Here : https://jfrog.com/start-free/]
+* In this series we will be using jfrog/artifactory for it's multi language repository support
+* For 14-day free trail
+  
+  [Refer Here : https://jfrog.com/start-free/]
 
 
 
 * For configuring jenkins with artifactory 
-    [Refer Here : https://directdevops.blog/2019/10/17/artifactory-configuration/]
+  
+  [Refer Here : https://directdevops.blog/2019/10/17/artifactory-configuration/]
