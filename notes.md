@@ -1624,8 +1624,73 @@ pipeline {
   
   [Refer Here : https://jfrog.com/start-free/]
 
+* Create an account(14-day trail) and proceed
 
+  ![Alt text](shots/178.PNG)
+
+* Crete a new repo for maven
+
+  ![Alt text](shots/179.PNG)
+
+=> URL of repo : `https:///artifactory/api/maven/qt-libs-snapshot`
+
+=> Setup maven client
+
+  ![Alt text](shots/180.PNG)
+
+=> Token generated : `cmVmdGtuOjAxOjE3MjM1NjQyNjc6T09kRTZkZFpNT2tkNDZrYlJMdlp1VjBDQnRU`
+
+=> Go to .m2 folder ( C:\Users\Harika\.m2) => Create `settings.xml` 
+
+  ![Alt text](shots/181.PNG)
+
+=> Configuring settings.xml => Generate settings
+
+  ![Alt text](shots/182.PNG)
+  ![Alt text](shots/183.PNG)
+
+=> Removing settings.xml
+
+  ![Alt text](shots/184.PNG)
+
+[ NOTE : Instead using local repo configuring like above we try to configure over jenkins as below ]
 
 * For configuring jenkins with artifactory 
   
   [Refer Here : https://directdevops.blog/2019/10/17/artifactory-configuration/]
+
+=> Manage Jenkins => Plugins => Available plugins => artifactory => select : Artifactory, Jfrog => Install without restart =>  Restart when no jobs running
+
+  ![Alt text](shots/185.PNG)
+
+=> Relogin => Dashboard => Manage Jenkins => System => JFrog plugin configuration => Add JFrog platform instance
+
+  ![Alt text](shots/186.PNG)
+
+=> Leave
+
+* To integrate jenkins with JFrog
+
+=> Dashboard => Manage Jenkins => Credentials => system => Global credentials => Add credentials
+
+  ![Alt text](shots/187.PNG)
+  ![Alt text](shots/188.PNG)
+
+[ NOTE : To generate new token if required
+       => Generate an Identity Token]
+
+=> Dashboard => Manage Jenkins => System 
+
+  ![Alt text](shots/189.PNG)
+
+* For setting Artifactory
+* Create a new user
+
+  ![Alt text](shots/190.PNG)
+  ![Alt text](shots/191.PNG)
+  ![Alt text](shots/192.PNG)
+
+=> Dashboard => Manage Jenkins => System => JFrog => Use the Credentials Plugin => Add JFrog Platform Instances
+
+  ![Alt text](shots/193.PNG)
+  ![Alt text](shots/194.PNG)
