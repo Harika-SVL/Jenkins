@@ -1540,15 +1540,46 @@ pipeline {
 
 ### User Administration in Jenkins (user specific permissions)
 
-* Authentication
+* Authentication (where for given permission)
     * Jenkins own user database
     * LDAP
     * Unix User/Group database
     * Redirect to Servlet
-* Authorization:
+* Authorization (where it is allowed/not allowed)
     * Matrix
-    * Role Based
-* For screenshots refer to class room video
+    * Role-Based
+
+  ![Alt text](shots/167.PNG)
+  ![Alt text](shots/168.PNG)
+
+* Creating users and adding permissions as above
+
+  ![Alt text](shots/169.PNG)
+  ![Alt text](shots/170.PNG)
+
+  * Add `Role-based Strategy` plugin 
+
+=> Dashboard => Manage jenkins => Plugins => search : Role => Install with restart => Restart when no jobs running
+
+  ![Alt text](shots/172.PNG)
+
+* Add Role-based strategy
+
+=> Dashboard => Manage jenkins => Security => select Role-based strategy => Save
+* Add a user to give permissions
+
+=> Manage Jenkins => Manage and assign roles => manage roles => add developer user, qa user => Add
+
+  ![Alt text](shots/173.PNG)
+  ![Alt text](shots/174.PNG)
+
+* Assign the role to a user by creating one
+
+  ![Alt text](shots/175.PNG)
+
+* Restart the jenkins page `http://18.61.90.194:8080/restart` and Login as dummy user
+
+  ![Alt text](shots/176.PNG)
 
 ### Maven – Remote Repo
 
