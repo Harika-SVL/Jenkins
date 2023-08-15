@@ -1737,14 +1737,26 @@ pipeline {
   ![Alt text](shots/203.PNG)
   ![Alt text](shots/204.PNG)
 
+* Creating a maven project and using jfrog
 
+=> New Item => name : spc-maven-jfrog => Maven Project => OK
 
+=> Git : select URL : https://github.com/Harika-SVL/spring-petclinic.git => Branch : main
 
+  ![Alt text](shots/205.PNG)
 
+=> Build => Goals and options : package
 
+  ![Alt text](shots/206.PNG)
 
+=> Post-build Actions => Deploy artifacts to Artifactory => Refresh Repositories 
 
+  ![Alt text](shots/208.PNG)
 
+=> Build Now
+
+  ![Alt text](shots/209.PNG)
+  ![Alt text](shots/210.PNG)
 
 * For official doc's of Jfrog artifactory pipeline
 
@@ -1756,9 +1768,16 @@ pipeline {
 
   [ Refer Here : https://github.com/jfrog/project-examples/blob/master/jenkins-examples/pipeline-examples/declarative-examples/maven-example/Jenkinsfile]
 * The pipeline example
+* Create a new project
+
+=> Dashboard => New Item => name : spc_pipeline => Pipeline => OK
+
+=> Pipeline => Script
+
+  ![Alt text](shots/211.PNG)
 ```
 pipeline {
-    agent { label 'JDK-17' }
+    agent any
     options {
         timeout(time: 30, unit: 'MINUTES')
     }
@@ -1771,7 +1790,7 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/dummyrepos/spring-petclinic-1.git',
+                git url: 'https://github.com/Harika-SVL/spring-petclinic.git',
                     branch: 'develop'
             }
         }
@@ -1806,6 +1825,7 @@ pipeline {
 
 }
 ```
+=> Save => Build Now
 
 
 
