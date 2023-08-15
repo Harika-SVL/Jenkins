@@ -1934,4 +1934,67 @@ docker image build -t nopCommerce:latest .
 #docker image push shaikkhajaibrahim/nopCommerce:latest
 ```
   * Write Jenkinsfile for the above steps
-  
+
+### Creating kubernetes cluster from terraform
+
+* For the changes
+
+    [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/4d26cd8e07507075946a99e49097e0f8407fe051]
+* Workflow
+
+
+
+
+
+* For the k8s manifest
+
+    [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/62fdd0c1e1493566a7f94b1daa1f6ad90c422fa2]
+* Softwares
+    * Terraform
+    * azure cli
+    * kubectl
+* Manual deployment steps
+```
+cd deploy
+terraform init
+terraform apply -auto-approve
+az aks get-credentials --resource-group rg-national-cod --name cluster-star-goat
+kubectl apply -f ../k8s/nop-deploy.yaml
+```
+* For changes in jenkins file
+
+    [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/1e31820e3b86fecd18754543f8ef78f9027e237c]
+
+### Git Alias
+
+  [Refer here : https://www.atlassian.com/git/tutorials/git-alias]
+
+### Git Hooks
+
+  [Refer here : https://directdevops.blog/?s=hooks]
+
+
+
+
+* Navigate to hooks section
+
+  [Refer here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023/]
+* For popular hooks
+
+  [Refer here : https://github.com/aitemr/awesome-git-hooks]
+* Since for hosted git repo’s like GitHub, GitLab we have no access to hooks folder, they give us webhooks 
+
+
+
+
+  [Refer here : https://www.blazemeter.com/blog/how-to-integrate-your-github-repository-to-your-jenkins-project]
+* for github actions approach instead of webhookF
+
+  [Refer here : https://mickeygousset.com/blog/trigger-jenkins-pipeline-with-github-actions/]
+
+### Git stash
+
+* For stash doc's
+
+  [Refer here : https://www.atlassian.com/git/tutorials/saving-changes/git-stash]
+
