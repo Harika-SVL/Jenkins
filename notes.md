@@ -1691,17 +1691,51 @@ pipeline {
 ### Artifactory Jenkins Integration 
 
 * Create an access token after Jfrog account creation
+
+=> open jfrog.io [ URL : https://haarisvl95.jfrog.io/ ]=> Artifactory (on left) => Repositories => Create a Repository => select : maven => name : qt-app => Create
+
+  ![Alt text](shots/195.PNG)
+
+  URL : https://haarisvl95.jfrog.io/artifactory/api/maven/qt-app-libs-snapshot
+
+=> I'll do it later
+
+* Creating a new group
+
+=> New Group (in right dropdown) => Groups => New Group
+
+  ![Alt text](shots/196.PNG)
+
+* Add users
+
+  ![Alt text](shots/197.PNG)
+
+* Generating Token
+
+=> Access Token => Generate Token
+
+  ![Alt text](shots/198.PNG)
+
+  Token : eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiIwWE93Y0FkWDIybDJ6Z1l2T0FLd3hRVEtxX2l6NnVCSnJuZHlPaHFUNUs0In0.eyJzdWIiOiJqZmFjQDAxaDdteHRhYmRwejk4MDNmZWZobncwcWJ3L3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaDdteHRhYmRwejk4MDNmZWZobncwcWJ3IiwiZXhwIjoxNjk0Njc4MTMxLCJpYXQiOjE2OTIwODYxMzEsImp0aSI6IjcyMmNiY2Q5LTJiNDMtNDAwOS04ZjFhLTE4OTA1NDEzMzBlYSJ9.uy0_MSd2sTgDlhBVWa19At83G0NyoAsx9tlAteRRjpagL0Cw085ECKdggcFOk7Nv3I7sELgxyrGFGkpEFn9Jdy30fAcW4PL1GpakEzQ2NSYlrla4zYoorHKi5JHwZb42vI4cY-qBh076GEqjA9ysDxDxwcgu4pxBmTAcnzYke27RWwqgjmIw-ebcuZqvsB3hfo4RL-QkqDqD13Rv4K-3rBXS5g5ASBiatq3oGz1znlCJjgv675A6-qEcnHxLUdTbH294SNRA37ycXWe2qso_uMNgjKnB4-tUxz5L3KCKZRrwIJrdSU3hiZTQFF_hs0o0YUkW4PtDAc_mqlj05iPnRg
+
 * Install artifactory plugin in jenkins
 
+=> Install plugin and restart
 
+  ![Alt text](shots/199.PNG)
 
-=> Manage Jenkins => Credentials => create a credential with Secret Text
+=> Manage Jenkins => Credentials => System => Global Credentials => Create credentials 
 
+  ![Alt text](shots/200.PNG)
+  ![Alt text](shots/201.PNG)
 
-
-
+* Configuring system
 
 => Manage Jenkins => System => Jfrog
+
+  ![Alt text](shots/202.PNG)
+  ![Alt text](shots/203.PNG)
+  ![Alt text](shots/204.PNG)
 
 
 
