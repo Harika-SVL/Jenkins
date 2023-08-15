@@ -1690,12 +1690,12 @@ pipeline {
 
 ### Artifactory Jenkins Integration 
 
-* Create an access token after frog account creation
+* Create an access token after Jfrog account creation
 * Install artifactory plugin in jenkins
 
 
 
-=> Manage Jenkins => Credentials => create a credential with secret text
+=> Manage Jenkins => Credentials => create a credential with Secret Text
 
 
 
@@ -1712,13 +1712,13 @@ pipeline {
 
 
 
-* For official doc's of jfrog artifactory pipeline
+* For official doc's of Jfrog artifactory pipeline
 
   [ Refer here : https://jfrog.com/help/r/jfrog-integrations-documentation/jenkins-artifactory-plug-in]
-* For samples of jfrog jenkins pipelines
+* For samples of Jfrog jenkins pipelines
 
   [ Refer Here : https://github.com/jfrog/project-examples/tree/master/jenkins-examples/pipeline-examples/declarative-examples]
-* For specific jenkinsfile
+* For specific Jenkinsfile
 
   [ Refer Here : https://github.com/jfrog/project-examples/blob/master/jenkins-examples/pipeline-examples/declarative-examples/maven-example/Jenkinsfile]
 * The pipeline example
@@ -1777,7 +1777,7 @@ pipeline {
 
 ### Static Code Analysis
 
-* For static code analysis, let's use Sonar Cloud
+* For this, let's use Sonar Cloud
 * For Configuration doc's
 
   [ refer Here : https://docs.sonarcloud.io/advanced-setup/ci-based-analysis/jenkins-extension-for-sonarcloud/#:~:text=Configure%20SonarCloud%3A,created%20as%20a%20]
@@ -1839,3 +1839,43 @@ pipeline {
 [ NOTE: For different ecosystem 
 
   [ Refer Here : https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/ecosystems?view=azure-devops] ]
+
+### Branching Strategy
+
+* Git Flow: 
+    
+  [Refer Here : https://directdevops.blog/2019/01/04/best-branching-strategy-git-flow/]
+* Also refer the following branching strategy
+    * Gitlab
+    * GitHub
+
+### Pull-request
+
+* Consider this original repository 
+
+  [Refer Here : https://github.com/GitPracticeRepo/prdemojuly23]
+
+### Workshop – Project
+
+* Project 
+
+  [Refer Here : https://github.com/nopSolutions/nopCommerce]
+* We will create a pull request based workflow
+
+
+
+* Release Branch (Night build)
+  * Docker/Container based workflow (DevSecOps)
+    * Security Scans
+      * SCA
+      * SAST
+      * DAST
+    * From terraform
+      * Kubernetes cluster
+      * Deploy application
+  * VM based Workflow
+    * From Terraform
+      * VM
+      * Database
+
+[Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023-2/] and [Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023/] before tomorrow’s session
