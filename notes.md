@@ -1879,3 +1879,59 @@ pipeline {
       * Database
 
 [Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023-2/] and [Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023/] before tomorrow’s session
+
+## CI/CD Pipeline Based on Jenkins – Workshop
+
+### Virtual Machine or Cloud Based Deployment
+
+* We will be building a CI/CD Pipeline of a .net platform based application
+
+### Steps
+
+  1. Jenkins Master and Node setup
+      * Node:
+         * os: ubuntu
+         * software:
+            * openjdk17 (jenkins)
+            * .net 7 sdk
+            * git
+            * zip
+  2. Build steps:
+```
+git clone https://github.com/CICDProjects/nopCommerceJuly23.git
+dotnet restore src/NopCommerce.sln
+dotnet build -c Release src/NopCommerce.sln
+dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj -o publish
+mkdir publish/bin publish/logs
+zip -r nopCommerce.zip publish
+```
+  1. Now create a Jenkins file, in such a way that when a commit happens on develop branch the build creates a nopCommmerce zip file.
+  2. solution for the jenkins file
+     
+  [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/62fdd0c1e1493566a7f94b1daa1f6ad90c422fa2]
+
+### Container Based Deployment
+
+### Steps
+
+  1. Jenkins Master and Node setup
+          * Node:
+                * os: ubuntu
+                * software:
+                      * Docker
+                      * steps:
+                          * curl -fsSL https://get.docker.com -o install-docker.sh
+                          * sudo sh install-docker.sh
+                          * sudo usermod -aG docker jenkins
+                            [NOTE: jenkins represents the user on the node]
+                          * restart jenkins server
+  2. Build steps
+```
+git clone https://github.com/CICDProjects/nopCommerceJuly23.git
+# replace latest with Git Commit id or build id
+docker image build -t nopCommerce:latest .
+#docker image tag nopCommmerce:latest shaikkhajaibrahim/nopCommerce:latest
+#docker image push shaikkhajaibrahim/nopCommerce:latest
+```
+  * Write Jenkinsfile for the above steps
+  
