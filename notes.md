@@ -1,8 +1,37 @@
+## CI/CD Workflows
+
+* There are 3 major workflow’s in which most of the projects fit in
+  * Virtual/Physical Machine Deployment
+  * Infra Provisioning and Deployment
+  * Containerized Deployment
+
+* Application Deployment Options: Applications are deployed on
+  * Virtual Machines/Physical Machines:
+    * OnPrem
+    * Cloud
+  * Containers:
+    * Kubernetes (OnPrem/Cloud)
+  * Cloud Native Applications:
+    * PaaS (Azure App Service/ AWS Elastic BeanStalk)
+    * Faas (Azure Functions/AWS lambda)
+
+* Activities
+
+![Alt text](shots/212.PNG)
+
+* Deployment
+
+![Alt text](shots/213.PNG)
+
+* Order of Execution
+
+![Alt text](shots/214.PNG)
+
 ### Install-JENKINS
 
-* [Refer Here : https://www.jenkins.io/doc/book/installing/linux/] for installing jenkins on linux
+* [Refer here : https://www.jenkins.io/doc/book/installing/linux/] for installing Jenkins on Linux
 * Installing on Ubuntu-steps: 
-    [Refer Here : https://www.jenkins.io/doc/book/installing/linux/#debianubuntu]
+    [Refer here : https://www.jenkins.io/doc/book/installing/linux/#debianubuntu]
 ```
 sudo apt update 
 sudo apt install openjdk-17-jdk -y
