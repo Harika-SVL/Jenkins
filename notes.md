@@ -290,7 +290,7 @@ sudo vi /etc/environment
 # add '/usr/share/maven/apache-maven-3.9.6/bin'
 exit
 # relogin into the machine
-mvn --version
+mvn -version
 ```
 #### Building SPRING-PETCLINIC
 ```
@@ -302,7 +302,7 @@ mvn package
 
 * ARTIFACT 
 
-=> For generating artifacts we use build tools like msbuild, maven/gradle
+=> For generating artifacts we use build tools like ms-build, maven/gradle
 
 => These are referenced in a pipeline stage for automated deployment to the target environment
 
