@@ -35,8 +35,11 @@
 ```
 sudo apt update 
 sudo apt install openjdk-17-jdk -y
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update
 sudo apt-get install jenkins -y
 ```
@@ -72,6 +75,8 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 #### CRONJOB In Linux - CRONTAB (periodic tasks on steroids)
   [Refer Here : https://crontab.guru/]
 
+![Alt text](shots/215.PNG)
+
 * `CRON` is a Linux-based utility used to schedule scripts or programs
 * The `CRONTAB` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for `CRON TABLE`, because it uses the job scheduler cron to execute tasks
 
@@ -95,7 +100,7 @@ SYNTAX : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 
 #### What happens when we install jenkins..?
 
-* When we install jenkins we will have a default user created called as `JENKINS`
+* When we install jenkins we will have a default user created called as _**JENKINS**_
 * From jenkins we can perform anything which jenkins user performs
 
 ![Alt text](shots/10.PNG)
@@ -107,13 +112,13 @@ SYNTAX : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 
 #### PATH variable 'echo $PATH'
 
-  * To find path in linux 'whereis <needed-name>'
+  * To find path in linux `whereis <needed-name>`
 
 #### Environment Variable
 
   * Every process in the system have their own ID and CPU, here Environmental variable stays common for all the processes in a system
-  * System environmental variable(available to all the users present in a system) 'sudo vi /etc/environment'
-  * User environmental variable (available only to the specific user) 'home/bashrc'
+  * System environmental variable(available to all the users present in a system) `sudo vi /etc/environment`
+  * User environmental variable (available only to the specific user) `home/bashrc`
 
 #### NOTE:
       
@@ -188,15 +193,15 @@ java -version
 ```
 ![Alt text](shots/18.PNG)
 
-* Let's try installing MAVEN 3.9.3 
+* Let's try installing MAVEN 3.9.6 
 
     [Refer Here: https://maven.apache.org/download.cgi]
 ```
 cd /tmp/
-wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
 sudo mkdir /usr/share/maven
-sudo tar -xvzf apache-maven-3.9.3-bin.tar.gz -C /usr/share/maven
-# add `/usr/share/maven/apache-maven-3.9.3/bin` to the PATH variable
+sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
+# add `/usr/share/maven/apache-maven-3.9.6/bin` to the PATH variable
 # add to `~/.bashrc` or `/etc/environment`
 cd ~
 sudo vi /etc/environment
@@ -276,12 +281,12 @@ java -version
 #### Installing MAVEN
 ```
 cd /tmp/
-wget https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
 sudo mkdir /usr/share/maven
-sudo tar -xvzf apache-maven-3.9.3-bin.tar.gz -C /usr/share/maven
+sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
 cd ~
 sudo vi /etc/environment
-# add '/usr/share/maven/apache-maven-3.9.3/bin'
+# add '/usr/share/maven/apache-maven-3.9.6/bin'
 exit
 # relogin into the machine
 mvn --version
