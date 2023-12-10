@@ -351,9 +351,10 @@ mvn package
 
       ![Alt text](shots/26.PNG)
 
-    * Add jenkins to sudoers   WORKSPACE : `/var/lib/jenkins`
+    * Add jenkins to sudoers `sudo visudo`  WORKSPACE : `/var/lib/jenkins`
 
       ![Alt text](shots/27.PNG)
+      ![Alt text](shots/28.PNG)
 
     * Install maven as a root-jenkins user
 
