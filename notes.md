@@ -418,12 +418,12 @@ mvn package
 * In Jenkins we can have multiple versions of java, maven, etc and we can handle these by configuring jenkins
 * To fix the maven 3.6.3, issue we have to install 3.9.4 and use full path for package
 ```
-cd /tmp
-wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
-sudo mkdir /usr/share/maven3.9
-sudo tar -xvzf apache-maven-3.9.4-bin.tar.gz -C /usr/share/maven3.9
+cd /tmp/
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+sudo mkdir /usr/share/maven
+sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
 cd spring-petclinic/
-/usr/share/maven3.9/apache-maven-3.9.4/bin/mvn package
+/usr/share/maven/apache-maven-3.9.6/bin/mvn package
 ```
 * Go back and re-configure the maven version
 
