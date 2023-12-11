@@ -358,6 +358,7 @@ mvn package
 
     * Install maven as a root-jenkins user
 
+      ![Alt text](shots/29-0.PNG)
       ![Alt text](shots/29.PNG)
     
 * Let's build spring-petclinic 
@@ -425,7 +426,7 @@ sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
 cd spring-petclinic/
 /usr/share/maven/apache-maven-3.9.6/bin/mvn package
 ```
-* Go back and re-configure the maven version
+* Go back and re-configure the maven version after finding the exact location fo maven `mvn`- `/usr/share/maven/apache-maven-3.9.6/bin`
 
 ![Alt text](shots/43.PNG)
 ![Alt text](shots/44.PNG)
