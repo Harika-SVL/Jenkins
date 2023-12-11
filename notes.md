@@ -471,11 +471,13 @@ sudo -i
 su jenkins
 cd /usr/share/maven (maven 3.6.3)
 ls
-cd /usr/share/maven/apache-maven-3.9.4   (maven 3.9.4)
+cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
 ```
+  ![Alt text](shots/(a).PNG)
+  ![Alt text](shots/(b).PNG)
   ![Alt text](shots/49.PNG)
 
-* Now lets configure the spring-petclinic to use top level maven targets
+* Now let's configure the spring-petclinic to use top level maven targets
 
   ![Alt text](shots/50.PNG)
 
