@@ -555,7 +555,7 @@ su jenkins
 cd ~
 sudo apt update
 ```
-### Node-1 => JDK-17 and MAVEN-3.9.4
+### Node-1 => JDK-17 and MAVEN-3.9.6
 
 * Let's make other vm as node-1
 * On this node (we use existing credentials) we will 
@@ -565,29 +565,30 @@ sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
 ```
-* Install MAVEN-3.9.4
+* Install MAVEN-3.9.6
 ```
-cd /tmp
-wget https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
+cd /tmp/
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
 sudo mkdir /usr/share/maven
-sudo tar -xvzf apache-maven-3.9.4-bin.tar.gz -C /usr/share/maven
+sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
+# add `/usr/share/maven/apache-maven-3.9.6/bin` to the PATH variable
+# add to `~/.bashrc` or `/etc/environment`
+cd ~
 sudo vi /etc/environment
-# add ':/usr/share/maven/apache-maven-3.9.4/bin'
-exit
-# relogin
+# exit and relogin
 mvn --version
 ```
   ![Alt text](shots/55.PNG)
 
 [ Note => Jenkins credentials
 
-  Username : Jenkins-user
+  Username : JenkinsUser
 
-  Password : Jenkins-user
+  Password : JenkinsUser
 
-  Name : Jenkins-user
+  Name : JenkinsUser
 
-  Mail : jenkins-user@gmail.com ]
+  Mail : JenkinsUser@gmail.com ]
 
 * Now let's configure the jenkins-master node with label `JDK-17`
 * On Jenkins UI, navigate to 
