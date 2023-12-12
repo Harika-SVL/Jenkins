@@ -491,28 +491,39 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
   1. Fork Spring-petclinic   
       => spring-petclinic github => fork => owner,repo name => copy main branch only => create fork
       
-      [Refer Here : https://github.com/Harika-SVL/spring-petclinic]
+      [Refer Here : https://github.com/Harika-SVL/Spring-petclinic]
 
     * requirements to build
         * java jdk 17
         * maven 3.9
 
-  2. Fork game of life 
+  2. Fork Game-of-life 
       => game of life github => fork => owner,repo name => copy main branch only => create fork
 
-      [Refer Here : https://github.com/Harika-SVL/game-of-life]
+      [Refer Here : https://github.com/Harika-SVL/Game-of-life]
     
     * requirements to build
         * java 8
         * maven
 
-  3. Fork nopcommerce
+  3. Fork NopCommerce
       => nopcommerce github => fork => owner,repo name => copy main branch only => create fork
 
-      [Refer Here : https://github.com/Harika-SVL/nopCommerce]
+      [Refer Here : https://github.com/Harika-SVL/Nop-Commerce]
      
     * requirements to build
         * dotnet 7
+
+  4. Fork Shopizer
+      => shopizer github => fork => owner,repo name => copy main branch only => create fork
+
+      [Refer Here : https://github.com/Harika-SVL/Shopizer]
+     
+  5. Fork BroadleafCommerce
+      => broadleaf github => fork => owner,repo name => copy main branch only => create fork
+
+      [Refer Here : https://github.com/Harika-SVL/Broadleaf-DemoSite]
+    
 
 * To handle different builds with different software needs, we tend to use different servers.
 * Jenkins has distributed builds where we can distribute the builds on differnt nodes by matching labels
