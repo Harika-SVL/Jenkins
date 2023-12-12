@@ -538,7 +538,7 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
 
 ### Jenkins-master => Java-17 and Jenkins
 
-* On it install java-17,jenkins and configure jenkins and add the user to sudoers
+* On it install java-17,jenkins and configure jenkins and add the `user` to `sudoers`
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
