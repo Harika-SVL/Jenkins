@@ -344,24 +344,24 @@ mvn package
 * Install jenkins (jdk-17)
 * Install and configure maven in Jenkins (Master Node)
 
-    * Start a vm
+    * Start a VM
 
       ![Alt text](shots/24.PNG)
 
-    * Install java-17
+    * Install Java-17
 
       ![Alt text](shots/25.PNG)
 
-    * Install jenkins and configure as jenkins user
+    * Install jenkins and configure as `jenkins user`
 
       ![Alt text](shots/26.PNG)
 
-    * Add jenkins to sudoers `sudo visudo`  WORKSPACE : `/var/lib/jenkins`
+    * Add `jenkins`user to sudoers `sudo visudo`  WORKSPACE : `/var/lib/jenkins`
 
       ![Alt text](shots/27.PNG)
       ![Alt text](shots/28.PNG)
 
-    * Install maven as a root-jenkins user
+    * Install Maven as a `root-jenkins user`
 
       ![Alt text](shots/29-0.PNG)
       ![Alt text](shots/29.PNG)
@@ -374,7 +374,7 @@ mvn package
       * jdk-17
       * maven
 
-* Create a free style project to build spring-petclinic
+* Create a free style project to `build spring-petclinic`
 
 => New item => Freestyle project (name= spc-daybuild) => ok
 
@@ -384,34 +384,34 @@ mvn package
 
 => Description : This is to build spring-petclinic project 
 
-1. GENERAL : This represents the project information
+1. _**GENERAL**_ : This represents the project information
       
     ![Alt text](shots/31.PNG)
 
-2. SOURCE CODE MANAGEMENT : This represent the code to be used for CI/CD pipelines
+2. _**SOURCE CODE MANAGEMENT**_ : This represent the code to be used for _**CI/CD pipelines**_
 
     ![Alt text](shots/32.PNG)
 
-3. BUILD TRIGGERS: represents when to build
+3. _**BUILD TRIGGERS**_ : represents when to build
 
-  * BUILD PERIODICALLY(CRON) : If the project has to be built based on schedule, write cron expression into this 
+  * `BUILD PERIODICALLY(CRON)` : If the project has to be _**built based on schedule**_, write cron expression into this 
   
     [Refer Here : https://crontab.guru/]
 
-  * POLL SCM : represents jenkins polling scm (asking git) and the cron expression represents how frequently it should ask. It is triggered only when there are changes in the code.
+  * `POLL SCM` : represents jenkins _**polling scm**_ (asking git) and the cron expression represents how frequently it should ask. It is triggered only when there are changes in the code.
 
     ![Alt text](shots/33.PNG)
 
-4. BUILD ENVIRONMENT : represents the environmental configuration
+4. _**BUILD ENVIRONMENT**_ : represents the environmental configuration
 
    ![Alt text](shots/34.PNG)
 
-5. BUILD STEPS : actual activities that are performed during execution
+5. _**BUILD STEPS**_ : actual activities that are performed during execution
 
    ![Alt text](shots/35.PNG)
    ![Alt text](shots/36.PNG)
 
-6. POST BUILD ACTIONS : actions to be performed after completion of build
+6. _**POST BUILD ACTIONS**_ : actions to be performed after completion of build
 
    ![Alt text](shots/37.PNG)
    ![Alt text](shots/38.PNG)
@@ -422,7 +422,7 @@ mvn package
  ![Alt text](shots/40.PNG)
 
 * In Jenkins we can have multiple versions of java, maven, etc and we can handle these by configuring jenkins
-* To fix the maven 3.6.3, issue we have to install 3.9.4 and use full path for package
+* To fix the maven 3.6.3, issue we have to install 3.9.6 and use full path for package
 ```
 cd /tmp/
 wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
@@ -443,27 +443,27 @@ cd spring-petclinic/
   ![Alt text](shots/41.PNG)
   ![Alt text](shots/42.PNG)
 
-  ### Jenkins TERMS :
+  ### TERMS :
 
-* JENKINS_HOME : Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
+* _**JENKINS_HOME**_ : Jenkins home is a folder where jenkins stores all of it's configuration. In the above case the workspace is `/var/lib/jenkins`. If you want to change the workspace deal with `JENKINS_HOME`
 
 ![Alt text](shots/28.PNG)
 
-* Backup for Jenkins is backup of Workspace (/var/lib/jenkins)
+* Backup for Jenkins is backup of _**Workspace (/var/lib/jenkins)**_
 
-* PROJECT : This contains the activity that needs to be performed on triggers
-    * This project is stored as xml file in workspace
+* _**PROJECT**_ : This contains the activity that needs to be performed on triggers
+    * This project is stored as _**xml file**_ in workspace
     * Types of projects :
-      * Freestyle project: This is UI based configuration
-      * Pipeline: This is instructions expressed in some code format (pipeline as a code)
+      * FREESTYLE project: This is UI based configuration
+      * PIPELINE: This is instructions expressed in some code format _**(pipeline as a code)**_
 
-* BUILD : This represents the execution of project. Every build for a project has a running number called as Build_id
+* _**BUILD**_ : This represents the execution of project. Every build for a project has a running number called as `Build_id`
 
-* NODE : This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
+* _**NODE**_ : This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
 
 ### Managing Different Versions of the tools using jenkins
 
-* Connect to the jenkins installed vm 
+* Connect to the jenkins installed VM 
 
 => Manage jenkins => Tools => Maven installations
 
@@ -482,25 +482,25 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
   ![Alt text](shots/(b).PNG)
   ![Alt text](shots/49.PNG)
 
-* Now let's configure the spring-petclinic to use top level maven targets
+* Now let's configure the spring-petclinic to use `top-level maven targets`
 
   ![Alt text](shots/50.PNG)
 
-* Now build the project manually (Build Now)
+* Now build the project manually (`Build Now`)
 
   ![Alt text](shots/51.PNG)
 
 ### DISTRIBUTED BUILDS
 
-* Setup:
+* `Setup`:
   1. Fork Spring-petclinic   
       => spring-petclinic github => fork => owner,repo name => copy main branch only => create fork
       
       [Refer Here : https://github.com/Harika-SVL/Spring-petclinic]
 
     * requirements to build
-        * java jdk 17
-        * maven 3.9
+        * java jdk-17
+        * maven-3.9
 
   2. Fork Game-of-life 
       => game of life github => fork => owner,repo name => copy main branch only => create fork
@@ -508,7 +508,7 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
       [Refer Here : https://github.com/Harika-SVL/Game-of-life]
     
     * requirements to build
-        * java 8
+        * java-8
         * maven
 
   3. Fork NopCommerce
@@ -517,7 +517,7 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
       [Refer Here : https://github.com/Harika-SVL/Nop-Commerce]
      
     * requirements to build
-        * dotnet 7
+        * dotnet-7
 
   4. Fork Shopizer
       => shopizer github => fork => owner,repo name => copy main branch only => create fork
@@ -531,17 +531,16 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
     
 
 * To handle different builds with different software needs, we tend to use different servers.
-* Jenkins has distributed builds where we can distribute the builds on differnt nodes by matching labels
-
-* While creating a project we can set labels and expect them to be executed on the node matching labels
+* Jenkins has distributed builds where we can distribute the builds on different nodes by matching labels
+* While creating a project we can set labels and expect them to be executed on the node-matching labels
 
   ![Alt text](shots/53.PNG)
 
 ### How to add MULTIPLE NODES to jenkins
 
-* Let's create 2 ubuntu VM's and let's make one VM as `Jenkins master`
+* Let's create 2 ubuntu VM's and let's make one VM as `Jenkins master` and the other as `node 1`
 
-### Jenkins master => Java-17 and Jenkins
+### Jenkins master => Java-17 and JENKINS
 
 * On it install java-17,jenkins and configure jenkins and add the `user` to `sudoers`
 ```
@@ -571,7 +570,7 @@ chmod +x installjenkins.sh
 ./installjenkins.sh
 ```
   ![Alt text](shots/54-0.PNG)
-  ![Alt text](shots/54.PNG)
+
 * Adding jenkins user to sudoers
 ```
 sudo visudo
@@ -584,9 +583,12 @@ su jenkins
 cd ~
 sudo apt update
 ```
-### Node-1 => JDK-17 and MAVEN-3.9.6
+* Availing jenkins
 
-* Let's make other vm as node-1
+  ![Alt text](shots/54.PNG)
+
+### Node 1 => JDK-17 and MAVEN-3.9.6
+
 * On this node (we use existing credentials) we will 
 * Install java-17 
 ```
@@ -600,11 +602,10 @@ cd /tmp/
 wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
 sudo mkdir /usr/share/maven
 sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
-# add `/usr/share/maven/apache-maven-3.9.6/bin` to the PATH variable
-# add to `~/.bashrc` or `/etc/environment`
+  # add `/usr/share/maven/apache-maven-3.9.6/bin` to the PATH variable in `/etc/environment`
 cd ~
 sudo vi /etc/environment
-# exit and relogin
+  # exit and relogin
 mvn --version
 ```
   ![Alt text](shots/55.PNG)
@@ -619,7 +620,7 @@ mvn --version
 
   Mail : dummy@dummymail.com ]
 
-* Now let's configure the Jenkins master node with label `JDK-17`
+* Now let's configure the _**Jenkins master**_ node with label `JDK-17`
 * On Jenkins UI, navigate to 
 
 => Manage Jenkins => Nodes 
@@ -655,7 +656,7 @@ mvn --version
 
 * Configure spc-day build same as last session with one restriction in General section
 
-* Start a new project
+* Start a new project _**spc-Day-build**_
 
   ![Alt text](shots/64.PNG)
 
