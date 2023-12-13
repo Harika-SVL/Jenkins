@@ -1,17 +1,17 @@
 ## CI/CD Workflows
 
-* There are 3 major workflow’s in which most of the projects fit in
-  * Virtual/Physical Machine Deployment
+* There are 3 major workflow’s in which most of the projects fit in :
+  * Virtual/ Physical Machine Deployment
   * Infra Provisioning and Deployment
   * Containerized Deployment
 
-* Application Deployment Options: Applications are deployed on
-  * Virtual Machines/Physical Machines:
+* Application Deployment Options : Applications are deployed on
+  * Virtual Machines/ Physical Machines :
     * OnPrem
     * Cloud
-  * Containers:
+  * Containers :
     * Kubernetes (OnPrem/Cloud)
-  * Cloud Native Applications:
+  * Cloud Native Applications :
     * PaaS (Azure App Service/ AWS Elastic BeanStalk)
     * Faas (Azure Functions/AWS lambda)
 
@@ -69,27 +69,32 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ### CONTINUOUS INTEGRATION and CONTINUOUS DELIVERY/DEPLOYMENT
 
 * To perform frequent integrations and deployments we need a tool which can help us doing the same stuff and integrate with multiple tools. These tools are generally called as `CI/CD Engines`
-* Jenkins is popular Opensource CI/CD Engine
-* Any CI/CD tool at it's core is a `CRON` on steroids
+* Jenkins is popular _**Opensource CI/CD Engine**_
+* Any CI/CD tool at it's core is a `CRON on steroids`
 
 #### CRONJOB In Linux - CRONTAB (periodic tasks on steroids)
   [Refer Here : https://crontab.guru/]
 
 ![Alt text](shots/215.PNG)
 
-* `CRON` is a Linux-based utility used to schedule scripts or programs
-* The `CRONTAB` is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. Crontab stands for `CRON TABLE`, because it uses the job scheduler cron to execute tasks
+* _**CRON**_ is a Linux-based utility used to schedule scripts or programs
+* The _**CRONTAB**_ is a list of commands that you want to run on a regular schedule, and also the name of the command used to manage that list. 
+* Crontab stands for _**CRON TABLE**_, because it uses the job scheduler cron to execute tasks
 
-SYNTAX : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week> <command>
+SYNTAX : `<Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week> [command]`
 
 ![Alt text](shots/12.PNG)
 ![Alt text](shots/13.PNG)
 
-* Minute – value can be between 0-59
-* Hour – value can be between 0-23
-* Day_of_the_month – value can be between 1-31. For the months having fewer days will ignore remaining part
-* Month_of_the_year – value can be between 1-12. You can also define this value with the first three alphabets of the month like jan, feb, mar, apr etc.
-* Day_of_the_Week – value can be between 0-7. Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
+* Minute => value : between 0-59
+* Hour => value : between 0-23
+* Day_of_the_month => value : between 1-31 
+  * For the months having fewer days will ignore remaining part
+* Month_of_the_year => value : between 1-12 
+  * You can also define this value with the first three alphabets of the month like jan, feb, mar, apr etc.
+* Day_of_the_Week => value : between 0-7
+  *  Where 0 and 7 for Sunday, 1 for Monday, 2 for Tuesday, and so on. 
+  * You can also use the first three alphabets of days like sun, mon, tue, wed, etc.
 
 #### CRONJOB In Windows - TASK SCHEDULER
       
@@ -100,12 +105,12 @@ SYNTAX : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 
 #### What happens when we install jenkins..?
 
-* When we install jenkins we will have a default user created called as _**JENKINS**_
+* When we install jenkins we will have a `default user` created, _**JENKINS**_
 * From jenkins we can perform anything which jenkins user performs
 
 ![Alt text](shots/10.PNG)
 
-* How can we integrate jenkins with any other tools:
+* How can we integrate jenkins with any other tools :
     * COMMAND LINE : call the command line
     * PLUGIN (Just gives an UI option to add in order to be converted to low level linux commands) + installation/configuration
       * UI or PIPELINE step
@@ -128,23 +133,23 @@ SYNTAX : <Minute> <Hour> <Day_of_the_Month> <Month_of_the_Year> <Day_of_the_Week
 sudo visudo
 jenkins (ALL:ALL) NOPASSWD:ALL
 ```
-#### COMPILER vs INTERPRITOR vs HYBRID based applications
+#### COMPILER vs INTERPRITOR vs HYBRID based applications :
 
-* COMPILER-based application
+* COMPILER-based application :
 
    [Dubbing before running the application] 
 
 ![Alt text](shots/14.PNG)
 
-* INTERPRETOR-based application
+* INTERPRETOR-based application :
 
   [Translation during running of the application]
 
 ![Alt text](shots/15.PNG)
 
-* HYBRID-based (both compiler and interpretor) application
+* HYBRID-based (both compiler and interpretor) application :
 
-  [Before running the application the compilation is done to Intermediate Language and then through the Interpretor coverts into server understandable]
+  [Before running the application the compilation is done to Intermediate Language and then through the Interpretor converts into server understandable]
 
 ![Alt text](shots/16.PNG)
 
@@ -154,9 +159,9 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 * Whenever a software project is developed, they have lot of dependencies
 * Before building the code, dependencies have to be present locally
-* To manage these dependencies, every programming language has some kind of package manager
+* To manage these dependencies, every programming language has some kind of _**package manager**_
 
-[NOTE : Package Management is downloading the packages, building the packages and distributing the packages]
+[NOTE : `Package Management` is downloading the packages, building the packages and distributing the packages]
 
   * dotnet: `nuget` is the package manager
      * File to store the dependencies `packages.config/packages.json`
@@ -174,8 +179,8 @@ jenkins (ALL:ALL) NOPASSWD:ALL
 
 * Maven is a tool which can be used to build, package, distribute, test and generate documentation for java and java-based languages (groovy,scala)
 * It follows convention (SNAPSHOT & RELEASE) over configuration
-* It uses a file called as 'pom.xml' ( POM - Project Object Model )
-* Apache Log4j Security Vulnerabilities
+* It uses a file called as _**pom.xml**_ ( POM - Project Object Model )
+* `Apache Log4j` Security Vulnerabilities
 
 * ARTIFACTS (reasons) : 
 
@@ -219,24 +224,24 @@ mvn --version
 
   [Refer Here : https://www.baeldung.com/maven-goals-phases]
 
-* VALIDATE : validates the pom and it's project
-* COMPILE : converts the java code into byte code (.java to .class). It stores the class files in `target/classes`
-* TEST : will run the unit tests written and generates test results in xml format of text format. Folder will be `/target/surefire-reports/TEST-*.xml`
+* VALIDATE : validates the _**pom**_ and it's project
+* COMPILE : converts the _**java code**_ into _**byte code**_ (.java to .class). It stores the _**class files**_ in `target/classes`
+* TEST : will run the _**unit tests**_ written and generates test results in _**xml format**_ of _**text format**_. Folder will be `/target/surefire-reports/TEST-*.xml`
 
 ![Alt text](shots/42.PNG)
 
-* PACKAGE : creates the packaging format (jar/war/ear) and will be `<artifact-id>-<version>.<packaging-format>`
-* INSTALL : copies the package and it's definition into `M2_HOME` or `~/.m2/repository`
-* DEPLOY : copying package and it's definition to remote repository for other users in other systems to use what you have built (This command is equivalent to git push command)
-* CLEAN : removes target folder
+* PACKAGE : creates the _**packaging format (jar/war/ear)**_ and will be `<artifact-id>-<version>.<packaging-format>`
+* INSTALL : _**copies the package**_ and it's definition into `M2_HOME` or `~/.m2/repository`
+* DEPLOY : copying package and it's definition to _**remote repository**_ for other users in other systems to use what you have built (This command is equivalent to `git push` command)
+* CLEAN : _**removes**_ target folder
 
 => Here, when we execute a goal, all the pevious goals also get's executed
 
-##### LIFECYCLE 
+#### LIFECYCLE 
  
   [Refer Here : https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference]
 * To execute any lifecycle goal `mvn <goal>`
-* Simple POM file
+* Simple _**POM**_ file
 ```xml
 <project>
   <modelVersion>4.0.0</modelVersion>
@@ -257,18 +262,18 @@ mvn --version
   </dependencies>
 </project>
 ```
-* Maven PACKAGING formats : 
+* Maven _**PACKAGING FORMATS**_ : 
 
     [Refer Here : https://www.baeldung.com ]
-* Maven goals downloads dependencies and stores in
+* Maven goals downloads _**dependencies**_ and stores in
   * `M2_HOME` where ever this environment variable points to and if not found does in `<home-dir>/.m2`
 
   ### Exercise
 
-* Try installing maven and create a simple jenkins project with following build steps:
+* Try installing maven and create a simple jenkins project with following build steps :
 ```
 git clone https://github.com/spring-projects/spring-petclinic.git
-cd spring-petclinic 
+cd spring-petclinic/ 
 mvn package
 ```
 ### MANUAL STEPS :
@@ -277,7 +282,7 @@ mvn package
 ```
 sudo apt update
 sudo apt install openjdk-17-jdk -y
-java -version
+java --version
 ```
 #### Installing MAVEN
 ```
@@ -287,9 +292,9 @@ sudo mkdir /usr/share/maven
 sudo tar -xvzf apache-maven-3.9.6-bin.tar.gz -C /usr/share/maven
 cd ~
 sudo vi /etc/environment
-# add '/usr/share/maven/apache-maven-3.9.6/bin'
+  # add '/usr/share/maven/apache-maven-3.9.6/bin'
 exit
-# relogin into the machine
+  # relogin into the machine
 mvn -version
 ```
 #### Building SPRING-PETCLINIC
@@ -300,37 +305,37 @@ mvn package
 ```
 ### TERMS
 
-* ARTIFACT 
+* _**ARTIFACT**_ 
 
-=> For generating artifacts we use build tools like ms-build, maven/gradle
+=> For generating artifacts we _**use build tools**_ like ms-build, maven/gradle
 
-=> These are referenced in a pipeline stage for automated deployment to the target environment
+=> These are referenced in a _**pipeline stage**_ for automated deployment to the target environment
 
-* UNIT TEST 
+* _**UNIT TEST**_ 
 
-=> java-junit, microsoft-mstest/nunit, python-pytest, nodejs-jasmine, nodejs-mocha, most CI/CD systems understand junit xml reports to generate test results
+=> java-junit, microsoft-mstest/nunit, python-pytest, nodejs-jasmine, nodejs-mocha, most CI/CD systems understand _**junit xml reports**_ to generate test results
             
-=> incorporating unit testing into the DevOps process, which involves automating the entire software development life cycle to enable faster delivery of software while maintaining its quality
+=> incorporating unit testing into the DevOps process, which involves automating the entire software development life cycle to enable faster delivery of software while _**maintaining its quality**_
 
-* CODE COVERAGE 
+* _**CODE COVERAGE**_ 
 
-=> we do this from Sonar Qube
+=> we do this from `Sonar Qube`
 
-=> helps you determine the proportion of your project's code that is actually being tested by tests such as unit tests. To increase your confidence of the code changes, and guard effectively against bugs, your tests should exercise - or cover - a large proportion of your code
+=> helps you determine the proportion of your project's code that is actually being tested by tests such as _**unit tests**_. To increase your confidence of the code changes, and guard effectively against bugs, your tests should exercise - or cover - a large proportion of your code
 
-[ Code Coverage = Branch Coverage (testing method, which aims to ensure that each one of the possible branch from each decision point is executed at least once and thereby ensuring that all reachable code is executed) + Line Coverage (how many of lines of source code have been tested) ]
+[ _**Code Coverage**_ `=` _**Branch Coverage**_ (testing method, which aims to ensure that each one of the possible branch from each decision point is executed at least once and thereby ensuring that all reachable code is executed) `+` _**Line Coverage**_ (how many of lines of source code have been tested) ]
 
-* STATIC CODE ANALYSIS 
+* _**STATIC CODE ANALYSIS**_ 
 
-=> we do this from Sonar Qube, figuring best code analysis
+=> we do this from `Sonar Qube`, figuring `best code analysis`
 
-=> method of computer program debugging that is done by examining the code without executing the program. The process provides an understanding of the code structure and can help ensure that the code adheres to industry standards
+=> method of computer program debugging that is done by examining the code without executing the program. The process provides an understanding of the _**code structure**_ and can help ensure that the code adheres to industry standards
 
-* ARTIFACT REPOSITORY 
+* _**ARTIFACT REPOSITORY**_ 
 
-=> we would use jfrog (azure artifacts)
+=> we would use `jfrog (azure artifacts)`
 
-=> Artifacts are large binary packages that are created throughout the development and release process. An artifact repository is a software application designed to manage these artifacts
+=> Artifacts are _**large binary packages**_ that are created throughout the development and release process. An _**artifact repository**_ is a software application designed to manage these artifacts
 
 ### Building Maven projects using Jenkins  
 
