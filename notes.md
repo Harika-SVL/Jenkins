@@ -456,7 +456,7 @@ cd spring-petclinic/
 
 * NODE : This represents the machine on which build can be executed. Each Node can be configured to handle multiple builds by executors(no.of parallel working projects)
 
-### Managing DIFFERENT VERSIONS of the tools using jenkins
+### Managing Different Versions of the tools using jenkins
 
 * Connect to the jenkins installed vm 
 
@@ -534,9 +534,9 @@ cd /usr/share/maven/apache-maven-3.9.6   (maven 3.9.6)
 
 ### How to add MULTIPLE NODES to jenkins
 
-* Let's create 2 ubuntu VM's and let's make one VM as `jenkins-master`
+* Let's create 2 ubuntu VM's and let's make one VM as `Jenkins master`
 
-### Jenkins-master => Java-17 and Jenkins
+### Jenkins master => Java-17 and Jenkins
 
 * On it install java-17,jenkins and configure jenkins and add the `user` to `sudoers`
 ```
@@ -544,15 +544,28 @@ sudo apt update
 sudo apt install openjdk-17-jdk -y
 java -version
 ```
-##### NOTE
-=> To install jenkins we can use the following script also
-```bash
-#!/bin/bash
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
-sudo apt-get update
-sudo apt-get install openjdk-17-jdk jenkins -y
+#### NOTE
+=> To install jenkins we use the following script 
 ```
+ls
+sudo vi installjenkins.sh
+```
+### _**installjenkins.sh**_
+```
+#!/bin/bash
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins -y
+```
+```
+chmod +x installjenkins.sh
+./installjenkins.sh
+```
+  ![Alt text](shots/54-0.PNG)
   ![Alt text](shots/54.PNG)
 * Adding jenkins user to sudoers
 ```
@@ -599,12 +612,12 @@ mvn --version
 
   Name : JenkinsUser
 
-  Mail : JenkinsUser@gmail.com ]
+  Mail : dummy@dummymail.com ]
 
-* Now let's configure the jenkins-master node with label `JDK-17`
+* Now let's configure the Jenkins master node with label `JDK-17`
 * On Jenkins UI, navigate to 
 
-=> Manage Jenkins => Nodes and Clouds
+=> Manage Jenkins => Nodes 
 
   ![Alt text](shots/56.PNG)
 
@@ -617,7 +630,7 @@ mvn --version
   ![Alt text](shots/58.PNG)
   ![Alt text](shots/59.PNG)
 
-=> Host : private_ip (as both nodes in same network) => Credentials : select Jenkins => select Kind and ID
+=> Host : private_ip (as both nodes in same network) => Credentials =>ADD : select Jenkins => select Kind and ID
 
   ![Alt text](shots/60.PNG)
 
@@ -667,17 +680,9 @@ mvn --version
 
   ![Alt text](shots/87.PNG)
 
-* As a result of this project's build, I get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to Archive the Artifacts
+* As a result of this project's build, I get `spring-petclinic-3.2.0-SNAPSHOT.jar` as below, which is called as `ARTIFACT`. Let's configure jenkins to Archive the Artifacts
 
   ![Alt text](shots/88.PNG)
-
-#### Exercises
-
-* Create a jenkins-master with t2.micro (ubuntu)
-* Create a node with any other os redhat/centos/amazon-linux
-    * install jdk-17
-* Create a job which should run on the other node 
-* Configure and display it's ip_address and environmental variables `printenv`
 
 ### Node-2 => JDK-8 and MAVEN
 
@@ -770,7 +775,7 @@ mvn -version
 
   ![Alt text](shots/89.PNG)
 
-### Node-3: Executing dotnet project on jenkins
+### Node-3: Executing dotnet(.net) project on jenkins
 
 * For agent we require jdk-17
 * Create an ec2 instance (node-3)  with size 20 GB
