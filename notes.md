@@ -700,25 +700,26 @@ sudo adduser devops
 sudo visudo
   # devops  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
-* Now enable password based authentication
+* Now _**enable**_ password based authentication
 ```
 sudo vi /etc/ssh/sshd_config
   # Change password Authentication to yes
 sudo systemctl restart sshd
 ```
-* Restart as devops user
+* Restart as _**devops**_ user
 ```
 exit
 ssh devops@<public_ip>
 password : devops
 ```
-* Install jdk-8, jdk-17 and maven
+* Install JDK-8, JDK-17 and MAVEN
 ```
 sudo apt update
 sudo apt install openjdk-8-jdk openjdk-17-jdk -y
 java -version
 cd /usr/lib/jvm
 ls
+cd ~
 sudo apt install maven -y  
 mvn -version
 ```
@@ -726,24 +727,23 @@ mvn -version
 
   ![Alt text](shots/72.PNG)
 
-* Lets configure JDK-17,JDK-8,Maven paths in tools section of jenkins (jenkins-master) 
-
+* Let's configure JDK-17, JDK-8, Maven paths in tools section of jenkins `Jenkins master`
   ![Alt text](shots/73.PNG)
   ![Alt text](shots/159.PNG)
 
-=> Also add maven version(3.9) in the existing 'spc-Day-build' project
+=> Also add `MAVEN_3.9` in the existing `spc-Day-build` project
 
-* Now add Git - repository 'https://github.com/Harika-SVL/game-of-life.git' and node-2 to jenkins
+* Now add Git - repository 'https://github.com/Harika-SVL/game-of-life.git' and `node-2` to jenkins
 
   ![Alt text](shots/74.PNG)
 
-=> Configuring credentials
+=> Configuring credentials `ADD`
 
   ![Alt text](shots/75.PNG)
   ![Alt text](shots/76.PNG)
   ![Alt text](shots/77.PNG)
 
-* Now let's try building game of life - Add JDK, MAVEN, Git and Save
+* Now let's try building _**game-of-life**_ - Add JDK, MAVEN, Git and Save
 
   ![Alt text](shots/78.PNG)
   ![Alt text](shots/79.PNG)
@@ -762,7 +762,7 @@ mvn -version
 
   ![Alt text](shots/84.PNG)
 
-* As a result of this project's build, we get `gameoflife.war` which is called as `ARTIFACT`. Let's configure jenkins to Archive the Artifacts
+* As a result of this project's build, we get _**gameoflife.war**_ which is called as `ARTIFACT`. Let's configure jenkins to `Archive the Artifacts`
 
   ![Alt text](shots/85.PNG)
 
@@ -770,14 +770,14 @@ mvn -version
 
   ![Alt text](shots/86.PNG)
 
-* Note: We have implemented the same for spring-petclinic
+* _**NOTE**_ : We have implemented the same for `spring-petclinic`
 
   ![Alt text](shots/87.PNG)
   ![Alt text](shots/88.PNG)
 
-* Note: The health of the builds is represented as 'Weather' in jenkins
-    * Cloudy - builds are failing
-    * Sunny - the builds are successful
+* _**NOTE**_ : The health of the builds is represented as `Weather` in jenkins
+    1. Cloudy - builds are failing
+    2. Sunny - the builds are successful
 
   ![Alt text](shots/89.PNG)
 
