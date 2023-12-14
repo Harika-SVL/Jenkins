@@ -784,9 +784,10 @@ mvn -version
 ### Node-3: Executing dotnet(.net) project on jenkins
 
 * For agent we require JDK-17
-* Create an ec2 instance (node-3)  with size 20 GB
-* install dotnet-7 sdk for running nopcommerce
+* Create an ec2 instance (node 3)  with size 20 GB
+* install dotnet-7 sdk for running Nop-Commerce
 * Installation instructions :
+
   [Refer Here : https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204]
 ```
 sudo apt-get update && \
@@ -801,7 +802,7 @@ dotnet --help
   ![Alt text](shots/91.PNG)
   ![Alt text](shots/92.PNG)
 
-=> Install jdk-17 on the node
+=> Install JDK-17 on the node
 
   ![Alt text](shots/93.PNG)
   ![Alt text](shots/94.PNG)
@@ -873,29 +874,29 @@ dotnet build -c Release src/Nop-Commerce.sln
   ![Alt text](shots/101.PNG)
   ![Alt text](shots/102.PNG)
   
-  * Now build Project A and all the three projects get executed as they are connected and with a gap of 10sec each
+* Now build Project A and all the three projects get executed as they are connected and with a gap of 10sec each
 
   ![Alt text](shots/103.PNG)
 
 ### Parameterized Builds
 
-* While building the jobs, sometimes we would like users to pass some information.This is called as _**Parameters**_
+* While building the Jobs, sometimes we would like users to pass some information. This is called as _**Parameters**_
 * Create a New view with `list view` option
 
   ![Alt text](shots/104.PNG)
   
 
-* Select the jobs- gameoflife, nopCommerce, spc-Day-build
+* Select the Jobs- _**game-of-life**_, _**Nop-Commerce**_, _**spc-Day-build**_
 
   ![Alt text](shots/105.PNG)
   ![Alt text](shots/106.PNG)
 
-* Now let's enable Parameters for some jenkins(gameoflife) project/job
+* Now let's enable parameters for some jenkins(game-of-life) project/job
 
   ![Alt text](shots/107.PNG)
   ![Alt text](shots/108.PNG)
 
-* Create some Parameters and use it in the Build steps
+* Create some parameters and use it in the `Build steps`
 
   ![Alt text](shots/109.PNG)
   ![Alt text](shots/110.PNG)
@@ -920,7 +921,7 @@ dotnet build -c Release src/Nop-Commerce.sln
   
   [Refer Here : https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables]
 
-* Sample using environmental variables (game of life on node-2 to print environmental variables)
+* Sample using environmental variables (game-of-life on node 2 to print environmental variables)
 
 => Create New Project 'Environmentalvariablesdemo' in 'Experimental' view => General : JDK : JAVA_8, Restrict : JDK_8 => Build steps : Execute shell : printenv => Save => Build Now
 
