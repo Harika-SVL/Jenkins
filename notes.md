@@ -690,10 +690,10 @@ mvn --version
 
   ![Alt text](shots/88.PNG)
 
-### Node-2 => JDK-8 and MAVEN
+### Node 2 => JDK-8 and MAVEN
 
 * On the jenkins-master, we would require jdk-17 and for the project, `game-of-life`, we would require _**jdk-8**_
-* On the node-2, let's create a `new user` called as _**devops**_ and add to `sudoers with NOPASSWD`
+* On the node 2, let's create a `new user` called as _**devops**_ and add to `sudoers with NOPASSWD`
 ```
 sudo adduser devops
   # password : devops
@@ -733,7 +733,7 @@ mvn -version
 
 => Also add `MAVEN_3.9` in the existing `spc-Day-build` project
 
-* Now add Git - repository 'https://github.com/Harika-SVL/game-of-life.git' and `node-2` to jenkins
+* Now add Git - repository 'https://github.com/Harika-SVL/game-of-life.git' and `node 2` to jenkins
 
   ![Alt text](shots/74.PNG)
 
@@ -783,19 +783,20 @@ mvn -version
 
 ### Node-3: Executing dotnet(.net) project on jenkins
 
-* For agent we require jdk-17
+* For agent we require JDK-17
 * Create an ec2 instance (node-3)  with size 20 GB
 * install dotnet-7 sdk for running nopcommerce
-* Installation instructions 
+* Installation instructions :
   [Refer Here : https://learn.microsoft.com/en-us/dotnet/core/install/linux-ubuntu-2204]
 ```
 sudo apt-get update && \
   sudo apt-get install -y dotnet-sdk-7.0
+dotnet --version
 dotnet --help
 ```
   ![Alt text](shots/90.PNG)
 
-* Configuring node-3 on Dashboard
+* Configuring node 3 on Dashboard
 
   ![Alt text](shots/91.PNG)
   ![Alt text](shots/92.PNG)
@@ -808,28 +809,29 @@ dotnet --help
 * To build the dotnet project we need to restore nuget packages
 ```
 cd /tmp/
-git clone https://github.com/Harika-SVL/nopCommerce.git
-cd nopCommerce
+git clone https://github.com/Harika-SVL/Nop-Commerce.git
+ls
+cd Nop-Commerce/
 git branch
-## dotnet restore <path of project or sln>
-dotnet restore src/NopCommerce.sln
-## dotnet build  -c "Release" <path of project or sln> 
-dotnet build -c Release src/NopCommerce.sln
-## For day builds
-## dotnet build  -c "Debug" <path of project or sln> 
+  ## dotnet restore <path of project or sln>
+dotnet restore src/Nop-Commerce.sln
+  ## dotnet build  -c "Release" <path of project or sln> 
+dotnet build -c Release src/Nop-Commerce.sln
+  ## For day builds
+  ## dotnet build  -c "Debug" <path of project or sln> 
 ```
 * Try to Configure in jenkins
 * Create a new project
 
-=> New Item => name : nopCommerce => Free-Style Project => OK
+=> New Item => name : Nop-Commerce => Free-Style Project => OK
 
 => General => Restrict , Label : DOTNET_7
 
-=> Source Code Management => Git : URL 'https://github.com/Harika-SVL/nopCommerce.git', Branch : master
+=> Source Code Management => Git : URL 'https://github.com/Harika-SVL/Nop-Commerce.git', Branch : master
 
 => Build Trrigers => Poll SCM : Schedule '* * * * * '
 
-=> Build Steps => Execute shell : dotnet restore src/NopCommerce.sln , dotnet build -c Release src/NopCommerce.sln
+=> Build Steps => Execute shell : dotnet restore src/Nop-Commerce.sln , dotnet build -c Release src/Nop-Commerce.sln
 
 => Save
 
