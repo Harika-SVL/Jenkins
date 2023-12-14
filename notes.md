@@ -872,20 +872,22 @@ dotnet build -c Release src/Nop-Commerce.sln
   ![Alt text](shots/100.PNG)
   ![Alt text](shots/101.PNG)
   ![Alt text](shots/102.PNG)
-
-* Now build Project A and all the three projects get executed as they are connected and with a gap of 10sec each
+  
+  * Now build Project A and all the three projects get executed as they are connected and with a gap of 10sec each
 
   ![Alt text](shots/103.PNG)
 
 ### Parameterized Builds
 
-* While building the jobs, sometimes we would like users to pass some information.This is called as Parameters
+* While building the jobs, sometimes we would like users to pass some information.This is called as _**Parameters**_
 * Create a New view with `list view` option
 
   ![Alt text](shots/104.PNG)
+  
 
 * Select the jobs- gameoflife, nopCommerce, spc-Day-build
 
+  ![Alt text](shots/105.PNG)
   ![Alt text](shots/106.PNG)
 
 * Now let's enable Parameters for some jenkins(gameoflife) project/job
@@ -911,6 +913,7 @@ dotnet build -c Release src/Nop-Commerce.sln
 * To view environmental variables, select any project and navigate to Build steps => Execute shell
 
   ![Alt text](shots/115.PNG)
+  ![Alt text](shots/115-1.PNG)
   ![Alt text](shots/116.PNG)
 
 * Doc's on environmental variables
