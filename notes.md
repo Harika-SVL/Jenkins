@@ -692,18 +692,18 @@ mvn --version
 
 ### Node-2 => JDK-8 and MAVEN
 
-* On the jenkins-master, we would require jdk-17 and for the project, game-of-life, we would require jdk-8
-* On the node-2, let's create a new user called as devops and add to sudoers with `NOPASSWD`
+* On the jenkins-master, we would require jdk-17 and for the project, `game-of-life`, we would require _**jdk-8**_
+* On the node-2, let's create a `new user` called as _**devops**_ and add to `sudoers with NOPASSWD`
 ```
 sudo adduser devops
-# password : devops
+  # password : devops
 sudo visudo
-# devops  ALL=(ALL:ALL) NOPASSWD:ALL
+  # devops  ALL=(ALL:ALL) NOPASSWD:ALL
 ```
 * Now enable password based authentication
 ```
 sudo vi /etc/ssh/sshd_config
-# Change password Authentication to yes
+  # Change password Authentication to yes
 sudo systemctl restart sshd
 ```
 * Restart as devops user
