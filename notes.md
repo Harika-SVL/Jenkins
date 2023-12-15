@@ -1877,7 +1877,7 @@ pipeline {
                  rtMavenDeployer (
                     id: "SPC_DEPLOYER",
                     serverId: "JFROG_CLOUD",
-                    releaseRepo: 'qt-app-libs-snapshot-local',
+                    releaseRepo: 'qt-app-libs-release-local',
                     snapshotRepo: 'qt-app-libs-snapshot-local'
                 )
                 rtMavenRun (
@@ -1904,8 +1904,6 @@ pipeline {
 }
 ```
 => Save => Build Now
-
-
 
 ### Static Code Analysis
 
