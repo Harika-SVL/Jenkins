@@ -1633,6 +1633,8 @@ pipeline {
 
 * Creating users and adding permissions as above
 
+=> Manage Jenkins => Users => Create User
+
   ![Alt text](shots/169.PNG)
   ![Alt text](shots/170.PNG)
 
@@ -1695,11 +1697,11 @@ pipeline {
 
 => URL of repo : `https:///artifactory/api/maven/qt-libs-snapshot`
 
-=> Setup maven client
+=> continue => Setup maven client => select Generate Token & Create instructions => copy the Token
 
   ![Alt text](shots/180.PNG)
 
-=> Token generated : `cmVmdGtuOjAxOjE3MjM1NjQyNjc6T09kRTZkZFpNT2tkNDZrYlJMdlp1VjBDQnRU`
+=> Token generated : `cmVmdGtuOjAxOjE3MzQxNjgwNDk6VlRweExpQWEwZmVWc1hHeDF6TXlIVUswdHlp`
 
 => Go to .m2 folder ( C:\Users\Harika\.m2) => Create `settings.xml` 
 
@@ -1729,20 +1731,30 @@ pipeline {
   ![Alt text](shots/186.PNG)
 
 => Leave
-=====================================================================================================================
+
 * To integrate jenkins with JFrog
+
 => Dashboard => Manage Jenkins => Credentials => system => Global credentials => Add credentials
+
   ![Alt text](shots/187.PNG)
   ![Alt text](shots/188.PNG)
+
 [ NOTE : To generate new token if required
        => Generate an Identity Token]
+
 => Dashboard => Manage Jenkins => System 
   ![Alt text](shots/189.PNG)
+
 * For setting Artifactory
+
+=> click on profile => new user
+
 * Create a new user
+
   ![Alt text](shots/190.PNG)
   ![Alt text](shots/191.PNG)
   ![Alt text](shots/192.PNG)
+  
 => Dashboard => Manage Jenkins => System => JFrog => Use the Credentials Plugin => Add JFrog Platform Instances   
   ![Alt text](shots/193.PNG)
   ![Alt text](shots/194.PNG)
