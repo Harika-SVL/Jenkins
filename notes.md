@@ -1361,11 +1361,13 @@ pipeline {
 
 ### Email Notifications
 
-* For configuration 
+* For configuration - on mailtrap account
 
   ![Alt text](shots/152.PNG)
   
 * On Jenkins configuration
+
+=> Manage Jenkins => System
 
   ![Alt text](shots/153.PNG)
 
