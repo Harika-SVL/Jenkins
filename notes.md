@@ -1754,7 +1754,7 @@ pipeline {
   ![Alt text](shots/190.PNG)
   ![Alt text](shots/191.PNG)
   ![Alt text](shots/192.PNG)
-  
+
 => Dashboard => Manage Jenkins => System => JFrog => Use the Credentials Plugin => Add JFrog Platform Instances   
   ![Alt text](shots/193.PNG)
   ![Alt text](shots/194.PNG)
@@ -1765,17 +1765,17 @@ pipeline {
 
 * Create an access token after Jfrog account creation
 
-=> open jfrog.io [ URL : https://haarisvl95.jfrog.io/ ]=> Artifactory (on left) => Repositories => Create a Repository => select : maven => name : qt-app => Create
+=> open jfrog.io [ URL : https://devopsuser.jfrog.io/ ]=> Artifactory (on left) => Repositories => Create a Repository => select : maven => name : qt-app => Create
 
-  ![Alt text](shots/195.PNG)
+   ![Alt text](shots/195.PNG)
 
-  URL : https://haarisvl95.jfrog.io/artifactory/api/maven/qt-app-libs-snapshot
+  URL : https://devopsuser.jfrog.io/artifactory/api/maven/qt-app-libs-snapshot
 
 => I'll do it later
 
 * Creating a new group
 
-=> New Group (in right dropdown) => Groups => New Group
+=> New Group (in profile dropdown) => Groups => New Group
 
   ![Alt text](shots/196.PNG)
 
@@ -1788,8 +1788,9 @@ pipeline {
 => Access Token => Generate Token
 
   ![Alt text](shots/198.PNG)
+  ![Alt text](shots/198-1.PNG)
 
-  Token : eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiIwWE93Y0FkWDIybDJ6Z1l2T0FLd3hRVEtxX2l6NnVCSnJuZHlPaHFUNUs0In0.eyJzdWIiOiJqZmFjQDAxaDdteHRhYmRwejk4MDNmZWZobncwcWJ3L3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaDdteHRhYmRwejk4MDNmZWZobncwcWJ3IiwiZXhwIjoxNjk0Njc4MTMxLCJpYXQiOjE2OTIwODYxMzEsImp0aSI6IjcyMmNiY2Q5LTJiNDMtNDAwOS04ZjFhLTE4OTA1NDEzMzBlYSJ9.uy0_MSd2sTgDlhBVWa19At83G0NyoAsx9tlAteRRjpagL0Cw085ECKdggcFOk7Nv3I7sELgxyrGFGkpEFn9Jdy30fAcW4PL1GpakEzQ2NSYlrla4zYoorHKi5JHwZb42vI4cY-qBh076GEqjA9ysDxDxwcgu4pxBmTAcnzYke27RWwqgjmIw-ebcuZqvsB3hfo4RL-QkqDqD13Rv4K-3rBXS5g5ASBiatq3oGz1znlCJjgv675A6-qEcnHxLUdTbH294SNRA37ycXWe2qso_uMNgjKnB4-tUxz5L3KCKZRrwIJrdSU3hiZTQFF_hs0o0YUkW4PtDAc_mqlj05iPnRg
+  Token : eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJPdWg3d0ZfMEJDbHFRaC1wbVdLclNmUGg1aDdIcVB6cDMwZFpuWWFZNzVFIn0.eyJzdWIiOiJqZmFjQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yL3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yIiwiZXhwIjoxNzA1MjM5NzYxLCJpYXQiOjE3MDI2NDc3NjEsImp0aSI6Ijc1M2M4OTU4LWU5ZjYtNDg5OC1iMjRlLWMzYzMzYTMzZWFlOCJ9.xfWwv8t3XATYLUkNKmH17IjrlQhTeBDYATM8aSmSKFXN1MlpG6NnmxPmOd-PY3kJYd-ujZQqNMb_1UW-ZC7cd1XRxr1iGC76-BaDak-moFoAObmXpV-tVDu595bttapBeKr41MUaDRcSRPmO1nYj6zptg_CtYKdFBlhx8oMJ3cQkBUu2cpVSEMZLdiviBXS2eTD5w4Aq0JnnArDJFF7-l7p3Cw51abSB4fehAoKKNLUfi7Sn6cCaumHYv8U_JjyW50kw9xmGog2lvl_OO_-D-WOBLn-rMVVEeWuH9j7Y3pwDMfYTpZKnL7flMsRUxgbbIklfxr_6M_kY4WKa8f-tyA
 
 * Install artifactory plugin in jenkins
 
@@ -1814,7 +1815,9 @@ pipeline {
 
 => New Item => name : spc-maven-jfrog => Maven Project => OK
 
-=> Git : select URL : https://github.com/Harika-SVL/spring-petclinic.git => Branch : main
+  ![Alt text](shots/205-0.PNG)
+
+=> Git : select URL : https://github.com/Harika-SVL/Spring-petclinic.git => Branch : main
 
   ![Alt text](shots/205.PNG)
 
