@@ -1257,7 +1257,7 @@ pipeline{
 
 * For the repository
   
-  [Refer Here : https://github.com/Harika-SVL/game-of-life.git]
+  [Refer Here : https://github.com/Harika-SVL/Game-of-life.git]
 
   ![Alt text](shots/146.PNG)
 
@@ -1317,7 +1317,7 @@ pipeline {
     stages {
         stage('code') {
             steps {
-                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                git url: 'https://github.com/Harika-SVL/Game-of-life.git',
                     branch: 'master'
             }
         }
@@ -1342,13 +1342,13 @@ pipeline {
 
   ![Alt text](shots/147.PNG)
 
-* Create a project 'gameoflife-declarative' and Build Now
+* Create a project 'gol-declarative-pipeline' and Build Now
 
-=> Declarative view => New Item => name : gameoflife-declarative => Pipeline => OK
+=> Declarative view => New Item => name : gol-declarative-pipeline => Pipeline => OK
 
   ![Alt text](shots/148.PNG)
 
-=> Pipeline => Pipeline script from SCM => Git => URL : https://github.com/Harika-SVL/game-of-life.git => Branch : master => Path : Jenkinsfile => Save
+=> Pipeline => Pipeline script from SCM => Git => URL : https://github.com/Harika-SVL/Game-of-life.git => Branch : master => Path : Jenkinsfile => Save
 
   ![Alt text](shots/149.PNG)
   ![Alt text](shots/150.PNG)
