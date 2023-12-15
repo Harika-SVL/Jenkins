@@ -1411,7 +1411,7 @@ pipeline {
     stages {
         stage('code') {
             steps {
-                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                git url: 'https://github.com/Harika-SVL/Game-of-life.git',
                     branch: 'master'
             }
         }
@@ -1466,7 +1466,7 @@ pipeline {
     stages {
         stage('code') {
             steps {
-                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                git url: 'https://github.com/Harika-SVL/Game-of-life.git',
                     branch: 'master'
             }
         }
@@ -1498,6 +1498,7 @@ pipeline {
 ```
   ![Alt text](shots/162.PNG)
   ![Alt text](shots/163.PNG)
+  
 
 => Use double quotes("") instead of single quotes('') (Let's `Replay to change`)
 ```
@@ -1516,7 +1517,7 @@ pipeline {
     stages {
         stage('code') {
             steps {
-                git url: 'https://github.com/Harika-SVL/game-of-life.git',
+                git url: 'https://github.com/Harika-SVL/Game-of-life.git',
                     branch: 'master'
             }
         }
@@ -1546,8 +1547,8 @@ pipeline {
     }
 }
 ```
-  ![Alt text](shots/164.PNG)
-  ![Alt text](shots/165.PNG)
+   ![Alt text](shots/164.PNG)
+   ![Alt text](shots/165.PNG)
   
   [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/956aaed06f6e78b8902b566794fd5811bd833c7d]
 
