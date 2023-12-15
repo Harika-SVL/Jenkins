@@ -1843,10 +1843,12 @@ pipeline {
 * For specific Jenkinsfile
 
   [ Refer Here : https://github.com/jfrog/project-examples/blob/master/jenkins-examples/pipeline-examples/declarative-examples/maven-example/Jenkinsfile]
-* The pipeline example
+
+#### Pipeline example for JFROG
+
 * Create a new project
 
-=> Dashboard => New Item => name : spc_pipeline => Pipeline => OK
+=> Dashboard => New Item => name : spc_JFROG_pipeline => Pipeline => OK
 
 => Pipeline => Script
 
@@ -1866,7 +1868,7 @@ pipeline {
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/Harika-SVL/spring-petclinic.git',
+                git url: 'https://github.com/Harika-SVL/Spring-petclinic.git',
                     branch: 'develop'
             }
         }
