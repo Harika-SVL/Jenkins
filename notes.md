@@ -1389,11 +1389,13 @@ pipeline {
 * Sending mail from pipeline
   
   [Refer Here : https://www.jenkins.io/doc/pipeline/steps/]
-* To check for the `SUCCESS` or `FAILURE` of the project we see the post section
+
+* To check for the `SUCCESS` or `FAILURE` of the project we use the _**Post**_ section
 
 * Let's send an email, when the project,
-    * Fail : `Your project is defective`
-    * Success : `Your project is effective`
+    1. Fail : `Your project is defective`
+    2. Success : `Your project is effective`
+
 * Into the pipeline
 ```
 pipeline {
@@ -1489,7 +1491,7 @@ pipeline {
                  to: 'all@qt.com'
         }
         failure {
-            mail subject: '${JOB_NAME}: has completed with failed',
+            mail subject: '${JOB_NAME}: has not been completed and failed',
                  body: 'Your project is defective \n Build Url ${BUILD_URL}',
                  to: 'all@qt.com'
         }
@@ -1610,7 +1612,8 @@ pipeline {
     }
 }
 ```
-  ![Alt text](shots/166.PNG)
+   ![Alt text](shots/166.PNG)
+   ![Alt text](shots/166-1.PNG)
     
   [Refer Here : https://github.com/dummyrepos/game-of-life-july23/commit/c8c92f3826fa7a121835d89040a7a30f5aa503ef]
 
