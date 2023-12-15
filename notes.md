@@ -989,22 +989,9 @@ dotnet build -c Release src/Nop-Commerce.sln
     * jpi (Jenkins plugin interface)
     * hpi (hudson plugin interface) (old)
 
-#### Exercise
-
-* Figure out a plugin to change Build_id
-* Create a folder in '/tmp' of your node with project name
-```
-/tmp/gameoflife
-```
-* In this folder try to create one more folder with build-id
-```
-/tmp/gameoflife/5
-```
-* to this folder copy the war/jar file
-
 ### Pipeline as Code
 
-* This is expressing CI/CD pipleine in terms of some code/expressions/statements
+* This is expressing CI/CD pipleine in terms of some _**code/expressions/statements**_
 * This is part of version control i.e. each change done to the steps will have history
 * Official docs 
   
@@ -1013,7 +1000,7 @@ dotnet build -c Release src/Nop-Commerce.sln
 * Azure DevOps
 ```
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Start with a minimal pipeline that you can customize to build and deploy your code
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
@@ -1055,7 +1042,7 @@ node("JDK-11-MVN") {
 
 #### Creating a Scripted Pipeline
 
-* Create a game-of-life project (Start node-2 as it has game-of-life)
+* Create a game-of-life project (Start node 2 as it has game-of-life)
 
 => New view => name : Scripted => New item => name : gol-scripted-pipeline => Pipeline => OK
 
@@ -1079,17 +1066,17 @@ node("JDK-11-MVN") {
   ![Alt text](shots/133.PNG)
   ![Alt text](shots/134.PNG)
 
-* Creating the structure 
+* _**Creating the structure**_ 
 
 => Repeat the above steps of pipeline syntax for every possible manual step and complete the pipeline(Script)
 
   ![Alt text](shots/135.PNG)
 
-* Sample pipeline
+* _**Sample pipeline**_
 ```
 node('JDK_8') {
     stage('git') {
-        git branch: 'master', url: 'https://github.com/Harika-SVL/game-of-life.git'
+        git branch: 'master', url: 'https://github.com/Harika-SVL/Game-of-life.git'
     }
     stage('build') {
         sh 'mvn package'
@@ -1102,7 +1089,7 @@ node('JDK_8') {
 ```
 ### Create a Declartive Pipeline
 
-* This has different structure in pipeline not for creating the project
+* This has _**different structure in pipeline**_ not for creating the project
 
 * Create a spring-petclinic project (Start node-1 as it has spring-petclinic)
 
@@ -1118,7 +1105,7 @@ pipeline {
      stages() {
          stage('git') {
              steps {
-                 git branch: 'main', url: 'https://github.com/Harika-SVL/spring-petclinic.git'
+                 git branch: 'main', url: 'https://github.com/Harika-SVL/Spring-petclinic.git'
              }
          }
          stage('build') {
@@ -1153,11 +1140,11 @@ pipeline {
 
   ![Alt text](shots/139.PNG)
 
-### Let's create a declarative pipeline for Spring-Pet-Clinic by exploring most options 
+### Let's create a declarative pipeline for Spring-petclinic by exploring most options 
 
 * For the repository
     
-    [Refer Here : https://github.com/Harika-SVL/spring-petclinic.git]
+    [Refer Here : https://github.com/Harika-SVL/Spring-petclinic.git]
 
   ![Alt text](shots/140.PNG)
 
@@ -1220,7 +1207,7 @@ pipeline{
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/Harika-SVL/spring-petclinic.git',
+                git url: 'https://github.com/Harika-SVL/Spring-petclinic.git',
                     branch: 'develop'
             }
         }
