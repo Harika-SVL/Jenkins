@@ -1236,22 +1236,22 @@ pipeline{
 => Declarative view => configure => Pipeline 
 
   ![Alt text](shots/143.PNG)
+
+=> mention the script path as the filename given to store the code (Jenkinsfile, code, etc)
+
   ![Alt text](shots/144.PNG)
 
 * Build result
 
 => Save => Build Now
 
- ![Alt text](shots/145.PNG) 
+  ![Alt text](shots/145.PNG)
 
 #### Note:
 
 * Create a free account in mailtrap 
 
     [Refer Here : https://mailtrap.io/]
-* Exercise: Create a declarative pipeline
-    * for spring-petclinic
-    * for game-of-life
 
 ### Let's create a declarative pipeline for Game-of-Life  
 
