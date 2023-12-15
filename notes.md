@@ -1042,7 +1042,7 @@ node("JDK-11-MVN") {
 
 #### Creating a Scripted Pipeline
 
-* Create a game-of-life project (Start node 2 as it has game-of-life)
+* Create a Game-of-life project (Start node 2 as it has game-of-life)
 
 => New view => name : Scripted => New item => name : gol-scripted-pipeline => Pipeline => OK
 
