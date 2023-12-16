@@ -1871,6 +1871,7 @@ pipeline {
 => Build Now
 
   ![Alt text](shots/199.PNG)
+  ![Alt text](shots/200.PNG)
 
 ### Static Code Analysis
 
