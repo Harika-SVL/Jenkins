@@ -1762,6 +1762,11 @@ pipeline {
 ======================================================================================================================
 
 ### Artifactory Jenkins Integration 
+#### (Watch classroom recording of 23/July/2023-evening session )
+
+* _**NOTE**_ : Remove the artifactory and JFROG plugins from jenkins
+* _**DAY build**_ : Archieve the artifacts
+* _**Night build**_ : Storing the artifacts to artifactory
 
 * Create an access token after Jfrog account creation
 
@@ -1794,7 +1799,7 @@ pipeline {
 
 * Install artifactory plugin in jenkins
 
-=> Install plugin and restart
+=> Install `Artifactory`plugin and restart
 
   ![Alt text](shots/199.PNG)
 
@@ -1833,6 +1838,16 @@ pipeline {
 
   ![Alt text](shots/209.PNG)
   ![Alt text](shots/210.PNG)
+
+* _**NOTE : If it's not working, then try to install another VM with Jenkins server**_
+  * Install jdk-17
+  * Install maven
+  * Add maven `PATH`
+  * source /etc/environment (instead of exit and reloggining in)
+  * Install Jenkins using script _**installjenkins.sh**_
+  * Add jdk, maven tools to jenkins, Artifactory plugin
+
+
 
 * For official doc's of Jfrog artifactory pipeline
 
