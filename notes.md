@@ -1682,7 +1682,7 @@ pipeline {
     * jfrog/artifactory
     * Nexus
 * Azure DevOps has Azure Artifacts
-* In this series we will be using jfrog/artifactory for it's multi language repository support
+* In this series we will be using jfrog artifactory for it's multi language repository support
 * For 14-day free trail
   
   [Refer Here : https://jfrog.com/start-free/]
@@ -1691,153 +1691,99 @@ pipeline {
 
   ![Alt text](shots/178.PNG)
 
-* Crete a new repo for maven
+* Crete a new repository
 
   ![Alt text](shots/179.PNG)
-
-=> URL of repo : `https:///artifactory/api/maven/qt-libs-snapshot`
-
-=> continue => Setup maven client => select Generate Token & Create instructions => copy the Token
-
-  ![Alt text](shots/180.PNG)
-
-=> Token generated : `cmVmdGtuOjAxOjE3MzQxNjgwNDk6VlRweExpQWEwZmVWc1hHeDF6TXlIVUswdHlp`
-
-=> Go to .m2 folder ( C:\Users\Harika\.m2) => Create `settings.xml` 
-
-  ![Alt text](shots/181.PNG)
-
-=> Configuring settings.xml => Generate settings
-
-  ![Alt text](shots/182.PNG)
-  ![Alt text](shots/183.PNG)
-
-=> Removing settings.xml
-
-  ![Alt text](shots/184.PNG)
-
-[ NOTE : Instead using local repo configuring like above we try to configure over jenkins as below ]
-
-* For configuring jenkins with artifactory 
-  
-  [Refer Here : https://directdevops.blog/2019/10/17/artifactory-configuration/]
-
-=> Manage Jenkins => Plugins => Available plugins => artifactory => select : Artifactory, Jfrog => Install without restart =>  Restart when no jobs running
-
-  ![Alt text](shots/185.PNG)
-
-=> Relogin => Dashboard => Manage Jenkins => System => JFrog plugin configuration => Add JFrog platform instance
-
-  ![Alt text](shots/186.PNG)
-
-=> Leave
-
-* To integrate jenkins with JFrog
-
-=> Dashboard => Manage Jenkins => Credentials => system => Global credentials => Add credentials
-
-  ![Alt text](shots/187.PNG)
-  ![Alt text](shots/188.PNG)
-
-[ NOTE : To generate new token if required
-       => Generate an Identity Token]
-
-=> Dashboard => Manage Jenkins => System 
-  ![Alt text](shots/189.PNG)
-
-* For setting Artifactory
-
-=> click on profile => new user
-
-* Create a new user
-
-  ![Alt text](shots/190.PNG)
-  ![Alt text](shots/191.PNG)
-  ![Alt text](shots/192.PNG)
-
-=> Dashboard => Manage Jenkins => System => JFrog => Use the Credentials Plugin => Add JFrog Platform Instances   
-  ![Alt text](shots/193.PNG)
-  ![Alt text](shots/194.PNG)
-* DELETING THE PLUGINS INSTALLED TILL NOW
-======================================================================================================================
 
 ### Artifactory Jenkins Integration 
 #### (Watch classroom recording of 23/July/2023-evening session )
 
-* _**NOTE**_ : Remove the artifactory and JFROG plugins from jenkins
-* _**DAY build**_ : Archieve the artifacts
-* _**Night build**_ : Storing the artifacts to artifactory
+* We are to perform :
+  * _**Day build**_ : Archieve the artifacts
+  * _**Night build**_ : Storing the artifacts to artifactory
 
-* Create an access token after Jfrog account creation
+* At first let's start the nodes for spc and game-of-life
 
-=> open jfrog.io [ URL : https://devopsuser.jfrog.io/ ]=> Artifactory (on left) => Repositories => Create a Repository => select : maven => name : qt-app => Create
+  ![Alt text](shots/180.PNG)
 
-   ![Alt text](shots/195.PNG)
+* Create a repository (qt-app)
 
-  URL : https://devopsuser.jfrog.io/artifactory/api/maven/qt-app-libs-snapshot
+=> open jfrog.io [ URL : https://devopsuser.jfrog.io/ ]=> Artifactory (on left) => Repositories => Create a Repository => PRE-Build setup => select : maven => name : qt-2 => Create => copy URL => select : I'll do it later
 
-=> I'll do it later
+  ![Alt text](shots/182.PNG)
+  ![Alt text](shots/183.PNG)
+
+  URL : https://devopsuser.jfrog.io/artifactory/api/maven/qt-2-libs-snapshot
 
 * Creating a new group
 
-=> New Group (in profile dropdown) => Groups => New Group
+=> Right dropdown : New Group => Groups => name : devops => description : devops service account => give admin permissions => save
 
-  ![Alt text](shots/196.PNG)
+  ![Alt text](shots/184.PNG)
 
-* Add users
+* Drag and add users to be part of the group
+  
+=> devops => drag the users => save
 
-  ![Alt text](shots/197.PNG)
+  ![Alt text](shots/185.PNG)
 
 * Generating Token
 
-=> Access Token => Generate Token
+=> Access Token on left => Generate Token => scope : admin => name : devops => Expiration date : 1 month => Generate
 
-  ![Alt text](shots/198.PNG)
-  ![Alt text](shots/198-1.PNG)
+  ![Alt text](shots/186.PNG)
+  ![Alt text](shots/187.PNG)
 
-  Token : eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJPdWg3d0ZfMEJDbHFRaC1wbVdLclNmUGg1aDdIcVB6cDMwZFpuWWFZNzVFIn0.eyJzdWIiOiJqZmFjQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yL3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yIiwiZXhwIjoxNzA1MjM5NzYxLCJpYXQiOjE3MDI2NDc3NjEsImp0aSI6Ijc1M2M4OTU4LWU5ZjYtNDg5OC1iMjRlLWMzYzMzYTMzZWFlOCJ9.xfWwv8t3XATYLUkNKmH17IjrlQhTeBDYATM8aSmSKFXN1MlpG6NnmxPmOd-PY3kJYd-ujZQqNMb_1UW-ZC7cd1XRxr1iGC76-BaDak-moFoAObmXpV-tVDu595bttapBeKr41MUaDRcSRPmO1nYj6zptg_CtYKdFBlhx8oMJ3cQkBUu2cpVSEMZLdiviBXS2eTD5w4Aq0JnnArDJFF7-l7p3Cw51abSB4fehAoKKNLUfi7Sn6cCaumHYv8U_JjyW50kw9xmGog2lvl_OO_-D-WOBLn-rMVVEeWuH9j7Y3pwDMfYTpZKnL7flMsRUxgbbIklfxr_6M_kY4WKa8f-tyA
+* URL for jenkins : https://devopsuser.jfrog.io/
 
-* Install artifactory plugin in jenkins
+* Token :
+``` eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJPdWg3d0ZfMEJDbHFRaC1wbVdLclNmUGg1aDdIcVB6cDMwZFpuWWFZNzVFIn0.eyJzdWIiOiJqZmFjQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yL3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yIiwiZXhwIjoxNzA1MzI5MzE0LCJpYXQiOjE3MDI3MzczMTQsImp0aSI6IjA1NzY0MWRkLTM0MDgtNDgzMi1iY2VjLWZiMzJmZmYxOWU0NSJ9.ZjIcE0kwH-GBnDQ6444P3g_CEpruyVVRu4eF2ynjFLuDD3L6iFRgc5UPns2P8p7P4PcCnYIIAZuN2VlOWwY6GWNRHk7On0g4fXfwnjKqKS5cpKGznPpbm0xBBq2zIAWpER8NCik-ft9XgrLy_T3UaP473ZDgbXElDaXv-0oda6bxAwRcQg4431c-h_l00TjPf6i9Mj975VEw_VDGjK1zwv9x_Az0QF9g4uMRhzJZQPUhr_VtH6XwO0YWzl_cS28e6_lZnnAHPTsVfMJPX0Kz5EZg0G7SnO_wVUW49R4Z0fvYSwuknqmzKkYYU9ZgtGPRid9lcCoD6vtO-rZ4XDGfPw
+```
+* Install `Artifactory`plugin and restart Jenkins
 
-=> Install `Artifactory`plugin and restart
+=> Manage jenkins => plugins => Available plugins => search : artifactory => select : Artifactory plugin => Restart when no jobs are running => Relogin to Jenkins
 
-  ![Alt text](shots/199.PNG)
+![Alt text](shots/181.PNG)
 
-=> Manage Jenkins => Credentials => System => Global Credentials => Create credentials 
+* Creating credentials with secret text
 
-  ![Alt text](shots/200.PNG)
-  ![Alt text](shots/201.PNG)
+=> Manage Jenkins => Credentials => System => Global Credentials => Add credentials => select kind : secret text => copy token to secret => ID : JFROG_ACCESS_TOKEN => Description : This is access token for user =>Create
+
+  ![Alt text](shots/188.PNG)
+  ![Alt text](shots/189.PNG)
 
 * Configuring system
 
-=> Manage Jenkins => System => Jfrog
+=> Manage Jenkins => System => Jfrog => use credentials plugin => ID : JFROG_CLOUD => give URL stored => credentials : This is access token for user/ JFROG_ACCESS_TOKEN => Test connection => save
 
-  ![Alt text](shots/202.PNG)
-  ![Alt text](shots/203.PNG)
-  ![Alt text](shots/204.PNG)
+  ![Alt text](shots/190.PNG)
 
 * Creating a maven project and using jfrog
 
-=> New Item => name : spc-maven-jfrog => Maven Project => OK
+=> New Item => name : spc_maven_jfrog => Maven Project => OK
 
-  ![Alt text](shots/205-0.PNG)
+  ![Alt text](shots/191.PNG)
 
-=> Git : select URL : https://github.com/Harika-SVL/Spring-petclinic.git => Branch : main
+=> Git => select URL : https://github.com/Harika-SVL/Spring-petclinic.git => Branch : main
 
-  ![Alt text](shots/205.PNG)
+  ![Alt text](shots/192.PNG)  
 
-=> Build => Goals and options : package
+=> Configuration => Build => Goals and options : package
 
-  ![Alt text](shots/206.PNG)
+  ![Alt text](shots/193.PNG)
 
-=> Post-build Actions => Deploy artifacts to Artifactory => Refresh Repositories 
+=> Post-build Actions => Deploy artifacts to Artifactory 
 
-  ![Alt text](shots/208.PNG)
+  ![Alt text](shots/194.PNG)
 
-=> Build Now
+=> Refresh Repositories
 
-  ![Alt text](shots/209.PNG)
-  ![Alt text](shots/210.PNG)
+  ![Alt text](shots/195.PNG)
+
+ => select the repositories present for release-local and snapshot-local repositories => save => Build now
+
+  
+  
 
 * _**NOTE : If it's not working, then try to install another VM with Jenkins server**_
   * Install jdk-17
@@ -1867,7 +1813,7 @@ pipeline {
 
 => Pipeline => Script
 
-  ![Alt text](shots/211.PNG)
+  
 ```
 pipeline {
     agent any
