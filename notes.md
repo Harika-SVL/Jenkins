@@ -1682,7 +1682,7 @@ pipeline {
     * jfrog/artifactory
     * Nexus
 * Azure DevOps has Azure Artifacts
-* In this series we will be using jfrog artifactory for it's multi language repository support
+* In this series we will be using _**jfrog artifactory**_ for it's multi language repository support
 * For 14-day free trail
   
   [Refer Here : https://jfrog.com/start-free/]
@@ -1706,7 +1706,7 @@ pipeline {
 
   ![Alt text](shots/180.PNG)
 
-* Create a repository (qt-app)
+* Create a repository (qt-a2)
 
 => open jfrog.io [ URL : https://devopsuser.jfrog.io/ ]=> Artifactory (on left) => Repositories => Create a Repository => PRE-Build setup => select : maven => name : qt-2 => Create => copy URL => select : I'll do it later
 
@@ -1717,7 +1717,7 @@ pipeline {
 
 * Creating a new group
 
-=> Right dropdown : New Group => Groups => name : devops => description : devops service account => give admin permissions => save
+=> Right dropdown : New Group => Groups => name : devops => description : devops service account => select Administer Platform => save
 
   ![Alt text](shots/184.PNG)
 
@@ -1734,11 +1734,11 @@ pipeline {
   ![Alt text](shots/186.PNG)
   ![Alt text](shots/187.PNG)
 
-* URL for jenkins : https://devopsuser.jfrog.io/
+* URL of artifactory for jenkins : https://devopsuser.jfrog.io/
 
 * Token :
-``` eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJPdWg3d0ZfMEJDbHFRaC1wbVdLclNmUGg1aDdIcVB6cDMwZFpuWWFZNzVFIn0.eyJzdWIiOiJqZmFjQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yL3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yIiwiZXhwIjoxNzA1MzI5MzE0LCJpYXQiOjE3MDI3MzczMTQsImp0aSI6IjA1NzY0MWRkLTM0MDgtNDgzMi1iY2VjLWZiMzJmZmYxOWU0NSJ9.ZjIcE0kwH-GBnDQ6444P3g_CEpruyVVRu4eF2ynjFLuDD3L6iFRgc5UPns2P8p7P4PcCnYIIAZuN2VlOWwY6GWNRHk7On0g4fXfwnjKqKS5cpKGznPpbm0xBBq2zIAWpER8NCik-ft9XgrLy_T3UaP473ZDgbXElDaXv-0oda6bxAwRcQg4431c-h_l00TjPf6i9Mj975VEw_VDGjK1zwv9x_Az0QF9g4uMRhzJZQPUhr_VtH6XwO0YWzl_cS28e6_lZnnAHPTsVfMJPX0Kz5EZg0G7SnO_wVUW49R4Z0fvYSwuknqmzKkYYU9ZgtGPRid9lcCoD6vtO-rZ4XDGfPw
-```
+eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJPdWg3d0ZfMEJDbHFRaC1wbVdLclNmUGg1aDdIcVB6cDMwZFpuWWFZNzVFIn0.eyJzdWIiOiJqZmFjQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yL3VzZXJzL2Rldm9wcyIsInNjcCI6ImFwcGxpZWQtcGVybWlzc2lvbnMvYWRtaW4iLCJhdWQiOiIqQCoiLCJpc3MiOiJqZmZlQDAxaGhrbXA2Y2ZnNjEzMWpqMzdqeXcwbm5yIiwiZXhwIjoxNzA1MzI5MzE0LCJpYXQiOjE3MDI3MzczMTQsImp0aSI6IjA1NzY0MWRkLTM0MDgtNDgzMi1iY2VjLWZiMzJmZmYxOWU0NSJ9.ZjIcE0kwH-GBnDQ6444P3g_CEpruyVVRu4eF2ynjFLuDD3L6iFRgc5UPns2P8p7P4PcCnYIIAZuN2VlOWwY6GWNRHk7On0g4fXfwnjKqKS5cpKGznPpbm0xBBq2zIAWpER8NCik-ft9XgrLy_T3UaP473ZDgbXElDaXv-0oda6bxAwRcQg4431c-h_l00TjPf6i9Mj975VEw_VDGjK1zwv9x_Az0QF9g4uMRhzJZQPUhr_VtH6XwO0YWzl_cS28e6_lZnnAHPTsVfMJPX0Kz5EZg0G7SnO_wVUW49R4Z0fvYSwuknqmzKkYYU9ZgtGPRid9lcCoD6vtO-rZ4XDGfPw
+
 * Install `Artifactory`plugin and restart Jenkins
 
 => Manage jenkins => plugins => Available plugins => search : artifactory => select : Artifactory plugin => Restart when no jobs are running => Relogin to Jenkins
@@ -1747,14 +1747,14 @@ pipeline {
 
 * Creating credentials with secret text
 
-=> Manage Jenkins => Credentials => System => Global Credentials => Add credentials => select kind : secret text => copy token to secret => ID : JFROG_ACCESS_TOKEN => Description : This is access token for user =>Create
+=> Manage Jenkins => Credentials => System => Global Credentials => Add credentials => select kind : secret text => copy token to secret => ID : JFROG_ACCESS_TOKEN => Description : This is access token for user => Create
 
   ![Alt text](shots/188.PNG)
   ![Alt text](shots/189.PNG)
 
 * Configuring system
 
-=> Manage Jenkins => System => Jfrog => use credentials plugin => ID : JFROG_CLOUD => give URL stored => credentials : This is access token for user/ JFROG_ACCESS_TOKEN => Test connection => save
+=> Manage Jenkins => System => Jfrog => use credentials plugin => ID : JFROG_CLOUD => give URL :  https://devopsuser.jfrog.io/ => credentials : This is access token for user/ JFROG_ACCESS_TOKEN => Test connection => save
 
   ![Alt text](shots/190.PNG)
 
