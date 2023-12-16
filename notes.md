@@ -566,7 +566,7 @@ sudo apt-get update
 sudo apt-get install jenkins -y
 ```
 ```
-chmod +x installjenkins.sh
+sudo chmod +x installjenkins.sh
 ./installjenkins.sh
 ```
   ![Alt text](shots/54-0.PNG)
