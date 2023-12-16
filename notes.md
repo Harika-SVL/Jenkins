@@ -1782,9 +1782,8 @@ pipeline {
 
  => select the repositories present for release-local and snapshot-local repositories => save => Build now
 
+  ![Alt text](shots/196.PNG)
   
-  
-
 * _**NOTE : If it's not working, then try to install another VM with Jenkins server**_
   * Install jdk-17
   * Install maven
@@ -1793,27 +1792,29 @@ pipeline {
   * Install Jenkins using script _**installjenkins.sh**_
   * Add jdk, maven tools to jenkins, Artifactory plugin
 
-
+#### JFROG Artifactory Pipeline
 
 * For official doc's of Jfrog artifactory pipeline
 
   [ Refer here : https://jfrog.com/help/r/jfrog-integrations-documentation/jenkins-artifactory-plug-in]
+
 * For samples of Jfrog jenkins pipelines
 
   [ Refer Here : https://github.com/jfrog/project-examples/tree/master/jenkins-examples/pipeline-examples/declarative-examples]
+
 * For specific Jenkinsfile
 
   [ Refer Here : https://github.com/jfrog/project-examples/blob/master/jenkins-examples/pipeline-examples/declarative-examples/maven-example/Jenkinsfile]
 
-#### Pipeline example for JFROG
+#### Example for JFROG pipeline for jenkins ( Declarative pipeline )
 
 * Create a new project
 
-=> Dashboard => New Item => name : spc_JFROG_pipeline => Pipeline => OK
+=> Dashboard => New Item => name : spc_jfrog_pipeline => Pipeline => OK
 
-=> Pipeline => Script
+  ![Alt text](shots/197.PNG)
 
-  
+=> Pipeline => Definition : Pipeline script 
 ```
 pipeline {
     agent any
@@ -1838,8 +1839,8 @@ pipeline {
                  rtMavenDeployer (
                     id: "SPC_DEPLOYER",
                     serverId: "JFROG_CLOUD",
-                    releaseRepo: 'qt-app-libs-release-local',
-                    snapshotRepo: 'qt-app-libs-snapshot-local'
+                    releaseRepo: 'qt-2-libs-snapshot-local',
+                    snapshotRepo: 'qt-2-libs-snapshot-local'
                 )
                 rtMavenRun (
                     tool: 'MAVEN_3.9', // Tool name from Jenkins configuration
@@ -1861,10 +1862,15 @@ pipeline {
             }
         }
     }
-
 }
 ```
-=> Save => Build Now
+=> Save 
+
+  ![Alt text](shots/198.PNG)
+
+=> Build Now
+
+  ![Alt text](shots/199.PNG)
 
 ### Static Code Analysis
 
