@@ -1879,13 +1879,69 @@ pipeline {
 * For Configuration doc's
 
   [ refer Here : https://docs.sonarcloud.io/advanced-setup/ci-based-analysis/jenkins-extension-for-sonarcloud/#:~:text=Configure%20SonarCloud%3A,created%20as%20a%20]
+
+* To have SonarCloud plugin in jenkins
+
+=> Manage jenkins => Plugins => Available plugins => SonarQube Scanner => Install after restart 
+
+  ![Alt text](shots/201.PNG)
+  ![Alt text](shots/202.PNG)
+
 * To create SonarQube Cloud account
 
   [ Refer Here : https://www.sonarsource.com/products/sonarcloud/signup/]
-* Now let's create a SonarQube Static Code Analysis
+
+=> Open the link => select : GIT HUB => select : Authorize SonarQube account 
+
+  ![Alt text](shots/203.PNG)
+
+=> Create an organization => create an organizattion manually
+
+  ![Alt text](shots/204.PNG)
+  ![Alt text](shots/205.PNG)
+
+=> Enter a name => select Free plan => create organization
+
+  ![Alt text](shots/206.PNG)
+  ![Alt text](shots/207.PNG)
+
+=> Go to My Account => select Security => give Token name => Generate Token
+
+_**TOKEN**_ : 6627b6e0a64a660d18e8124cc54261649bbf4c73
+
+  ![Alt text](shots/208.PNG)
+  ![Alt text](shots/209.PNG)
+  ![Alt text](shots/210.PNG)
+  ![Alt text](shots/211.PNG)
+  
+=> Manage Jenkins => Credentials => System => Global credentials => Add credentials => select kind : Secret text => copy token => give ID : SONAR_CLOUD, Description : SONAR_CLOUD => Create
+
+  ![Alt text](shots/216.PNG)
+
+* Now let's create a SonarQube Static Code Analysis 
+
+  [Refer Here : https://docs.sonarsource.com/sonarcloud/advanced-setup/ci-based-analysis/jenkins-extension-for-sonarcloud/#analyzing-a-java-project-with-maven-or-gradle ]
+
 * For configuring and installing SonarQube
 
   [ Refer Here : https://directdevops.blog/2019/01/05/sonarqube/]
+
+* Creating a sample project _**spc_static_code_analysis**_
+  ![Alt text](shots/217.PNG)
+
+=> Manage jenkins => System => SonarQube servers => Name : SONAR_CLOUD => URL : https://sonarcloud.io =>Authentication token : SONAR_CLOUD => Save
+
+  ![Alt text](shots/218.PNG)
+  ![Alt text](shots/219.PNG)
+  ![Alt text](shots/220.PNG)
+  ![Alt text](shots/221.PNG)
+
+* Create new project for pipeline use
+
+=> New item => name : test_sonar_spc => pipeline => OK
+
+  ![Alt text](shots/222.PNG)
+
 * The pipeline
 ```
 pipeline {
@@ -1897,13 +1953,13 @@ pipeline {
         pollSCM('* * * * *')
     }
     tools {
-        jdk 'JDK_17_UBUNTU'
+        jdk 'JDK_17'
         maven 'MAVEN_3.9'
     }
     stages {
         stage('vcs') {
             steps {
-                git url: 'https://github.com/dummyrepos/spring-petclinic-1.git',
+                git url: 'https://github.com/Harika-SVL/Spring-petclinic.git',
                     branch: 'develop'
             }
         }
@@ -1913,22 +1969,19 @@ pipeline {
                 // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
                 withSonarQubeEnv('SONAR_CLOUD') {
                 // requires SonarQube Scanner for Maven 3.2+
-                    sh 'mvn clean package sonar:sonar -Dsonar.organization=khajaprojectsjuly23 -Dsonar.token=67d5cbb26a76f3a1c2c669a0d7be62e66722c488 -Dsonar.projectKey=springpetclinic'
+                    sh 'mvn clean package sonar:sonar -Dsonar.organization=Newprojectsforanalyzing1 -Dsonar.token=6627b6e0a64a660d18e8124cc54261649bbf4c73 -Dsonar.projectKey=springpetclinic'
                 }
             }
         }
-
-
         stage('reporting') {
             steps {
                 junit testResults: '**/target/surefire-reports/TEST-*.xml'
             }
         }
     }
-
 }
 ```
-
+  ![Alt text](shots/223.PNG)
 
 
 
