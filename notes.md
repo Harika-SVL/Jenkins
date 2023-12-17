@@ -1949,6 +1949,9 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
     }
+    triggers {
+        pollSCM('* * * * *')
+    }
     tools {
         jdk 'JDK_17'
         maven 'MAVEN_3.9'
@@ -1966,25 +1969,26 @@ pipeline {
                 // performing sonarqube analysis with "withSonarQubeENV(<Name of Server configured in Jenkins>)"
                 withSonarQubeEnv('SONAR_CLOUD') {
                 // requires SonarQube Scanner for Maven 3.2+
-                    sh 'mvn clean package sonar:sonar -Dsonar.organization=Newprojectsforanalyzing1 -Dsonar.token=6627b6e0a64a660d18e8124cc54261649bbf4c73 -Dsonar.projectKey=springpetclinic'
+                    sh 'mvn clean package sonar:sonar -Dsonar.organization=newprojectsforanalyzing1 -Dsonar.token=6627b6e0a64a660d18e8124cc54261649bbf4c73 -Dsonar.projectKey=Spring-petclinic'
                 }
             }
         }
+
+
         stage('reporting') {
             steps {
                 junit testResults: '**/target/surefire-reports/TEST-*.xml'
             }
         }
     }
+
 }
 ```
   ![Alt text](shots/223.PNG)
+  ![Alt text](shots/224.PNG)
+  ![Alt text](shots/225.PNG)
 
-
-
-
-
-[ NOTE: For different ecosystem 
+[ _**NOTE**_ : For different ecosystem 
 
   [ Refer Here : https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/ecosystems?view=azure-devops] ]
 
