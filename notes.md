@@ -1997,6 +1997,14 @@ pipeline {
 * Git Flow: 
     
   [Refer Here : https://directdevops.blog/2019/01/04/best-branching-strategy-git-flow/]
+
+  * In _**MASTER**_ branch, the customer release is given
+  * In _**DEVELOP**_ branch, the merge changes are given
+  * In _**TASK/FEATURE/DEFECT**_ branch, we perform the changes to be made (locally which is not represented over git)
+
+  ![Alt text](shots/226.PNG)
+  ![Alt text](shots/227.PNG)
+
 * Also refer the following branching strategy
     * Gitlab
     * GitHub
@@ -2007,6 +2015,8 @@ pipeline {
 
   [Refer Here : https://github.com/GitPracticeRepo/prdemojuly23]
 
+  ![Alt text](shots/228.PNG)
+  
 ### Workshop – Project
 
 * Project 
