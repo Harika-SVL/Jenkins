@@ -2040,7 +2040,13 @@ pipeline {
       * VM
       * Database
 
-[Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023-2/] and [Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023/] before tomorrow’s session
+[ _**NOTE**_ : For `Pull Request Based Workflow` and `Git Flow Branching Strategy`
+
+  [Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023-2/] 
+  
+  * For `Upstream and Downstream jobs in Jenkins` and `Git Submodules` and `Git Alias` and `Git Hooks` 
+  
+   [Refer Here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023/] ]
 
 ## CI/CD Pipeline Based on Jenkins – Workshop
 
