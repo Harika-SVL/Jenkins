@@ -2064,9 +2064,14 @@ pipeline {
             * .net 7 sdk
             * git
             * zip
+
+   * Installing steps for Nop-Commerce on linux
+
+      [ Refer here : https://docs.nopcommerce.com/en/installation-and-upgrading/installing-nopcommerce/installing-on-linux.html ]
+
   2. Build steps:
 ```
-git clone https://github.com/CICDProjects/nopCommerceJuly23.git
+git clone https://github.com/Harika-SVL/Nop-Commerce.git
 dotnet restore src/NopCommerce.sln
 dotnet build -c Release src/NopCommerce.sln
 dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj -o publish
@@ -2108,6 +2113,7 @@ docker image build -t nopCommerce:latest .
 * For the changes
 
     [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/4d26cd8e07507075946a99e49097e0f8407fe051]
+
 * Workflow
 
 
@@ -2117,10 +2123,12 @@ docker image build -t nopCommerce:latest .
 * For the k8s manifest
 
     [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/62fdd0c1e1493566a7f94b1daa1f6ad90c422fa2]
+
 * Softwares
     * Terraform
     * azure cli
     * kubectl
+
 * Manual deployment steps
 ```
 cd deploy
@@ -2147,15 +2155,18 @@ kubectl apply -f ../k8s/nop-deploy.yaml
 * Navigate to hooks section
 
   [Refer here : https://directdevops.blog/2023/03/11/devops-classroomnotes-11-mar-2023/]
+
 * For popular hooks
 
   [Refer here : https://github.com/aitemr/awesome-git-hooks]
+
 * Since for hosted git repo’s like GitHub, GitLab we have no access to hooks folder, they give us webhooks 
 
 
 
 
   [Refer here : https://www.blazemeter.com/blog/how-to-integrate-your-github-repository-to-your-jenkins-project]
+  
 * for github actions approach instead of webhookF
 
   [Refer here : https://mickeygousset.com/blog/trigger-jenkins-pipeline-with-github-actions/]
