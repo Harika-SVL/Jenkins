@@ -2060,8 +2060,28 @@ pipeline {
       * Node:
          * os: ubuntu
          * software:
-            * openjdk-17 (jenkins)
+            * openjdk-17 and Jenkins
+            ```
+            sudo apt update
+            sudo apt install openjdk-17-jdk -y
+            java -version
+               # Search for commands on the official website to install Jenkins `https://www.jenkins.io/doc/book/installing/linux/`
+            sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \ https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+            echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \ /etc/apt/sources.list.d/jenkins.list > /dev/null
+            sudo apt-get update
+            sudo apt-get install jenkins -y
+            ```
+           ![Alt text](shots/229.PNG)
+
             * .net 7 sdk
+            ```
+            sudo apt remove dotnet* aspnetcore* netstandard*
+            sudo apt update 
+            sudo apt install dotnet-sdk-7.0 -y
+            dotnet --info
+            ```
+           ![Alt text](shots/230.PNG)
+
             * git
             * zip
 
@@ -2069,17 +2089,17 @@ pipeline {
 
       [ Refer here : https://docs.nopcommerce.com/en/installation-and-upgrading/installing-nopcommerce/installing-on-linux.html ]
 
-  2. Build steps:
+  2. Build steps: Script
 ```
-git clone https://github.com/Harika-SVL/Nop-Commerce.git
-dotnet restore src/NopCommerce.sln
-dotnet build -c Release src/NopCommerce.sln
-dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj -o publish
-mkdir publish/bin publish/logs
-zip -r nopCommerce.zip publish
+SCM : git : https://github.com/Harika-SVL/Nop-Commerce.git
+sh dotnet restore src/NopCommerce.sln
+sh dotnet build -c Release src/NopCommerce.sln
+sh dotnet publish -c Release src/Presentation/Nop.Web/Nop.Web.csproj -o publish
+sh mkdir publish/bin publish/logs
+sh zip -r nopCommerce.zip publish
 ```
-  1. Now create a Jenkins file, in such a way that when a commit happens on develop branch the build creates a nopCommmerce zip file.
-  2. solution for the jenkins file
+  1. Now create a `Jenkins file`, in such a way that when a commit happens on `develop` branch the build creates a nopCommmerce `zip` file.
+  2. _**Solution**_ for the Jenkins file
      
   [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/62fdd0c1e1493566a7f94b1daa1f6ad90c422fa2]
 
@@ -2101,12 +2121,12 @@ zip -r nopCommerce.zip publish
   2. Build steps
 ```
 git clone https://github.com/CICDProjects/nopCommerceJuly23.git
-# replace latest with Git Commit id or build id
+   # replace latest with Git Commit id or build id
 docker image build -t nopCommerce:latest .
-#docker image tag nopCommmerce:latest shaikkhajaibrahim/nopCommerce:latest
-#docker image push shaikkhajaibrahim/nopCommerce:latest
+   #docker image tag nopCommmerce:latest shaikkhajaibrahim/nopCommerce:latest
+   #docker image push shaikkhajaibrahim/nopCommerce:latest
 ```
-  * Write Jenkinsfile for the above steps
+  * Write `Jenkins-file` for the above steps
 
 ### Creating kubernetes cluster from terraform
 
