@@ -2060,7 +2060,7 @@ pipeline {
       * Node:
          * os: ubuntu
          * software:
-            * openjdk17 (jenkins)
+            * openjdk-17 (jenkins)
             * .net 7 sdk
             * git
             * zip
