@@ -2127,9 +2127,7 @@ pipeline {
 
 * Workflow
 
-
-
-
+![Alt text](shots/232.PNG)
 
 * For the k8s manifest
 
@@ -2137,20 +2135,22 @@ pipeline {
 
 * Softwares
     * Terraform
-    * azure cli
+    * Azure cli/AWS cli
     * kubectl
 
 * Manual deployment steps
 ```
-cd deploy
-terraform init
-terraform apply -auto-approve
-az aks get-credentials --resource-group rg-national-cod --name cluster-star-goat
+cd deploy/
+sh terraform init && terraform apply -auto-approve
+sh az aks get-credentials --resource-group rg-national-cod --name cluster-star-goat &&
 kubectl apply -f ../k8s/nop-deploy.yaml
 ```
-* For changes in jenkins file
+* For changes in `Jenkins file`
 
     [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/1e31820e3b86fecd18754543f8ef78f9027e237c]
+
+  => Build the project over Jenkins
+
 
 ### Git Alias
 
@@ -2160,8 +2160,7 @@ kubectl apply -f ../k8s/nop-deploy.yaml
 
   [Refer here : https://directdevops.blog/?s=hooks]
 
-
-
+![Alt text](shots/233.PNG)
 
 * Navigate to hooks section
 

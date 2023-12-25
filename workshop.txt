@@ -1,0 +1,38 @@
+=> install jenkins in a machine
+=> become a root user and add jenkins user to the sudoers 'sudo visudo'
+=> su jenkins
+=> cd ~
+=> docker info
+=> docker login -> give username and password
+=> sudo systemctl restart the machine as jenkins user
+=> open jenkins
+=> create a new project , name : containerproject-> pipeline -> ok
+=> create a new repository in docker hub with name : nopCommerce-jenkins
+=> edit the pipeline accordingly and insert into the project
+=> wait the build completes succesfully
+=> meanwhile install terraform on ubuntu in the terminal 
+Link : https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
+=> check for the new image created in docker hub
+=> In the terminal below of visual studio code with 'cd /c/temp/ -> clone the repo' jenkinsfile open :
+   git checkout -b devc
+   git push -u origin devc
+   git add .
+   git commit -m "Added changes"
+   git push
+=> create a new folder deploy
+    add all the terraform scripts representing cluster (AWS-EKS cluster, Azure-AKS cluster) creation
+	we also need to install aws cli to make terraform work
+=> check for all the resource values and modify if necessary
+   git branch    ## devc
+   git add .
+   git commit -m "Added changes with terraform included"
+=> Create a new file 'k8s'
+    internally create file 'nop-deploy.yaml' to deploy nopCommerce
+   docker image ls
+   docker container run -d -P nopcommerce:latest
+   docker container ls
+   open the page on the port generated over web browser
+=> In the pipeline create a new stage -> package and Build steps -> Execute shell
+   sh terraform init && terraform apply -auto-approve
+   sh az aks get-credentials --resource-group rg-national-cod --name cluster-star-goat && kubectl apply -f ../k8s/nop-deploy.yaml
+   now withe the External-Ip created try to expose it on browser with 80 port
