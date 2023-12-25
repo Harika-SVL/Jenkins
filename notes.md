@@ -2149,13 +2149,17 @@ kubectl apply -f ../k8s/nop-deploy.yaml
 
     [Refer here : https://github.com/CICDProjects/nopCommerceJuly23/commit/1e31820e3b86fecd18754543f8ef78f9027e237c]
 
-  => Build the project over Jenkins
-
+=> Build the project over Jenkins
 
 ### Git Alias
 
   [Refer here : https://www.atlassian.com/git/tutorials/git-alias]
 
+* If for example you want to add any alias which is as follows :
+```
+git config --global alias.st status
+git st
+```
 ### Git Hooks
 
   [Refer here : https://directdevops.blog/?s=hooks]
@@ -2172,8 +2176,8 @@ kubectl apply -f ../k8s/nop-deploy.yaml
 
 * Since for hosted git repo’s like GitHub, GitLab we have no access to hooks folder, they give us webhooks 
 
-
-
+![Alt text](shots/234.PNG)
+![Alt text](shots/235.PNG)
 
   [Refer here : https://www.blazemeter.com/blog/how-to-integrate-your-github-repository-to-your-jenkins-project]
   
@@ -2183,7 +2187,17 @@ kubectl apply -f ../k8s/nop-deploy.yaml
 
 ### Git stash
 
-* For stash doc's
+* For stash doc's : preserve changes locally for some reasonable amount of time to get back
+```
+code .
+git stash 
+git stash list
+git add .
+git commit -m "Added changes"
+git push
+git stash apply
+git stash show
+```
 
   [Refer here : https://www.atlassian.com/git/tutorials/saving-changes/git-stash]
 
